@@ -21,20 +21,20 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/563620078@qq.com/DNVideoPlayer'
+  s.homepage         = 'https://github.com/DoNewsCode/DNVideoPlayer'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '563620078@qq.com' => 'majie@donews.com' }
-  s.source           = { :git => 'https://github.com/563620078@qq.com/DNVideoPlayer.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/DoNewsCode/DNVideoPlayer.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'DNVideoPlayer/Classes/**/*'
   
-  s.resource_bundles = {
-     'DNVideoPlayer' => ['DNVideoPlayer/Assets/*.png']
-   }
+  # s.resource_bundles = {
+  # 'DNVideoPlayer' => ['DNVideoPlayer/Assets/*.png']
+  # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
