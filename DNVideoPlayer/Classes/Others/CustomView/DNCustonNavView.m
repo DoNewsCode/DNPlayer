@@ -7,10 +7,9 @@
 //
 
 #import "DNCustonNavView.h"
-#import <Masonry/Masonry.h>
+
 #import "UIView+DNResponder.h"
 #import "DNPlayerTypeDef.h"
-//#import "DNBaseViewController.h"
 
 @implementation DNCustonNavView
 - (instancetype)init
@@ -55,13 +54,9 @@
         make.height.equalTo(@(44));
     }];
     
-    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [button addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-//- (void)backAction:(id)sender
-//{
-//    [((DNBaseViewController *)self.viewController) backAction:sender];
-//}
 
 - (void)setNaviTitle:(NSString *)title{
     UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];

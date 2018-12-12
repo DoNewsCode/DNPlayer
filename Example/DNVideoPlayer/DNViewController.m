@@ -7,7 +7,15 @@
 //
 
 #import "DNViewController.h"
-@interface DNViewController ()
+#import "DNBottomWebMainView.h"
+
+static NSString *kIdentifier = @"kIdentifier";
+
+@interface DNViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSArray *viewControllers;
 
 @end
 
@@ -16,8 +24,63 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title = @"VideoPlayer";
+    [self.view addSubview:self.tableView];
+    self.titles = @[
+                    @"底部加载广告Web类型",
+                    @"列表点击播放"
+                    ];
+
+    self.viewControllers = @[
+                             @"DNBottomWebViewController",
+                             @"DNNotAutoPlayViewController"
+                             ];
+
 }
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.tableView.frame = self.view.bounds;
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.titles.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kIdentifier];
+    cell.textLabel.text = self.titles[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //    [tableView deselectRowAtIndexZPath:indexPath animated:YES];
+    NSString *vcString = self.viewControllers[indexPath.row];
+    UIViewController *viewController = [[NSClassFromString(vcString) alloc] init];
+    viewController.navigationItem.title = self.titles[indexPath.row];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kIdentifier];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.rowHeight = 44;
+    }
+    return _tableView;
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

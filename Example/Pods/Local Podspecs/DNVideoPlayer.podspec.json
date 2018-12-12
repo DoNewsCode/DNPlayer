@@ -19,6 +19,11 @@
     "ios": "8.0"
   },
   "source_files": "DNVideoPlayer/Classes/**/*",
+  "resource_bundles": {
+    "DNVideoPlayer": [
+      "DNVideoPlayer/Assets/*.png"
+    ]
+  },
   "dependencies": {
     "AliyunPlayer_iOS/AliyunVodPlayerSDK": [
 

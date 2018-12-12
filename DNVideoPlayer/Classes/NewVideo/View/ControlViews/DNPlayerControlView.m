@@ -45,6 +45,8 @@
 /// 播放结束垫底图
 @property (nonatomic, strong) DNAdPlayToEndView *adEndView;
 
+@property (nonatomic, strong) NSBundle *resourceBundle;
+
 @end
 
 @implementation DNPlayerControlView
@@ -391,7 +393,7 @@
 {
     if (!_backBtn) {
         _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_backBtn setImage:[UIImage imageNamed:@"player_whiteBack_icon"] forState:UIControlStateNormal];
+        [_backBtn setImage:[self imageWithImageName:@"player_whiteBack_icon"] forState:UIControlStateNormal];
 //         [UIImage ca_imageName:@"player_whiteBack_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
         [_backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -403,7 +405,7 @@
     if (!_topImageView) {
         _topImageView = [[UIImageView alloc] init];
         _topImageView.userInteractionEnabled = YES;
-        [_topImageView setImage:[UIImage imageNamed:@"player_shadowTop_icon"]];
+        [_topImageView setImage:[self imageWithImageName:@"player_shadowTop_icon"]];
 //        [_topImageView setImage:[UIImage ca_imageName:@"player_shadowTop_icon" inBundle:DNPlaceholderResource]];
     }
     return _topImageView;
@@ -414,7 +416,7 @@
     if (!_bottomImageView) {
         _bottomImageView = [[UIImageView alloc] init];
         _bottomImageView.userInteractionEnabled = YES;
-        [_bottomImageView setImage:[UIImage imageNamed:@"player_shadowBottom_icon"]];
+        [_bottomImageView setImage:[self imageWithImageName:@"player_shadowBottom_icon"]];
 //        [_bottomImageView setImage:[UIImage ca_imageName:@"player_shadowBottom_icon" inBundle:DNPlaceholderResource]];
     }
     return _bottomImageView;
@@ -436,9 +438,9 @@
         _volumBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _volumBtn.selected = NO;
         _volumBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_volumBtn setImage:[UIImage imageNamed:@"player_volumeOn_icon"] forState:UIControlStateNormal];
+        [_volumBtn setImage:[self imageWithImageName:@"player_volumeOn_icon"] forState:UIControlStateNormal];
 //        [_volumBtn setImage:[UIImage ca_imageName:@"player_volumeOn_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
-        [_volumBtn setImage:[UIImage imageNamed:@"player_volumeOff_icon"] forState:UIControlStateSelected];
+        [_volumBtn setImage:[self imageWithImageName:@"player_volumeOff_icon"] forState:UIControlStateSelected];
 //        [_volumBtn setImage:[UIImage ca_imageName:@"player_volumeOff_icon" inBundle:DNPlaceholderResource] forState:UIControlStateSelected];
         [_volumBtn addTarget:self action:@selector(volumBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 //        [_volumBtn setImage:[UIImage imageNamed:ZFPlayerSrcName(@"kr-video-player-play")] forState:UIControlStateNormal];
@@ -473,7 +475,7 @@
     if (!_videoSlider) {
         _videoSlider = [[UISlider alloc] init];
         // 设置slider
-        [_videoSlider setThumbImage:[UIImage imageNamed:@"player_sliderDot_icon"] forState:UIControlStateNormal];
+        [_videoSlider setThumbImage:[self imageWithImageName:@"player_sliderDot_icon"] forState:UIControlStateNormal];
 //        [_videoSlider setThumbImage:[UIImage ca_imageName:@"player_sliderDot_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
         _videoSlider.minimumTrackTintColor = [UIColor whiteColor];
         _videoSlider.maximumTrackTintColor = [UIColor clearColor];//[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.6];
@@ -496,9 +498,9 @@
     if (!_fullScreenBtn) {
         _fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 
-        [_fullScreenBtn setImage:[UIImage imageNamed:@"player_scaleFull_icon"] forState:UIControlStateNormal];
+        [_fullScreenBtn setImage:[self imageWithImageName:@"player_scaleFull_icon"] forState:UIControlStateNormal];
 //        [_fullScreenBtn setImage:[UIImage ca_imageName:@"player_scaleFull_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
-        [_fullScreenBtn setImage:[UIImage imageNamed:@"player_scaleSmall_icon"] forState:UIControlStateSelected];
+        [_fullScreenBtn setImage:[self imageWithImageName:@"player_scaleSmall_icon"] forState:UIControlStateSelected];
 
 //        [_fullScreenBtn setImage:[UIImage ca_imageName:@"player_scaleSmall_icon" inBundle:DNPlaceholderResource] forState:UIControlStateSelected];
 
@@ -537,16 +539,22 @@
     return _repeatBtn;
 }
 
+
+- (UIImage *)imageWithImageName:(NSString *)imageName
+{
+    UIImage *image = [[UIImage imageNamed:imageName inBundle:self.resourceBundle compatibleWithTraitCollection:nil]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    return image;
+}
+
 - (UIButton *)centerPlayBtn
 {
     if (!_centerPlayBtn) {
         _centerPlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_centerPlayBtn setImage:[UIImage imageNamed:@"player_playBtn_icon"] forState:UIControlStateNormal];
 
-        [_centerPlayBtn setImage:[UIImage imageNamed:@"player_pause_icon"] forState:UIControlStateSelected];
+        [_centerPlayBtn setImage:[self imageWithImageName:@"player_playBtn_icon"] forState:UIControlStateNormal];
 
-//        [_centerPlayBtn setImage:[UIImage ca_imageName:@"player_playBtn_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
-//        [_centerPlayBtn setImage:[UIImage ca_imageName:@"player_pause_icon" inBundle:DNPlaceholderResource] forState:UIControlStateSelected];
+
+        [_centerPlayBtn setImage:[self imageWithImageName:@"player_pause_icon"] forState:UIControlStateSelected];
 
         [_centerPlayBtn addTarget:self action:@selector(centerPlayBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         _centerPlayBtn.selected = YES;
@@ -592,6 +600,14 @@
         }];
     }
     return _adEndView;
+}
+
+- (NSBundle *)resourceBundle {
+    if (_resourceBundle == nil) {
+        // 这里不使用mainBundle是为了适配pod 1.x和0.x
+          _resourceBundle =  [NSBundle bundleWithPath:[[NSBundle bundleForClass:[self class]] pathForResource:@"DNVideoPlayer" ofType:@"bundle"]];
+    }
+    return _resourceBundle;
 }
 
 @end
