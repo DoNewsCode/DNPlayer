@@ -4,10 +4,13 @@ platform :ios, '8.0'
 
 target 'DNVideoPlayer_Example' do
   pod 'DNVideoPlayer', :path => '../'
+  pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK'
+  pod 'Masonry'
 
   target 'DNVideoPlayer_Tests' do
     inherit! :search_paths
 
+    
     
   end
 end

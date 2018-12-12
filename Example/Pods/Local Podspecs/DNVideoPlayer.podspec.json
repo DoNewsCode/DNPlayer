@@ -1,0 +1,35 @@
+{
+  "name": "DNVideoPlayer",
+  "version": "0.1.0",
+  "summary": "A short description of DNVideoPlayer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/563620078@qq.com/DNVideoPlayer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "563620078@qq.com": "majie@donews.com"
+  },
+  "source": {
+    "git": "https://github.com/563620078@qq.com/DNVideoPlayer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "DNVideoPlayer/Classes/**/*",
+  "resource_bundles": {
+    "DNVideoPlayer": [
+      "DNVideoPlayer/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "AliyunPlayer_iOS/AliyunVodPlayerSDK": [
+
+    ],
+    "Masonry": [
+
+    ]
+  }
+}
