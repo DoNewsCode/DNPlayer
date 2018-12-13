@@ -8,9 +8,7 @@ PODS:
   - Masonry (1.1.0)
 
 DEPENDENCIES:
-  - AliyunPlayer_iOS/AliyunVodPlayerSDK
   - DNVideoPlayer (from `../`)
-  - Masonry
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,9 +21,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
-  DNVideoPlayer: ab5df36310ee62b37a2fa929c45f1afe86d71d3f
+  DNVideoPlayer: 89f517ed1590ea956a6444738fcf76f2d5d457d3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 7e95a8116699acb4c2c8d31597711c670c5e39b6
+PODFILE CHECKSUM: 1717bf87c65b151d0f1a7c7e0740fd1e8f306764
 
 COCOAPODS: 1.5.3

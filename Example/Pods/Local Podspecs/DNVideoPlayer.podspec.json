@@ -24,11 +24,12 @@
       "DNVideoPlayer/Assets/*.png"
     ]
   },
+  "frameworks": "UIKit",
   "dependencies": {
-    "AliyunPlayer_iOS/AliyunVodPlayerSDK": [
+    "Masonry": [
 
     ],
-    "Masonry": [
+    "AliyunPlayer_iOS/AliyunVodPlayerSDK": [
 
     ]
   }

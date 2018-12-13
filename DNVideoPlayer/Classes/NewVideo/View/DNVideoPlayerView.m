@@ -10,7 +10,6 @@
 #import "DNPlayerControlView.h"
 #import "Masonry.h"
 #import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
-#import "DNPlayerTypeDef.h"
 #import <objc/runtime.h>
 
 
