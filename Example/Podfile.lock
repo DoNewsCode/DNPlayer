@@ -2,7 +2,7 @@ PODS:
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.8)
   - AliyunPlayer_iOS/AliyunVodPlayerSDK (3.4.8):
     - AliyunPlayer_iOS/AliyunPlayerSDK
-  - DNVideoPlayer (0.1):
+  - DNVideoPlayer (0.1.0):
     - AliyunPlayer_iOS/AliyunVodPlayerSDK
     - Masonry
   - Masonry (1.1.0)
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
-  DNVideoPlayer: 33f5e108ab113438ac9d66606a4ae0b213c0682a
+  DNVideoPlayer: ab5df36310ee62b37a2fa929c45f1afe86d71d3f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: 7e95a8116699acb4c2c8d31597711c670c5e39b6

@@ -1,9 +1,9 @@
 {
   "name": "DNVideoPlayer",
-  "version": "0.1",
+  "version": "0.1.0",
   "summary": "A short description of DNVideoPlayer.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/DoNewsCode/DNVideoPlayer",
+  "homepage": "https://github.com/DoNewsCode/DNPlayer",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "563620078@qq.com": "majie@donews.com"
   },
   "source": {
-    "git": "https://github.com/DoNewsCode/DNVideoPlayer.git",
-    "tag": "0.1"
+    "git": "https://github.com/DoNewsCode/DNPlayer.git",
+    "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"

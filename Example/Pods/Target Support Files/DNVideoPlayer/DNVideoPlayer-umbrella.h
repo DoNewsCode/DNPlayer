@@ -21,15 +21,15 @@
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "UIViewController+Add.h"
 #import "UIView+JAExtForPageScroll.h"
+#import "DNBaseView.h"
+#import "DNBottomWebMainView.h"
+#import "DNCustonNavView.h"
+#import "UIView+DNResponder.h"
 #import "DNPlayerControlView.h"
 #import "DNPlayer.h"
 #import "DNVideoPlayerView+PlayControl.h"
 #import "DNVideoPlayerView.h"
 #import "DNAdPlayToEndView.h"
-#import "DNBaseView.h"
-#import "DNBottomWebMainView.h"
-#import "DNCustonNavView.h"
-#import "UIView+DNResponder.h"
 
 FOUNDATION_EXPORT double DNVideoPlayerVersionNumber;
 FOUNDATION_EXPORT const unsigned char DNVideoPlayerVersionString[];

@@ -9,7 +9,7 @@
 #import "DNBottomWebMainView.h"
 #import "DNVideoPlayerView.h"
 #import "DNCustonNavView.h"
-
+#import "Masonry.h"
 
 @interface DNBottomWebMainView ()<DNVideoPlayerViewDelegate,UIScrollViewDelegate,UIWebViewDelegate>
 
