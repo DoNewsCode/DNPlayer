@@ -40,4 +40,5 @@ TODO: Add long description of the pod here.
   s.frameworks = 'UIKit'
   s.dependency 'Masonry'
   s.dependency 'AliyunPlayer_iOS/AliyunVodPlayerSDK'
+  
 end

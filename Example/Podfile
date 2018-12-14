@@ -2,11 +2,12 @@ use_frameworks!
 
 platform :ios, '8.0'
 
+
 target 'DNVideoPlayer_Example' do
-  pod 'DNVideoPlayer', :path => '../'
 #  inhibit_warnings 忽略警告
-  pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
-  pod 'Masonry', :inhibit_warnings => true
+    pod 'DNVideoPlayer', :path => '../'
+    pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
+    pod 'Masonry', :inhibit_warnings => true
 
   target 'DNVideoPlayer_Tests' do
     inherit! :search_paths
