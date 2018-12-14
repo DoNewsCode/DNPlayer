@@ -11,7 +11,7 @@
 //#import "DNVideoPlayerView.h"
 
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-
+//#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 //#import "UIScrollView+DNListVideoPlayerAutoPlay.h"
 
 
