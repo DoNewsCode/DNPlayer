@@ -64,11 +64,7 @@
 		770E159321C346E00018BAF9 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */; };
 		770E159421C346EF0018BAF9 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */; };
 		770E159C21C34E470018BAF9 /* UIView+DNResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E159621C34E470018BAF9 /* UIView+DNResponder.m */; };
-		770E159D21C34E470018BAF9 /* DNCustonNavView.h in Headers */ = {isa = PBXBuildFile; fileRef = 770E159721C34E470018BAF9 /* DNCustonNavView.h */; };
-		770E159E21C34E470018BAF9 /* DNBottomWebMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 770E159821C34E470018BAF9 /* DNBottomWebMainView.h */; };
 		770E159F21C34E470018BAF9 /* UIView+DNResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 770E159921C34E470018BAF9 /* UIView+DNResponder.h */; };
-		770E15A021C34E470018BAF9 /* DNCustonNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E159A21C34E470018BAF9 /* DNCustonNavView.m */; };
-		770E15A121C34E470018BAF9 /* DNBottomWebMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E159B21C34E470018BAF9 /* DNBottomWebMainView.m */; };
 		7AEB8F48E77DDDC9FC9C6B56B514D61A /* DNPlayerConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 56D0C5D9AF4989D09D52E28368425B94 /* DNPlayerConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DE544D0901776E7CB27EA83E482D892 /* player_grayBack_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 027CBBC3A9EAF69FFB8C31F51B1AA910 /* player_grayBack_icon@3x.png */; };
 		92CFB98E37D886F13702612A0259955C /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1461A66D8FFBBBAB0EED4ED44C4207 /* MASViewConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -207,11 +203,7 @@
 		767197BADF32B772C4AC06C99DCC2509 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		76EB1219D20945E11AAD070EDA2F1C15 /* DNVideoPlayer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DNVideoPlayer.modulemap; sourceTree = "<group>"; };
 		770E159621C34E470018BAF9 /* UIView+DNResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DNResponder.m"; sourceTree = "<group>"; };
-		770E159721C34E470018BAF9 /* DNCustonNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNCustonNavView.h; sourceTree = "<group>"; };
-		770E159821C34E470018BAF9 /* DNBottomWebMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNBottomWebMainView.h; sourceTree = "<group>"; };
 		770E159921C34E470018BAF9 /* UIView+DNResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DNResponder.h"; sourceTree = "<group>"; };
-		770E159A21C34E470018BAF9 /* DNCustonNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNCustonNavView.m; sourceTree = "<group>"; };
-		770E159B21C34E470018BAF9 /* DNBottomWebMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNBottomWebMainView.m; sourceTree = "<group>"; };
 		7794A4C1BBBBCDFE757FF86E0A9A3AC4 /* player_sliderDot_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_sliderDot_icon@2x.png"; path = "DNVideoPlayer/Assets/player_sliderDot_icon@2x.png"; sourceTree = "<group>"; };
 		7B3ADA1E26BEB86E56CB75D3CCAE67B4 /* DNVideoPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNVideoPlayerView.h; sourceTree = "<group>"; };
 		8000E81BE2924089742713E5325FE514 /* player_scaleFull_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_scaleFull_icon@2x.png"; path = "DNVideoPlayer/Assets/player_scaleFull_icon@2x.png"; sourceTree = "<group>"; };
@@ -540,11 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				770E159621C34E470018BAF9 /* UIView+DNResponder.m */,
-				770E159721C34E470018BAF9 /* DNCustonNavView.h */,
-				770E159821C34E470018BAF9 /* DNBottomWebMainView.h */,
 				770E159921C34E470018BAF9 /* UIView+DNResponder.h */,
-				770E159A21C34E470018BAF9 /* DNCustonNavView.m */,
-				770E159B21C34E470018BAF9 /* DNBottomWebMainView.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -714,11 +702,9 @@
 				6BD24F12365E22EB4548EEE76442BC59 /* DNPlayerControlView.h in Headers */,
 				AF796AF8935CB46FF9C32A073D32C8C2 /* DNPlayerRotationManager.h in Headers */,
 				0C4F69FDAE07811780F75146443149E6 /* DNPlayerRotationManagerProtocol.h in Headers */,
-				770E159E21C34E470018BAF9 /* DNBottomWebMainView.h in Headers */,
 				BBFC80A692AEB7B34DAC377058B1701D /* DNPlayerTypeDef.h in Headers */,
 				58396F0A7F371121AD43B325829B3F52 /* DNPlayModel.h in Headers */,
 				1BCC833726E32475D6EAF3759FFB9740 /* DNVideoPlayer-umbrella.h in Headers */,
-				770E159D21C34E470018BAF9 /* DNCustonNavView.h in Headers */,
 				DFE6ADD4088385017BE6DA8381AA7ADE /* DNVideoPlayerTools.h in Headers */,
 				6394DF6F0541663EAA56D5D179B186F4 /* DNVideoPlayerView+PlayControl.h in Headers */,
 				A6BFC0A5C0ED3660C5B8FD2D699718E0 /* DNVideoPlayerView.h in Headers */,
@@ -960,10 +946,8 @@
 			files = (
 				770E159C21C34E470018BAF9 /* UIView+DNResponder.m in Sources */,
 				CDEDDE17100537CE8E7CB807042EC8DD /* DNAdPlayToEndView.m in Sources */,
-				770E15A121C34E470018BAF9 /* DNBottomWebMainView.m in Sources */,
 				64A34BEB4BB29E74B48210951DF54F0C /* DNPlayer.m in Sources */,
 				DF46D0C5DF48FDAE5D4798E5CF25876A /* DNPlayerConst.m in Sources */,
-				770E15A021C34E470018BAF9 /* DNCustonNavView.m in Sources */,
 				3F3BC3149046B226200E9D023923E1AE /* DNPlayerControlView.m in Sources */,
 				9EE9BABDB3AC59874D93B46435D547E3 /* DNPlayerRotationManager.m in Sources */,
 				E8615621539FF3188F45A5CA7FCF58A3 /* DNPlayModel.m in Sources */,

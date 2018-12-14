@@ -7,7 +7,6 @@
 //
 
 #import "DNCustonNavView.h"
-#import "UIView+DNResponder.h"
 #import "DNPlayerTypeDef.h"
 
 @implementation DNCustonNavView
