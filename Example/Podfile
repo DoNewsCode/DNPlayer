@@ -3,7 +3,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'DNVideoPlayer_Example' do
-#  pod 'DNVideoPlayer'
   pod 'DNVideoPlayer', :path => '../'
 #  inhibit_warnings 忽略警告
   pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
