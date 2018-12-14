@@ -221,8 +221,8 @@
 		770E15B021C37BAD0018BAF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */,
 				770E15B521C37BAD0018BAF9 /* DNVideoListTableViewItemCell.h */,
+				770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */,
 				770E15B221C37BAD0018BAF9 /* DNCustonNavView.h */,
 				770E15B421C37BAD0018BAF9 /* DNCustonNavView.m */,
 				770E15B321C37BAD0018BAF9 /* DNBottomWebMainView.h */,

@@ -57,6 +57,14 @@
 		6DC90092512A0C3094A9D7EBE0514812 /* UIImage+DNUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E819F76E737F163045528E48618CE521 /* UIImage+DNUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FE0FE6B0228634F47CF0E6EBF1F3ACB /* player_whiteBack_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7A71E0AF222B0BC795F9A9FC555A436 /* player_whiteBack_icon@3x.png */; };
 		7556C3C0927B3F5D88358D3288343D71 /* DNPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = AB0E3DFE11B90B1F5765ABC17705A2D9 /* DNPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77A4E52D21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 77A4E52B21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.h */; };
+		77A4E52E21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A4E52C21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.m */; };
+		77A4E53121C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 77A4E52F21C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.h */; };
+		77A4E53221C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A4E53021C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.m */; };
+		77A4E53621C38B4500B2C940 /* NSObject+DNObserverHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 77A4E53421C38B4500B2C940 /* NSObject+DNObserverHelper.h */; };
+		77A4E53721C38B4500B2C940 /* NSObject+DNObserverHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A4E53521C38B4500B2C940 /* NSObject+DNObserverHelper.m */; };
+		77A4E53A21C38F2D00B2C940 /* DNIsAppearedHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 77A4E53821C38F2D00B2C940 /* DNIsAppearedHelper.h */; };
+		77A4E53B21C38F2D00B2C940 /* DNIsAppearedHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A4E53921C38F2D00B2C940 /* DNIsAppearedHelper.m */; };
 		78172660384A3AC91B0C7E8ECD4EC76E /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 679014249211DA781FB0C886A2ABC754 /* MASConstraintMaker.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7A9022E70FA1C414A27A27A91BF692ED /* UIView+DNResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = E647C41F474C30C67FF9BAD2C83DBB0F /* UIView+DNResponder.m */; };
 		7F829CD5C82BDB1966ACF1F31160E468 /* DNPlayerConst.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBC5C71EA6944892D164F43097F581F /* DNPlayerConst.m */; };
@@ -207,6 +215,14 @@
 		74AC319DAF44F1F5DF5ED5BBDCD3271E /* DNVideoPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DNVideoPlayer-prefix.pch"; sourceTree = "<group>"; };
 		767197BADF32B772C4AC06C99DCC2509 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		7731494492F591067ED1841283621700 /* player_sliderDot_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_sliderDot_icon@2x.png"; path = "DNVideoPlayer/Assets/player_sliderDot_icon@2x.png"; sourceTree = "<group>"; };
+		77A4E52B21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+DNListVideoPlayerAutoPlay.h"; sourceTree = "<group>"; };
+		77A4E52C21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+DNListVideoPlayerAutoPlay.m"; sourceTree = "<group>"; };
+		77A4E52F21C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNPlayerAutoPlayManagerConfig.h; sourceTree = "<group>"; };
+		77A4E53021C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNPlayerAutoPlayManagerConfig.m; sourceTree = "<group>"; };
+		77A4E53421C38B4500B2C940 /* NSObject+DNObserverHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DNObserverHelper.h"; sourceTree = "<group>"; };
+		77A4E53521C38B4500B2C940 /* NSObject+DNObserverHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DNObserverHelper.m"; sourceTree = "<group>"; };
+		77A4E53821C38F2D00B2C940 /* DNIsAppearedHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNIsAppearedHelper.h; sourceTree = "<group>"; };
+		77A4E53921C38F2D00B2C940 /* DNIsAppearedHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNIsAppearedHelper.m; sourceTree = "<group>"; };
 		7D2A0BFB226B951D36957A21E1E6031D /* player_grayBack_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_grayBack_icon@2x.png"; path = "DNVideoPlayer/Assets/player_grayBack_icon@2x.png"; sourceTree = "<group>"; };
 		7FA9738ED083023A0763A20DD6440AFD /* DNVideoPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DNVideoPlayer-dummy.m"; sourceTree = "<group>"; };
 		85D88EF76C3FF0AE75764FBEEA068034 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -532,6 +548,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		77A4E53321C38B1B00B2C940 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				77A4E53421C38B4500B2C940 /* NSObject+DNObserverHelper.h */,
+				77A4E53521C38B4500B2C940 /* NSObject+DNObserverHelper.m */,
+				77A4E53821C38F2D00B2C940 /* DNIsAppearedHelper.h */,
+				77A4E53921C38F2D00B2C940 /* DNIsAppearedHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +648,8 @@
 				6C34502FC72E7A4C5D2C02A9168C287C /* DNPlayerRotationManager.h */,
 				ED4A7F9971C7A83C27B0ECB98A1A0D88 /* DNPlayerRotationManager.m */,
 				FBEEDA0EBC1CF98B7032133FF6033DFB /* DNPlayerRotationManagerProtocol.h */,
+				77A4E52F21C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.h */,
+				77A4E53021C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.m */,
 			);
 			name = Mannager;
 			path = DNVideoPlayer/Classes/NewVideo/Mannager;
@@ -694,10 +723,13 @@
 		FA55F282B378F5DF3C14EF4DDE0DBC0C /* BaseVideoPlayerView */ = {
 			isa = PBXGroup;
 			children = (
+				77A4E53321C38B1B00B2C940 /* Helper */,
 				A97CA1E366290715A5A991D34D508118 /* DNVideoPlayerView.h */,
 				FC87403000062C537EDCF64B46BADDCE /* DNVideoPlayerView.m */,
 				AB1AE413227C1976A3BEB9B813D42426 /* DNVideoPlayerView+PlayControl.h */,
 				632481D454533DCBE4F6C51B5441068F /* DNVideoPlayerView+PlayControl.m */,
+				77A4E52B21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.h */,
+				77A4E52C21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.m */,
 			);
 			path = BaseVideoPlayerView;
 			sourceTree = "<group>";
@@ -772,6 +804,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A4E53121C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.h in Headers */,
 				4183D06C243DB17AA6F4562B7A425551 /* DNAdPlayToEndView.h in Headers */,
 				7556C3C0927B3F5D88358D3288343D71 /* DNPlayer.h in Headers */,
 				C15F6A6EDEEAA3E7A9100532DEF63424 /* DNPlayerConst.h in Headers */,
@@ -781,13 +814,16 @@
 				A9D5BA714785834441F4763636537B89 /* DNPlayerTypeDef.h in Headers */,
 				90E1AA4C009DEF84B679601ADF024433 /* DNPlayModel.h in Headers */,
 				5AC3F066FEC1EFEFA47AF60D1CB9B8C3 /* DNVideoPlayer-umbrella.h in Headers */,
+				77A4E53A21C38F2D00B2C940 /* DNIsAppearedHelper.h in Headers */,
 				91668478920D255BCEB663FE4EE7E3F6 /* DNVideoPlayerTools.h in Headers */,
 				14233FBFAB9FB823906162DDC551DED7 /* DNVideoPlayerView+PlayControl.h in Headers */,
 				46B4C0EE2063B19008FDB69F2532866B /* DNVideoPlayerView.h in Headers */,
 				12CD4DDFAFD383A3A6F2BF5069C7279E /* UIColor+Hex.h in Headers */,
 				6DC90092512A0C3094A9D7EBE0514812 /* UIImage+DNUtils.h in Headers */,
+				77A4E52D21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.h in Headers */,
 				164B66A2AC49EF795847930826A21F2A /* UINavigationController+FDFullscreenPopGesture.h in Headers */,
 				872E8BB4602357D262C469298A9175EC /* UIView+DNResponder.h in Headers */,
+				77A4E53621C38B4500B2C940 /* NSObject+DNObserverHelper.h in Headers */,
 				D9F268C366651411864BBB853F2288E1 /* UIView+JAExtForPageScroll.h in Headers */,
 				48CA731F94C557EABD5D7BC487405F82 /* UIViewController+Add.h in Headers */,
 			);
@@ -973,6 +1009,8 @@
 				352B6ECBBCD89F39294B0C73A4F020FD /* DNAdPlayToEndView.m in Sources */,
 				A8512FEECD3011AB0DE90FE9B356E4CD /* DNPlayer.m in Sources */,
 				7F829CD5C82BDB1966ACF1F31160E468 /* DNPlayerConst.m in Sources */,
+				77A4E53B21C38F2D00B2C940 /* DNIsAppearedHelper.m in Sources */,
+				77A4E53221C3898D00B2C940 /* DNPlayerAutoPlayManagerConfig.m in Sources */,
 				147F98CAAAA0E8E3EEBFEF0963B10DC5 /* DNPlayerControlView.m in Sources */,
 				E2542E9940D354272275C5D7E29EC381 /* DNPlayerRotationManager.m in Sources */,
 				18F911087B37458DC6083C855FAC9B22 /* DNPlayModel.m in Sources */,
@@ -981,6 +1019,8 @@
 				5BEFA39F1883D3564142339604CC101C /* DNVideoPlayerView+PlayControl.m in Sources */,
 				1DB157AF006AB232869D7D3AE6331C53 /* DNVideoPlayerView.m in Sources */,
 				C19AE8B977BB1DAC1B07A31F9B9D5FCE /* UIColor+Hex.m in Sources */,
+				77A4E53721C38B4500B2C940 /* NSObject+DNObserverHelper.m in Sources */,
+				77A4E52E21C387FD00B2C940 /* UIScrollView+DNListVideoPlayerAutoPlay.m in Sources */,
 				827619B3662B034C9D05008EB48E6555 /* UIImage+DNUtils.m in Sources */,
 				F3BD445556485307D69CCF85E45CC3B2 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7A9022E70FA1C414A27A27A91BF692ED /* UIView+DNResponder.m in Sources */,

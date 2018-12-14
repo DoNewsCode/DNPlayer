@@ -7,7 +7,8 @@
 //
 
 #import "DNBottomWebMainView.h"
-#import "DNVideoPlayerView.h"
+#import <DNVideoPlayer/DNVideoPlayerView.h>
+//#import "DNVideoPlayerView.h"
 #import "DNCustonNavView.h"
 
 @interface DNBottomWebMainView ()<DNVideoPlayerViewDelegate,UIScrollViewDelegate,UIWebViewDelegate>

@@ -7,7 +7,8 @@
 //
 
 #import "DNVideoListTableViewItemCell.h"
-#import "DNVideoPlayerView.h"
+//#import "DNVideoPlayerView.h"
+#import <DNVideoPlayer/DNVideoPlayerView.h>
 
 @interface DNVideoListTableViewItemCell ()
 

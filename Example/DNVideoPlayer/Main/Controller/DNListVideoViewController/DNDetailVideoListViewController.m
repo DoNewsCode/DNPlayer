@@ -8,7 +8,12 @@
 
 #import "DNDetailVideoListViewController.h"
 #import "DNVideoListTableViewItemCell.h"
-#import "DNVideoPlayerView.h"
+//#import "DNVideoPlayerView.h"
+
+#import <DNVideoPlayer/DNVideoPlayerView.h>
+
+//#import "UIScrollView+DNListVideoPlayerAutoPlay.h"
+
 
 @interface DNDetailVideoListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
