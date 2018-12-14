@@ -8,6 +8,7 @@
 
 #import "DNViewController.h"
 #import "DNBottomWebMainView.h"
+#import "DNDetailVideoListViewController.h"
 
 static NSString *kIdentifier = @"kIdentifier";
 
@@ -33,7 +34,7 @@ static NSString *kIdentifier = @"kIdentifier";
 
     self.viewControllers = @[
                              @"DNBottomWebViewController",
-                             @"DNNotAutoPlayViewController"
+                             @"DNDetailVideoListViewController"
                              ];
 
 }

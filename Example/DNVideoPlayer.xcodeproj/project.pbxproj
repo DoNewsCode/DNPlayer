@@ -22,6 +22,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		7732B01C21C114A3008A8E63 /* DNBottomWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7732B01B21C114A3008A8E63 /* DNBottomWebViewController.m */; };
+		773CB32821C2500000E817D1 /* DNDetailVideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 773CB32721C2500000E817D1 /* DNDetailVideoListViewController.m */; };
+		773CB32E21C2510900E817D1 /* DNVideoListTableViewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 773CB32D21C2510900E817D1 /* DNVideoListTableViewItemCell.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		FA0539F13CDAAC3525600078 /* Pods_DNVideoPlayer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A6A071D4274F3C764AEAC8 /* Pods_DNVideoPlayer_Example.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +68,10 @@
 		72CC3AE7230B2158BDAA8C66 /* Pods-DNVideoPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNVideoPlayer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNVideoPlayer_Tests/Pods-DNVideoPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7732B01A21C114A3008A8E63 /* DNBottomWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNBottomWebViewController.h; sourceTree = "<group>"; };
 		7732B01B21C114A3008A8E63 /* DNBottomWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNBottomWebViewController.m; sourceTree = "<group>"; };
+		773CB32621C2500000E817D1 /* DNDetailVideoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNDetailVideoListViewController.h; sourceTree = "<group>"; };
+		773CB32721C2500000E817D1 /* DNDetailVideoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNDetailVideoListViewController.m; sourceTree = "<group>"; };
+		773CB32C21C2510900E817D1 /* DNVideoListTableViewItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNVideoListTableViewItemCell.h; sourceTree = "<group>"; };
+		773CB32D21C2510900E817D1 /* DNVideoListTableViewItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNVideoListTableViewItemCell.m; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD25FB584659B46EF1BD78E3 /* Pods_DNVideoPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNVideoPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A3F2E98ABDB619CE1F6F5A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -139,6 +145,10 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* DNViewController.h */,
 				6003F5A6195388D20070C39A /* DNViewController.m */,
+				773CB32621C2500000E817D1 /* DNDetailVideoListViewController.h */,
+				773CB32721C2500000E817D1 /* DNDetailVideoListViewController.m */,
+				773CB32C21C2510900E817D1 /* DNVideoListTableViewItemCell.h */,
+				773CB32D21C2510900E817D1 /* DNVideoListTableViewItemCell.m */,
 				7732B01A21C114A3008A8E63 /* DNBottomWebViewController.h */,
 				7732B01B21C114A3008A8E63 /* DNBottomWebViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -391,7 +401,9 @@
 			files = (
 				6003F59E195388D20070C39A /* DNAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* DNViewController.m in Sources */,
+				773CB32E21C2510900E817D1 /* DNVideoListTableViewItemCell.m in Sources */,
 				7732B01C21C114A3008A8E63 /* DNBottomWebViewController.m in Sources */,
+				773CB32821C2500000E817D1 /* DNDetailVideoListViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +565,37 @@
 				GCC_PREFIX_HEADER = "DNVideoPlayer/DNVideoPlayer-Prefix.pch";
 				INFOPLIST_FILE = "DNVideoPlayer/DNVideoPlayer-Info.plist";
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AliThirdparty\"",
+					"-framework",
+					"\"AliyunPlayerSDK\"",
+					"-framework",
+					"\"AliyunVodPlayerSDK\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"DNVideoPlayer\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"VideoToolbox\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -572,6 +615,37 @@
 				GCC_PREFIX_HEADER = "DNVideoPlayer/DNVideoPlayer-Prefix.pch";
 				INFOPLIST_FILE = "DNVideoPlayer/DNVideoPlayer-Info.plist";
 				MODULE_NAME = ExampleApp;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AliThirdparty\"",
+					"-framework",
+					"\"AliyunPlayerSDK\"",
+					"-framework",
+					"\"AliyunVodPlayerSDK\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"DNVideoPlayer\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"VideoToolbox\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

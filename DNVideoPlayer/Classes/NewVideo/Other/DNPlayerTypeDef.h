@@ -112,6 +112,9 @@ _Pragma("clang diagnostic pop") \
 #import "UIView+JAExtForPageScroll.h"
 #import "DNPlayerConst.h"
 #import "UIViewController+Add.h"
-#import "Masonry.h"
+#import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
+#import <Masonry/Masonry.h>
+#import "DNPlayModel.h"
 
 #endif /* DNPlayerTypeDef_h */
+

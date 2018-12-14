@@ -8,8 +8,6 @@
 
 #import "DNVideoPlayerView.h"
 #import "DNPlayerControlView.h"
-#import "Masonry.h"
-#import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import <objc/runtime.h>
 
 

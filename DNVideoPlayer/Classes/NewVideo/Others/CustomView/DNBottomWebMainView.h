@@ -6,14 +6,13 @@
 //  Copyright © 2018 Madjensen. All rights reserved.
 //
 
-#import "DNBaseView.h"
-
+#import <UIKit/UIKit.h>
 #define VideoMaxHeight ABS((ScreenWidth * 9 / 16) + TGStatuBarHeight)
 #define ScrollMaxOffSet (VideoMaxHeight - TGNavHeight)
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNBottomWebMainView : DNBaseView
+@interface DNBottomWebMainView : UIView
 
 
 + (instancetype)bottomWebMainViewWithFrame:(CGRect)frame;

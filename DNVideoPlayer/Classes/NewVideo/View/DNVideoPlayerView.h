@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import "DNPlayModel.h"
 #import "DNPlayerTypeDef.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import "DNPlayer.h"
 #import "DNPlayerRotationManager.h"
 

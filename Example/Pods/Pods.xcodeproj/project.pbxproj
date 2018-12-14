@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0075BE97F45FACBD0432F99963953976 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 679014249211DA781FB0C886A2ABC754 /* MASConstraintMaker.m */; };
 		00AFAE826CB2FA7A3021B45526340F80 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 2352284E74BC947E7C11AA3F8D8D259C /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		036EBCED3FA8EC9F7B20C9B0864BCEF3 /* DNVideoPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 559A50DBAFC7755F3185733CF96286D5 /* DNVideoPlayer.bundle */; };
 		06E04960D9104CEF9B851B466BDA2341 /* player_grayBack_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A7C57598BE38D06D90A7D39D929234 /* player_grayBack_icon@2x.png */; };
 		0C4F69FDAE07811780F75146443149E6 /* DNPlayerRotationManagerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E39201390DF3176CFFBEDD35F6B17750 /* DNPlayerRotationManagerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D908B8C10AA56C2C3380F58E8A15B02 /* player_volumeOff_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB484CF86004BCBD918BA486F0EF69F /* player_volumeOff_icon@2x.png */; };
 		0E7A56CDF3ED6B6EB4278D0D53794B10 /* DNVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 867773998479AFC563F3D331E8AEF383 /* DNVideoPlayerView.m */; };
-		0F08D200A752A937F92F79EE6F9A2273 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B25E28F3A3D7E2969214DCECFD71B6 /* View+MASAdditions.m */; };
 		1111CD1B0842C61D84FD70A7FB48E7D6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5613FCEC9EEBDBDE6BB9A8E5B2879FA1 /* UIColor+Hex.m */; };
 		144701AAE9B719752B152E22D87869A6 /* player_repeatBtn_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2AC8F36D6AD71676682F5ABFBD8F75 /* player_repeatBtn_icon@3x.png */; };
 		15D4A2E90244857F9EC009481CAFB43F /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B7EFC7E6FB647BCAC910E54E10268AD9 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,12 +30,11 @@
 		2E467AD51F3A73F97A3DE13AED9410AC /* player_scaleSmall_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C2D6AF98B484F14546333FEB1B8139 /* player_scaleSmall_icon@3x.png */; };
 		2F3C71B82615AC6B6FD0AD0CEC3DE0C4 /* UIImage+DNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A685E7DAC926FD2AEC78FB06EB6652C7 /* UIImage+DNUtils.m */; };
 		30CAC6844600C894A782EF149C74F5C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DDB58FB8525698C8C459E7485FF5DB /* UIKit.framework */; };
-		31A9A22A7ADB086907B1DCA81AD25590 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E2721BF9C04FC8100FCF060456839A /* MASLayoutConstraint.m */; };
 		31C11D7F29196E0C16BA7DA2F6353855 /* DNBottomWebMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = C240D6AB72C94C65FFCA852AD1ACB620 /* DNBottomWebMainView.m */; };
 		32F5EFF7D45829B9F7214C4CF4EB10C0 /* player_shadowTop_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F65E50F48F9E890F3CFD52979FC59D /* player_shadowTop_icon.png */; };
 		38293C390058C4BDDF5D50D2C62FBF32 /* player_scaleFull_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED5B6C0A7F7B817A9C3E81AEC2EEAA03 /* player_scaleFull_icon@3x.png */; };
+		3AD791A3AA48D0CAB691A3D8B90A02F3 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E2721BF9C04FC8100FCF060456839A /* MASLayoutConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3CAC2894A7C83BE43CB125605AC15CD1 /* UIViewController+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AD2BED66E257B08CF04AB6B29CCB76 /* UIViewController+Add.m */; };
-		3D90077DA82CFC3A9C321339B0B0CB35 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF35C23E029BF10AE1D3595169AFBCF /* Masonry.framework */; };
 		3F13E0F13211CF158E8430BF57126D22 /* player_playBtn_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC99591F1D26241E1D45372EE031D9A9 /* player_playBtn_icon@3x.png */; };
 		3F3BC3149046B226200E9D023923E1AE /* DNPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55D4B1C07F9ED832FF202D30E40C9D6 /* DNPlayerControlView.m */; };
 		41FE10B72D66890949DE869B6BC2844F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECFD12E78C2CA945044CB88F411C65 /* Foundation.framework */; };
@@ -46,30 +43,33 @@
 		4988C2A1DC28764BED2C54679953AF22 /* player_volumeOn_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA0CBBD5BDADBD05D84BA7231844C4FF /* player_volumeOn_icon@2x.png */; };
 		4C3FC888F6FDCCE1F68D5838A16785C2 /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E8C87AF5FAF8F75E6CA0CF9115C59B7 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5217FBC519E4BC4576B4CF4D386AA6C5 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A5819E64FC97100EC44306AA9B2DDCD1 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		55E27FBA405DB862D2B4CBAFDCC64002 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F231F39E0905F29BA40421358E82265 /* MASConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		56A43FC678CBD06A2858C90968032A2C /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5701BDC46DD670982FA9620AA2B5ABF /* Masonry-dummy.m */; };
+		57A04BAC3B20ECF976922ADFED399C1A /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A9713C31E0343ECEECF445691586B8D8 /* NSArray+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		58396F0A7F371121AD43B325829B3F52 /* DNPlayModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B93F84FD2A2799E470B8B4DAE2797A1 /* DNPlayModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DAC994641D383A62E70F39480BEF64A /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 47728E7EF97123CD2D0EC1183C1D2531 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E1E19A25BF4DC4B58E32338238A0275 /* player_volumeOff_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 084129FE652EAD06A26D130578240442 /* player_volumeOff_icon@3x.png */; };
-		60A22AE0D13570AA11B580A634148C09 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1461A66D8FFBBBAB0EED4ED44C4207 /* MASViewConstraint.m */; };
 		61EC00E90B5BFE5C51B460CB981C1109 /* UIView+DNResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC54A00839AAF433EF72469C4D1190 /* UIView+DNResponder.m */; };
 		628B109B53A74B367F1444D9111ECEC9 /* Pods-DNVideoPlayer_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D58D8FBEE19755071A40E58DC1EB267 /* Pods-DNVideoPlayer_Tests-dummy.m */; };
 		6394DF6F0541663EAA56D5D179B186F4 /* DNVideoPlayerView+PlayControl.h in Headers */ = {isa = PBXBuildFile; fileRef = D9E9B6A00451595D1108B99D19962297 /* DNVideoPlayerView+PlayControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64A34BEB4BB29E74B48210951DF54F0C /* DNPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E30A26BF285690404FC8FFD070B8424 /* DNPlayer.m */; };
 		651C5FAC7F6B0B53E2538275171FA101 /* player_pause_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C301A5FD029592E7FDED32C963E52DD9 /* player_pause_icon@3x.png */; };
+		68B09585C4A855D9A02AB4A22D089168 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B25E28F3A3D7E2969214DCECFD71B6 /* View+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6B3BE378745A57663506434A1CB5DA5B /* player_playBtn_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B74EC2444F31138F723F4F39213E38C3 /* player_playBtn_icon@2x.png */; };
 		6BD24F12365E22EB4548EEE76442BC59 /* DNPlayerControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B293CEF7151885CA5099801B855D23 /* DNPlayerControlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C045CE34B1CBCF873D32BFFCBBAA12E /* player_scaleSmall_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBE1CD24D50F57E4C39CB549FACEC1 /* player_scaleSmall_icon@2x.png */; };
 		716A1A8F893B005DAB4EF1DA5D36C9DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECFD12E78C2CA945044CB88F411C65 /* Foundation.framework */; };
-		72E2503596E02DB9F7FD9F67349E6027 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F231F39E0905F29BA40421358E82265 /* MASConstraint.m */; };
 		734020EE7235AA283F2A1B70E4D8DB63 /* player_whiteBack_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA7B6E95AB16364368CCED6F38D233D /* player_whiteBack_icon@3x.png */; };
 		736CB47242DE7665E614B07D6DF1CE6F /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2972606C5BBF663841B3264F50CE24 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75D23AB09D59D0E455B97D90D9A50E11 /* UIView+JAExtForPageScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A473DD7A8ED5153D04002699C3972 /* UIView+JAExtForPageScroll.m */; };
 		75F67E319C3292F90B506079352EF443 /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = B4266FFCA8D2F6894566AB786434E201 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		770E159221C3468A0018BAF9 /* DNPlayerTypeDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1BD2DE5D46B42461F9E940104F8A91 /* DNPlayerTypeDef.h */; };
+		770E159321C346E00018BAF9 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */; };
+		770E159421C346EF0018BAF9 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */; };
 		7AEB8F48E77DDDC9FC9C6B56B514D61A /* DNPlayerConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 56D0C5D9AF4989D09D52E28368425B94 /* DNPlayerConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BBF2EF66B2D56CC17AB273F7C9BD86D /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8CE795FB6FA0DA35DF269A3BB25F3 /* MASViewAttribute.m */; };
 		7DE544D0901776E7CB27EA83E482D892 /* player_grayBack_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 027CBBC3A9EAF69FFB8C31F51B1AA910 /* player_grayBack_icon@3x.png */; };
 		80E3C8885D0206B81D8F00B183C65D4C /* DNBottomWebMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CAC29CC2A0D35E430A5781BD5348F52 /* DNBottomWebMainView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8383BF60DCE95A909BF8071BD8A0D6FD /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5701BDC46DD670982FA9620AA2B5ABF /* Masonry-dummy.m */; };
-		87EAABFE1C32C6668F14B022B5734CE5 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AD992B253CD539179C5C6F4EBA97DF9C /* MASCompositeConstraint.m */; };
+		92CFB98E37D886F13702612A0259955C /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1461A66D8FFBBBAB0EED4ED44C4207 /* MASViewConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		954C03EA89DA4EE32AD5D38432BE92AC /* UINavigationController+FDFullscreenPopGesture.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C3475DF5B74FCC6DE38ADDCAC28FB4C /* UINavigationController+FDFullscreenPopGesture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C5FDE664117B4E2889B7BCDE942A5D2 /* Pods-DNVideoPlayer_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F41FBBB09D6B7C56175BF47180B13223 /* Pods-DNVideoPlayer_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EE9BABDB3AC59874D93B46435D547E3 /* DNPlayerRotationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 444AAC96F76DEA2932DCBA43FB6CABB4 /* DNPlayerRotationManager.m */; };
@@ -79,33 +79,33 @@
 		A6BFC0A5C0ED3660C5B8FD2D699718E0 /* DNVideoPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B3ADA1E26BEB86E56CB75D3CCAE67B4 /* DNVideoPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8B5B78630836481AD8724E43D37FF05 /* player_shadowBottom_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA4588264BD134D8EEB0D3C99477A4C /* player_shadowBottom_icon.png */; };
 		A981430C0EA73E767EF8A377E58E9469 /* DNVideoPlayerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 332E9371CFDB7E7BC91372AD249F8E30 /* DNVideoPlayerTools.m */; };
-		AB699C3BBC1566FE9982594645CB4610 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94A572F39C153BEEC8C87DF5C82293 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		AC849F142BD2A2C47259DB60F3ECCE07 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 767197BADF32B772C4AC06C99DCC2509 /* ViewController+MASAdditions.m */; };
 		ACA70EA1A7E196BBE8D25943E7E3D4ED /* DNPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D58FAA95CE949372E336F42B0CCF72B /* DNPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACCB8207D2801CE97031882CFB838D68 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E3396C6608F42A711C2E0C1FA503951 /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE8AA67894C62679053881B480335058 /* Pods-DNVideoPlayer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73370CBD5653716B612BC0DC4A1A9537 /* Pods-DNVideoPlayer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF174BFC095960B9AB67D23FC1306769 /* player_repeatBtn_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2A3E5914314689BFB23E0E94C8BD1F2 /* player_repeatBtn_icon@2x.png */; };
 		AF796AF8935CB46FF9C32A073D32C8C2 /* DNPlayerRotationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32907F92BB8FD7B1AFCECB2DE881EEFD /* DNPlayerRotationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B322E2CFB1B3B6B14B4DCEADAE499FCF /* player_pause_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33CB440EFF4A5F66663465E0316016C4 /* player_pause_icon@2x.png */; };
+		B521EA53D4A8D9A1BC3F95AAC960B8C6 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 679014249211DA781FB0C886A2ABC754 /* MASConstraintMaker.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B580F58D49E001BD9F3C5F6FEFEA0DD0 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 31BCC5441D555479A6BE0D5C0CC2F239 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBFC80A692AEB7B34DAC377058B1701D /* DNPlayerTypeDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A1BD2DE5D46B42461F9E940104F8A91 /* DNPlayerTypeDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC32DA6ACBD3C7DB643240E982D286DC /* player_sliderDot_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF58E9E49A89316C2E076C6ADFEBE2C /* player_sliderDot_icon@3x.png */; };
 		C1A2894F86E79801AF85EBEAB5577F12 /* DNVideoPlayerView+PlayControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF6ADACB0C8A36C0D94390C61B6C3D7 /* DNVideoPlayerView+PlayControl.m */; };
 		C91A57C78D89CA08D0B781B99340696D /* UIViewController+Add.h in Headers */ = {isa = PBXBuildFile; fileRef = AF6D0FD07B96FE22775803DED7E00060 /* UIViewController+Add.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C98CC5C9CE4227F24D2F53D67C300044 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8CE795FB6FA0DA35DF269A3BB25F3 /* MASViewAttribute.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C9E05D9F037B75185352FE1EEAC41925 /* Pods-DNVideoPlayer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A492E4A6FF3F9CBE6463BA8F57CD207 /* Pods-DNVideoPlayer_Example-dummy.m */; };
 		CDEDDE17100537CE8E7CB807042EC8DD /* DNAdPlayToEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5B2B463D97124AA7C111EBA6B63725 /* DNAdPlayToEndView.m */; };
+		DB8F1658E9DAECB23EFDC16E8B4F71DE /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AD992B253CD539179C5C6F4EBA97DF9C /* MASCompositeConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DC7C8AC2D81F6C3CE59FAF4B84876745 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AACD5AA351DB1CEDF4F7BA9E34BDAA01 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE94E95F8A51F41ACA3ABC81508D62F0 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 767197BADF32B772C4AC06C99DCC2509 /* ViewController+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		DF46D0C5DF48FDAE5D4798E5CF25876A /* DNPlayerConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 482611D1FA410AFA55A3296D4C84C8D3 /* DNPlayerConst.m */; };
 		DFE6ADD4088385017BE6DA8381AA7ADE /* DNVideoPlayerTools.h in Headers */ = {isa = PBXBuildFile; fileRef = ECC8F9DD1D910E943D07234EEC6CD0AD /* DNVideoPlayerTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0926B6B7AFB98C35AE67BFD7ED08A08 /* player_volumeOn_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67083BEC8B3847E77BE7888E43CBFA17 /* player_volumeOn_icon@3x.png */; };
 		E2A8CC54D868099803C63CFB503F714D /* DNCustonNavView.h in Headers */ = {isa = PBXBuildFile; fileRef = 36FDCF6E6E40C968CE62B887890C3C4E /* DNCustonNavView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E40681E636D605AF0FFB062CE482CEAB /* DNBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3E96491B968A374B46165BB0E0E3FE5 /* DNBaseView.m */; };
 		E4C77889B55840C833DC7A34AB8C476D /* DNCustonNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DC97BDFC9DF432FB6D9A47480E7F59 /* DNCustonNavView.m */; };
-		E70B2D7C3FCF7EA89FCE666D52256780 /* DNBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 327C56EF13A06967C09CB0B0C4D12792 /* DNBaseView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8615621539FF3188F45A5CA7FCF58A3 /* DNPlayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB078A55739DCFF0EA9EA9BB6CD830CD /* DNPlayModel.m */; };
 		EBD039FC1DB443871767CA8AE22121C7 /* player_sliderDot_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7794A4C1BBBBCDFE757FF86E0A9A3AC4 /* player_sliderDot_icon@2x.png */; };
 		EDA44A45ABE0AE675188D78AB304FC68 /* player_scaleFull_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8000E81BE2924089742713E5325FE514 /* player_scaleFull_icon@2x.png */; };
-		F435AAB5A4B0633529C8C82599C3D4A6 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A9713C31E0343ECEECF445691586B8D8 /* NSArray+MASAdditions.m */; };
+		EDC5088919AF08C82782C7ADEA757300 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC94A572F39C153BEEC8C87DF5C82293 /* NSLayoutConstraint+MASDebugAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F4E6C9B84F9995EFD6662D5CA63C79D9 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DFC8F6A9D4B56749391A3C7BABB970A /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFDFB681376DC10262601D454821AA10 /* UIImage+DNUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = FBC9D4FBED376F0418353419067C4326 /* UIImage+DNUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -151,7 +151,7 @@
 /* Begin PBXFileReference section */
 		027CBBC3A9EAF69FFB8C31F51B1AA910 /* player_grayBack_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_grayBack_icon@3x.png"; path = "DNVideoPlayer/Assets/player_grayBack_icon@3x.png"; sourceTree = "<group>"; };
 		0451584116871937E8CDF97350E89020 /* Pods-DNVideoPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DNVideoPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		05310F0193D7231DF66C0FB456E1670A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		05310F0193D7231DF66C0FB456E1670A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		084129FE652EAD06A26D130578240442 /* player_volumeOff_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_volumeOff_icon@3x.png"; path = "DNVideoPlayer/Assets/player_volumeOff_icon@3x.png"; sourceTree = "<group>"; };
 		0B93F84FD2A2799E470B8B4DAE2797A1 /* DNPlayModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNPlayModel.h; sourceTree = "<group>"; };
 		13633A5DFE15BA2FEA194CA5EBC10701 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
@@ -161,21 +161,20 @@
 		1BD87D80CAAB14B32A5C8B6B21E2735F /* AliyunPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunPlayerSDK.framework; sourceTree = "<group>"; };
 		1D58D8FBEE19755071A40E58DC1EB267 /* Pods-DNVideoPlayer_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DNVideoPlayer_Tests-dummy.m"; sourceTree = "<group>"; };
 		1DA7B6E95AB16364368CCED6F38D233D /* player_whiteBack_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_whiteBack_icon@3x.png"; path = "DNVideoPlayer/Assets/player_whiteBack_icon@3x.png"; sourceTree = "<group>"; };
-		1DC8B3477163AC0B958776371DF5CD5E /* Pods_DNVideoPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DNVideoPlayer_Example.framework; path = "Pods-DNVideoPlayer_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC8B3477163AC0B958776371DF5CD5E /* Pods_DNVideoPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNVideoPlayer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F1461A66D8FFBBBAB0EED4ED44C4207 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		21BB6B18028B3F8D7188679D9F478C7F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C2D6AF98B484F14546333FEB1B8139 /* player_scaleSmall_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_scaleSmall_icon@3x.png"; path = "DNVideoPlayer/Assets/player_scaleSmall_icon@3x.png"; sourceTree = "<group>"; };
 		2352284E74BC947E7C11AA3F8D8D259C /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 		2522C2396ADA4EE9B2A53CFD1BE7D7C5 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		2541931D24C67D25A84CF68AC1805951 /* UIView+DNResponder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+DNResponder.h"; sourceTree = "<group>"; };
-		25F790BF5D299CBF1114753D452D4D7F /* DNVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DNVideoPlayer.framework; path = DNVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F790BF5D299CBF1114753D452D4D7F /* DNVideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DNVideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2832B0AABBFA8733EB3401BA81424AED /* UIColor+Hex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2A1BD2DE5D46B42461F9E940104F8A91 /* DNPlayerTypeDef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNPlayerTypeDef.h; sourceTree = "<group>"; };
 		2BBDC464BCA20D2B6D4CF4296BDDF6DB /* UIView+JAExtForPageScroll.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIView+JAExtForPageScroll.h"; sourceTree = "<group>"; };
 		2DFC8F6A9D4B56749391A3C7BABB970A /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		31A7064A573EF47B6057A81F3D6587B6 /* AliThirdparty.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliThirdparty.framework; sourceTree = "<group>"; };
 		31BCC5441D555479A6BE0D5C0CC2F239 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
-		327C56EF13A06967C09CB0B0C4D12792 /* DNBaseView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNBaseView.h; sourceTree = "<group>"; };
 		32907F92BB8FD7B1AFCECB2DE881EEFD /* DNPlayerRotationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNPlayerRotationManager.h; sourceTree = "<group>"; };
 		332E9371CFDB7E7BC91372AD249F8E30 /* DNVideoPlayerTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DNVideoPlayerTools.m; sourceTree = "<group>"; };
 		33CB440EFF4A5F66663465E0316016C4 /* player_pause_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_pause_icon@2x.png"; path = "DNVideoPlayer/Assets/player_pause_icon@2x.png"; sourceTree = "<group>"; };
@@ -183,7 +182,7 @@
 		38A7C57598BE38D06D90A7D39D929234 /* player_grayBack_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_grayBack_icon@2x.png"; path = "DNVideoPlayer/Assets/player_grayBack_icon@2x.png"; sourceTree = "<group>"; };
 		3906CF418E39D7EE0F7B5C9A694D7E4A /* Pods-DNVideoPlayer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DNVideoPlayer_Tests.modulemap"; sourceTree = "<group>"; };
 		39B8CE795FB6FA0DA35DF269A3BB25F3 /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
-		3B569E03D30B8DC053F3B97BAB29A98B /* DNVideoPlayer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = DNVideoPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3B569E03D30B8DC053F3B97BAB29A98B /* DNVideoPlayer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = DNVideoPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3DEBE1CD24D50F57E4C39CB549FACEC1 /* player_scaleSmall_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_scaleSmall_icon@2x.png"; path = "DNVideoPlayer/Assets/player_scaleSmall_icon@2x.png"; sourceTree = "<group>"; };
 		3E40DCF7F67C1F1E7A5D94A3D0D07AA1 /* Pods-DNVideoPlayer_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DNVideoPlayer_Tests-resources.sh"; sourceTree = "<group>"; };
 		40DC97BDFC9DF432FB6D9A47480E7F59 /* DNCustonNavView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DNCustonNavView.m; sourceTree = "<group>"; };
@@ -192,7 +191,7 @@
 		47728E7EF97123CD2D0EC1183C1D2531 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		482611D1FA410AFA55A3296D4C84C8D3 /* DNPlayerConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DNPlayerConst.m; sourceTree = "<group>"; };
 		52B25E28F3A3D7E2969214DCECFD71B6 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
-		559A50DBAFC7755F3185733CF96286D5 /* DNVideoPlayer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = DNVideoPlayer.bundle; path = "DNVideoPlayer-DNVideoPlayer.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		559A50DBAFC7755F3185733CF96286D5 /* DNVideoPlayer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNVideoPlayer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		5613FCEC9EEBDBDE6BB9A8E5B2879FA1 /* UIColor+Hex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		56D0C5D9AF4989D09D52E28368425B94 /* DNPlayerConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DNPlayerConst.h; sourceTree = "<group>"; };
 		57DB8EAB3E69920EC901B2DFBCE90C0E /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
@@ -224,7 +223,7 @@
 		8F231F39E0905F29BA40421358E82265 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		8FF6ADACB0C8A36C0D94390C61B6C3D7 /* DNVideoPlayerView+PlayControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DNVideoPlayerView+PlayControl.m"; sourceTree = "<group>"; };
 		920CF284E93F9010D7B6F8FC365EFBA9 /* Pods-DNVideoPlayer_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DNVideoPlayer_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96AF875DDED5A31936965E23E01E0BA2 /* Pods-DNVideoPlayer_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DNVideoPlayer_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		989AE274DC40FD0E910DA0BA3EF8E76E /* Pods-DNVideoPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DNVideoPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9B83A98EB5F39ADD00DD056CE7296E11 /* Pods-DNVideoPlayer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DNVideoPlayer_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -241,7 +240,7 @@
 		AC6257C8941E99F32A12A49EAA2FD74E /* Pods-DNVideoPlayer_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DNVideoPlayer_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AD992B253CD539179C5C6F4EBA97DF9C /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		AF6D0FD07B96FE22775803DED7E00060 /* UIViewController+Add.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Add.h"; sourceTree = "<group>"; };
-		B0288E357E5E8940AD4C3CC1B24345A5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B0288E357E5E8940AD4C3CC1B24345A5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B1DDB58FB8525698C8C459E7485FF5DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B4266FFCA8D2F6894566AB786434E201 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		B74EC2444F31138F723F4F39213E38C3 /* player_playBtn_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_playBtn_icon@2x.png"; path = "DNVideoPlayer/Assets/player_playBtn_icon@2x.png"; sourceTree = "<group>"; };
@@ -255,7 +254,7 @@
 		C240D6AB72C94C65FFCA852AD1ACB620 /* DNBottomWebMainView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DNBottomWebMainView.m; sourceTree = "<group>"; };
 		C301A5FD029592E7FDED32C963E52DD9 /* player_pause_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_pause_icon@3x.png"; path = "DNVideoPlayer/Assets/player_pause_icon@3x.png"; sourceTree = "<group>"; };
 		CA0CBBD5BDADBD05D84BA7231844C4FF /* player_volumeOn_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "player_volumeOn_icon@2x.png"; path = "DNVideoPlayer/Assets/player_volumeOn_icon@2x.png"; sourceTree = "<group>"; };
-		CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCAF6ED0BC7F98E1F59B3D4EE55AB204 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE47EECD56E18958B29D7D68FFF2A6D /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
 		D214A5E3DA7D665CA3E0FC0BB9452708 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		D3ECBDDFC6AC9DED3C6C12865574930B /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
@@ -275,14 +274,13 @@
 		EE4C235EA5C9C74BF0CB5700FA56A731 /* ResourceBundle-DNVideoPlayer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-DNVideoPlayer-Info.plist"; sourceTree = "<group>"; };
 		F15B5A882D2751B02C93CFC9A16995B9 /* DNVideoPlayer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DNVideoPlayer.xcconfig; sourceTree = "<group>"; };
 		F2AD2BED66E257B08CF04AB6B29CCB76 /* UIViewController+Add.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Add.m"; sourceTree = "<group>"; };
-		F3E96491B968A374B46165BB0E0E3FE5 /* DNBaseView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DNBaseView.m; sourceTree = "<group>"; };
 		F41FBBB09D6B7C56175BF47180B13223 /* Pods-DNVideoPlayer_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DNVideoPlayer_Tests-umbrella.h"; sourceTree = "<group>"; };
 		F4254D93C9EB4A47DA49FA311866F142 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4ECFD12E78C2CA945044CB88F411C65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F75592700F52DF746E2B66AC0DCB02A0 /* Pods-DNVideoPlayer_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DNVideoPlayer_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		FBC9D4FBED376F0418353419067C4326 /* UIImage+DNUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+DNUtils.h"; sourceTree = "<group>"; };
 		FCBD1973A20EB5773D2C0A74A506CEDA /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		FE11C6F6A4BFF49CC3043F1954CC331A /* Pods_DNVideoPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DNVideoPlayer_Tests.framework; path = "Pods-DNVideoPlayer_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE11C6F6A4BFF49CC3043F1954CC331A /* Pods_DNVideoPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNVideoPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,8 +296,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770E159421C346EF0018BAF9 /* Masonry.framework in Frameworks */,
 				716A1A8F893B005DAB4EF1DA5D36C9DA /* Foundation.framework in Frameworks */,
-				3D90077DA82CFC3A9C321339B0B0CB35 /* Masonry.framework in Frameworks */,
 				A4A7BEA638EFD636F76CAEF464061733 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770E159321C346E00018BAF9 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +352,6 @@
 				431E90C4EF451A3C0BE8D6AEF594FF7C /* AliyunPlayerSDK */,
 				37C74A17031FD60BEBFC29DBF0FCC53D /* AliyunVodPlayerSDK */,
 			);
-			name = AliyunPlayer_iOS;
 			path = AliyunPlayer_iOS;
 			sourceTree = "<group>";
 		};
@@ -363,7 +361,6 @@
 				B8B293CEF7151885CA5099801B855D23 /* DNPlayerControlView.h */,
 				E55D4B1C07F9ED832FF202D30E40C9D6 /* DNPlayerControlView.m */,
 			);
-			name = ControlViews;
 			path = ControlViews;
 			sourceTree = "<group>";
 		};
@@ -423,7 +420,6 @@
 				767197BADF32B772C4AC06C99DCC2509 /* ViewController+MASAdditions.m */,
 				FE2DC6B38B99EA34676913F32B540C96 /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -623,7 +619,6 @@
 				AF6D0FD07B96FE22775803DED7E00060 /* UIViewController+Add.h */,
 				F2AD2BED66E257B08CF04AB6B29CCB76 /* UIViewController+Add.m */,
 			);
-			name = Tools;
 			path = Tools;
 			sourceTree = "<group>";
 		};
@@ -659,15 +654,12 @@
 				8AA9D1C8842CDD610071C0D76C8CD6A9 /* DNAdPlayToEndView.h */,
 				1A5B2B463D97124AA7C111EBA6B63725 /* DNAdPlayToEndView.m */,
 			);
-			name = PlayToEndView;
 			path = PlayToEndView;
 			sourceTree = "<group>";
 		};
 		F1A6ABB7E70CAC9D8E21AF5E3317C666 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				327C56EF13A06967C09CB0B0C4D12792 /* DNBaseView.h */,
-				F3E96491B968A374B46165BB0E0E3FE5 /* DNBaseView.m */,
 				5CAC29CC2A0D35E430A5781BD5348F52 /* DNBottomWebMainView.h */,
 				C240D6AB72C94C65FFCA852AD1ACB620 /* DNBottomWebMainView.m */,
 				36FDCF6E6E40C968CE62B887890C3C4E /* DNCustonNavView.h */,
@@ -675,7 +667,6 @@
 				2541931D24C67D25A84CF68AC1805951 /* UIView+DNResponder.h */,
 				1ACC54A00839AAF433EF72469C4D1190 /* UIView+DNResponder.m */,
 			);
-			name = CustomView;
 			path = CustomView;
 			sourceTree = "<group>";
 		};
@@ -727,7 +718,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07BEBF703D97FA4DBDD0634465D6252 /* DNAdPlayToEndView.h in Headers */,
-				E70B2D7C3FCF7EA89FCE666D52256780 /* DNBaseView.h in Headers */,
 				80E3C8885D0206B81D8F00B183C65D4C /* DNBottomWebMainView.h in Headers */,
 				E2A8CC54D868099803C63CFB503F714D /* DNCustonNavView.h in Headers */,
 				ACA70EA1A7E196BBE8D25943E7E3D4ED /* DNPlayer.h in Headers */,
@@ -774,6 +764,7 @@
 				00AFAE826CB2FA7A3021B45526340F80 /* MASViewConstraint.h in Headers */,
 				4C3FC888F6FDCCE1F68D5838A16785C2 /* NSArray+MASAdditions.h in Headers */,
 				5DAC994641D383A62E70F39480BEF64A /* NSArray+MASShorthandAdditions.h in Headers */,
+				770E159221C3468A0018BAF9 /* DNPlayerTypeDef.h in Headers */,
 				736CB47242DE7665E614B07D6DF1CE6F /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				21A43D83402F49024A613A8CE96032F7 /* View+MASAdditions.h in Headers */,
 				DC7C8AC2D81F6C3CE59FAF4B84876745 /* View+MASShorthandAdditions.h in Headers */,
@@ -796,7 +787,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2F07DD2A6385269F6DC887D1C3C8286 /* Build configuration list for PBXNativeTarget "Masonry" */;
 			buildPhases = (
-				A86252567F6B1846A0AE966FB33BD132 /* Sources */,
+				60BBF6C698CE3FB9EE8DC36442709DA2 /* Sources */,
 				655046D8D326C09E4C434E6E20F027B8 /* Frameworks */,
 				78D19BBFE5284EB965ABFC37F57EC6A2 /* Headers */,
 			);
@@ -954,21 +945,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A86252567F6B1846A0AE966FB33BD132 /* Sources */ = {
+		60BBF6C698CE3FB9EE8DC36442709DA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87EAABFE1C32C6668F14B022B5734CE5 /* MASCompositeConstraint.m in Sources */,
-				72E2503596E02DB9F7FD9F67349E6027 /* MASConstraint.m in Sources */,
-				0075BE97F45FACBD0432F99963953976 /* MASConstraintMaker.m in Sources */,
-				31A9A22A7ADB086907B1DCA81AD25590 /* MASLayoutConstraint.m in Sources */,
-				8383BF60DCE95A909BF8071BD8A0D6FD /* Masonry-dummy.m in Sources */,
-				7BBF2EF66B2D56CC17AB273F7C9BD86D /* MASViewAttribute.m in Sources */,
-				60A22AE0D13570AA11B580A634148C09 /* MASViewConstraint.m in Sources */,
-				F435AAB5A4B0633529C8C82599C3D4A6 /* NSArray+MASAdditions.m in Sources */,
-				AB699C3BBC1566FE9982594645CB4610 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				0F08D200A752A937F92F79EE6F9A2273 /* View+MASAdditions.m in Sources */,
-				AC849F142BD2A2C47259DB60F3ECCE07 /* ViewController+MASAdditions.m in Sources */,
+				DB8F1658E9DAECB23EFDC16E8B4F71DE /* MASCompositeConstraint.m in Sources */,
+				55E27FBA405DB862D2B4CBAFDCC64002 /* MASConstraint.m in Sources */,
+				B521EA53D4A8D9A1BC3F95AAC960B8C6 /* MASConstraintMaker.m in Sources */,
+				3AD791A3AA48D0CAB691A3D8B90A02F3 /* MASLayoutConstraint.m in Sources */,
+				56A43FC678CBD06A2858C90968032A2C /* Masonry-dummy.m in Sources */,
+				C98CC5C9CE4227F24D2F53D67C300044 /* MASViewAttribute.m in Sources */,
+				92CFB98E37D886F13702612A0259955C /* MASViewConstraint.m in Sources */,
+				57A04BAC3B20ECF976922ADFED399C1A /* NSArray+MASAdditions.m in Sources */,
+				EDC5088919AF08C82782C7ADEA757300 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				68B09585C4A855D9A02AB4A22D089168 /* View+MASAdditions.m in Sources */,
+				DE94E95F8A51F41ACA3ABC81508D62F0 /* ViewController+MASAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,7 +968,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEDDE17100537CE8E7CB807042EC8DD /* DNAdPlayToEndView.m in Sources */,
-				E40681E636D605AF0FFB062CE482CEAB /* DNBaseView.m in Sources */,
 				31C11D7F29196E0C16BA7DA2F6353855 /* DNBottomWebMainView.m in Sources */,
 				E4C77889B55840C833DC7A34AB8C476D /* DNCustonNavView.m in Sources */,
 				64A34BEB4BB29E74B48210951DF54F0C /* DNPlayer.m in Sources */,

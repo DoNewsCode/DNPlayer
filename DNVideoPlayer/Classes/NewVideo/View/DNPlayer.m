@@ -7,7 +7,6 @@
 //
 
 #import "DNPlayer.h"
-#import "DNPlayModel.h"
 
 @interface DNPlayer () 
 /// 阿里云播放器

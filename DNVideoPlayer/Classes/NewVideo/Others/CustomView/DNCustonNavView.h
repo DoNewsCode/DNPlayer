@@ -6,11 +6,11 @@
 //  Copyright © 2018 DoNews. All rights reserved.
 //
 
-#import "DNBaseView.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNCustonNavView : DNBaseView
+@interface DNCustonNavView : UIView
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UILabel *titleLabel;
 

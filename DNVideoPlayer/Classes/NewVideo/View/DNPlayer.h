@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "DNPlayerTypeDef.h"
-#import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import "DNPlayerControlView.h"
 ///// 播放结束视图
 //#import "DNAdPlayToEndView.h"
