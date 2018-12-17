@@ -267,7 +267,26 @@
         NSLog(@"快进的时间s-------%f",(self.player.totalDuration * value));
         [self.player seekToTime:(self.player.totalDuration * value)];
     }
-
 }
+
+
+- (void)videoPlayerWillAppearInScrollView:(__kindof DNVideoPlayerView *)videoPlayer
+{
+    NSLog(@"videoPlayerWillAppearInScrollView---播放器将要出现");
+    //1.播放器继续播放操作
+    [videoPlayer playerPlay];
+}
+
+- (void)videoPlayerWillDisappearInScrollView:(__kindof DNVideoPlayerView *)videoPlayer
+{
+    NSLog(@"videoPlayerWillDisappearInScrollView---播放器将要消失");
+    //1.播放器暂停操作
+    [videoPlayer playerPause];
+    //2.播放器内部清空操作,删除需要在控制器操作
+    if ([self.videoPlayerDelegate respondsToSelector:@selector(dnVodPlayerDisappearScrollViewAction:)]) {
+        [self.videoPlayerDelegate dnVodPlayerDisappearScrollViewAction:videoPlayer];
+    }
+}
+
 
 @end

@@ -17,7 +17,7 @@
     DNPlayerAutoPlayManagerConfig *config = [DNPlayerAutoPlayManagerConfig new];
     config->_playerSuperviewTag = playerSuperviewTag;
     config->_autoplayDelegate = autoplayDelegate;
-    config->_animationType = SJAutoplayScrollAnimationTypeTop;
+    config->_animationType = SJAutoplayScrollAnimationTypeNone;
     return config;
 }
 

@@ -11,13 +11,16 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "DNPlayer.h"
 #import "DNPlayerRotationManager.h"
+#import "DNPlayerControlViewProtocol.h"
 
+typedef void(^DNVideoPlayerPublicBlock)(id sender);
 
 @class DNVideoPlayerView;
 @protocol DNVideoPlayerViewDelegate <NSObject>
 
-/// 播放器横屏竖屏(播放器方向改变)返回是否为全屏
-//- (void)dnVodPlayerView:(DNVideoPlayerView *)playerView fullScreen:(BOOL)isFullScreen;
+
+/// 播放器滑出ScrollView代理方法
+- (void)dnVodPlayerDisappearScrollViewAction:(DNVideoPlayerView *)playerView;
 
 @end
 
@@ -47,6 +50,14 @@
 /// 设置DNVideoPlayerViewDelegate代理(播放器放大或者缩小)
 @property (nonatomic, weak) id<DNVideoPlayerViewDelegate> videoPlayerDelegate;
 
+/// 播放器在ScrollView滑动控制
+@property (nonatomic, weak, nullable) id <DNVideoPlayerControlViewDelegate> controlLayerDelegate;
+/// 播放器滑出ScrollView后续操作外部接口
+//@property (nonatomic, copy) DNVideoPlayerPublicBlock playerDisappearScrollViewActionBlock;
+
+
+
+
 /// 播放器初始化
 + (instancetype)dnVideoPlayerViewWithDelegate:(id<DNVideoPlayerViewDelegate>)delegate;
 
@@ -59,5 +70,6 @@
 - (void)playerPlay;
 /// 播放器暂停
 - (void)playerPause;
-
+/// 停止并移除
+- (void)stopAndFadeOutCompletion:(void(^)(UIView *view))block;
 @end

@@ -27,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-/// 开发者无需关心, 此分类由播放器自动维护
 @interface UIScrollView (SJPlayerCurrentPlayingIndexPath)
 @property (nonatomic, strong, nullable, readonly) NSIndexPath *sj_currentPlayingIndexPath;
 - (void)setSj_currentPlayingIndexPath:(nullable NSIndexPath *)sj_currentPlayingIndexPath;

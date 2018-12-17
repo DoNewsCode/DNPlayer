@@ -18,11 +18,22 @@
 
 @implementation DNVideoListTableViewItemCell
 
++ (DNVideoListTableViewItemCell *)cellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+{
+    NSString *DNVideoListTableViewItemCellID = [NSString stringWithFormat:@"DNVideoListTableViewItemCell-%ld-%ld",indexPath.section,indexPath.row];
+
+    DNVideoListTableViewItemCell *cell = [tableView dequeueReusableCellWithIdentifier:DNVideoListTableViewItemCellID];
+
+    if ( !cell ) cell = [[DNVideoListTableViewItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DNVideoListTableViewItemCellID];
+    return cell;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = MRandomColor;
         [self creatSubViews];
     }
     return self;
@@ -31,7 +42,6 @@
 
 - (void)creatSubViews
 {
-    self.backgroundColor = [UIColor orangeColor];
     [self.contentView addSubview:self.placeHolderView];
     self.placeHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.placeHolderView.frame = self.contentView.bounds;
@@ -49,13 +59,11 @@
 
 }
 
-
-
 - (UIView *)placeHolderView
 {
     if (!_placeHolderView) {
         _placeHolderView = [[UIView alloc]init];
-        _placeHolderView.backgroundColor = MRandomColor;
+//        _placeHolderView.backgroundColor = MRandomColor;
         UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [playBtn addTarget:self action:@selector(PlayBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
         playBtn.backgroundColor = [UIColor blueColor];

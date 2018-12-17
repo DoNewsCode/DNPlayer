@@ -264,7 +264,7 @@ static void sj_collectionViewConsiderPlayNewAsset(UICollectionView *collectionVi
     DNPlayerAutoPlayManagerConfig *config = [collectionView sj_autoplayConfig];
 
     NSIndexPath *currentPlayingIndexPath = collectionView.sj_currentPlayingIndexPath;
-    if ( currentPlayingIndexPath &&
+    if (currentPlayingIndexPath &&
         sj_isAppeared1(config.playerSuperviewTag, currentPlayingIndexPath, collectionView) ) return;
 
     CGFloat midLine = 0;

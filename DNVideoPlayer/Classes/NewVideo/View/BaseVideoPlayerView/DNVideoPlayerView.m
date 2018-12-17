@@ -8,10 +8,24 @@
 
 #import "DNVideoPlayerView.h"
 #import "DNPlayerControlView.h"
-#import <objc/runtime.h>
-
-
 #import "DNVideoPlayerView+PlayControl.h"
+#import "UIScrollView+DNListVideoPlayerAutoPlay.h"
+#import <objc/runtime.h>
+#import "DNPlayModelPropertiesObserver.h"
+
+
+NS_ASSUME_NONNULL_BEGIN
+static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel) {
+    if (playModel.isPlayInTableView) {
+        __kindof UIView *superview = playModel.playerSuperview;
+        while ( superview && ![superview isKindOfClass:[UIScrollView class]] ) {
+            superview = superview.superview;
+        }
+        return superview;
+    }
+    return nil;
+}
+
 
 @interface UIWindow (CurrentViewController)
 
@@ -59,6 +73,7 @@
 @property (nonatomic, assign) BOOL isBackgroundToActive;
 @property(nonatomic, strong) NSTimer *sliderTimer;
 
+@property (nonatomic, strong, nullable) DNPlayModelPropertiesObserver *playModelObserver;
 
 @end
 
@@ -73,6 +88,8 @@
 - (void)restPlayer
 {
     [self.player reset];
+    self.playModelObserver = nil;
+    self.controlLayerDelegate = nil;
 }
 
 + (instancetype)dnVideoPlayerViewWithDelegate:(id<DNVideoPlayerViewDelegate>)delegate
@@ -114,11 +131,14 @@
     return _rotationManager;
 }
 
-- (void)stopAndFadeOut
+- (void)stopAndFadeOutCompletion:(void(^)(UIView *view))block
 {
     [self.containerView dn_fadeOutAndCompletion:^(UIView *view) {
         [view removeFromSuperview];
         [self restPlayer];
+        if (block) {
+            block(nil);
+        }
     }];
 }
 
@@ -187,6 +207,16 @@
     [self configureVolume];
     //播放视频
     [self.player playVideoWithPlayModel:playModel playerDelegate:self completeBlock:completeBlock];
+
+    // 维护当前播放的indexPath
+    UIScrollView *scrollView = _getScrollViewOfPlayModel(playModel);
+    if (scrollView.sj_enabledAutoplay ) {
+        scrollView.sj_currentPlayingIndexPath = [playModel performSelector:@selector(indexPath)];
+    }
+
+    self.playModelObserver = [[DNPlayModelPropertiesObserver alloc]initWithPlayModel:playModel];
+    self.playModelObserver.delegate = (id)self;
+    self.controlLayerDelegate = (id)self;
 }
 
 #pragma mark - 通知事件
@@ -479,3 +509,5 @@
 
 
 @end
+
+NS_ASSUME_NONNULL_END
