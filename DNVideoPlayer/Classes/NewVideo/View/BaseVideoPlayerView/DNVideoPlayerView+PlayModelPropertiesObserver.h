@@ -3,7 +3,7 @@
 //  DNVideoPlayer
 //
 //  Created by Madjensen on 2018/12/17.
-//
+//  播放器在ScrollView上的控制(是否滑出可视范围或是否滑入可视范围)
 
 #import "DNVideoPlayerView.h"
 

@@ -29,12 +29,14 @@ static NSString *kIdentifier = @"kIdentifier";
     [self.view addSubview:self.tableView];
     self.titles = @[
                     @"底部加载广告Web类型",
-                    @"列表点击播放"
+                    @"列表点击播放",
+                    @"列表自动播放"
                     ];
 
     self.viewControllers = @[
                              @"DNBottomWebViewController",
-                             @"DNDetailVideoListViewController"
+                             @"DNDetailVideoListViewController",
+                             @"DNListVideoAutoPlayViewController"
                              ];
 
 }

@@ -71,10 +71,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 @property (nonatomic, assign) BOOL isCellVideo;
 /// 是否从后台进入前台
 @property (nonatomic, assign) BOOL isBackgroundToActive;
-@property(nonatomic, strong) NSTimer *sliderTimer;
+@property (nonatomic, strong) NSTimer *sliderTimer;
 
+@property (nonatomic, strong) DNPlayModel *playModel;
 @property (nonatomic, strong, nullable) DNPlayModelPropertiesObserver *playModelObserver;
-
 @end
 
 
@@ -203,6 +203,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 
 - (void)playVideoWithPlayModel:(DNPlayModel *)playModel completeBlock:(PlayerPublicBlock)completeBlock
 {
+    self.playModel = playModel;
     //获取系统音量
     [self configureVolume];
     //播放视频
@@ -344,23 +345,23 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             NSLog(@"**********AliyunVodPlayerEventFinish**********");
             //强制播放器竖屏展示(横屏点击详情页的情况)
             [self.rotationManager rotate:DNOrientation_Portrait animated:YES];
+            //1.广告播放结束展示广告结束页面
+            //2.普通视频播放结束展示重新播放视图
+            //3.展示重新播放视图,及自动播放下一个视频
             self.player.controlView.isShowAdPlayToEndView = YES;
+
+            UIScrollView *scrollView = _getScrollViewOfPlayModel(self.playModel);
+            if (scrollView.sj_enabledAutoplay ) {
+//                if (self.playDidToEndExeBlock) {
+//                    self.playDidToEndExeBlock(self);
+//                }
+                [scrollView sj_needPlayNextAsset];
+                return;
+            }
+
+
             //广告 -- 展示播放结束广告页面
-//            isStop  = YES;
-//            self.playButton.selected = NO;
-//            if(!self.isCommentPlay){
-//                self.videoButtonBlock(DNNewsVideoPlayDone, nil);
-//                //                return;
-//            }else{
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    self.replayView.hidden = NO;
-//                    self.replayButton.hidden =NO;
-//                    [self.PlaceholderImageView setHidden:NO];
-//                    self.PlaceholderImageView.userInteractionEnabled = NO;
-//                    [self bringSubviewToFront:self.replayView];
-//                });
-//
-//            }
+
         }
             //获取到第一帧事件
         case AliyunVodPlayerEventFirstFrame:{

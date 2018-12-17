@@ -8,13 +8,10 @@
 
 #import "DNDetailVideoListViewController.h"
 #import "DNVideoListTableViewItemCell.h"
-#import <DNVideoPlayer/DNVideoPlayerView.h>
-#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 
 
-@interface DNDetailVideoListViewController ()<UITableViewDelegate,UITableViewDataSource,SJPlayerAutoplayDelegate,DNVideoPlayerViewDelegate>
+@interface DNDetailVideoListViewController ()
 
-@property (nonatomic, strong) UITableView *videoListTableView;
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
 
 @end
@@ -33,9 +30,15 @@
     self.view.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.videoListTableView];
     adjustsScrollViewInsets_NO(self.videoListTableView, self);
+
+    [self configPlayMode];
+
     self.videoListTableView.frame = CGRectMake(0, TGStatuBarHeight, ScreenWidth, ScreenHeight - TGStatuBarHeight);
-//    [self.videoListTableView sj_enableAutoplayWithConfig:[DNPlayerAutoPlayManagerConfig configWithPlayerSuperviewTag:101 autoplayDelegate:self]];
-//    [self.videoListTableView sj_needPlayNextAsset];
+
+}
+
+- (void)configPlayMode
+{
     [self.videoListTableView sj_disenableAutoplay];
 }
 
@@ -47,7 +50,7 @@
         // 有播放器或者小窗播放
         @weakify(self)
         [_videoPlayer stopAndFadeOutCompletion:^(UIView *view) {
-            // 让旧的播放器淡出
+            //让旧的播放器淡出
             @strongify(self)
             [self playNewVideoWithCell:cell indexPath:indexPath];
         }];
@@ -80,6 +83,7 @@
 
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.placeHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
+
     playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
 
     [_videoPlayer playVideoWithPlayModel:playModel completeBlock:nil];

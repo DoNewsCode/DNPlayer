@@ -23,8 +23,8 @@
     NSString *DNVideoListTableViewItemCellID = [NSString stringWithFormat:@"DNVideoListTableViewItemCell-%ld-%ld",indexPath.section,indexPath.row];
 
     DNVideoListTableViewItemCell *cell = [tableView dequeueReusableCellWithIdentifier:DNVideoListTableViewItemCellID];
-
     if ( !cell ) cell = [[DNVideoListTableViewItemCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DNVideoListTableViewItemCellID];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

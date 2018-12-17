@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DNVideoPlayer/DNVideoPlayerView.h>
+#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNDetailVideoListViewController : UIViewController
+@interface DNDetailVideoListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,SJPlayerAutoplayDelegate,DNVideoPlayerViewDelegate>
 
+@property (nonatomic, strong) UITableView *videoListTableView;
+/// 设置播放模式
+- (void)configPlayMode;
 @end
 
 NS_ASSUME_NONNULL_END

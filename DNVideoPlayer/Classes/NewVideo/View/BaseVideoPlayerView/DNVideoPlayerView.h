@@ -55,9 +55,6 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 /// 播放器滑出ScrollView后续操作外部接口
 //@property (nonatomic, copy) DNVideoPlayerPublicBlock playerDisappearScrollViewActionBlock;
 
-
-
-
 /// 播放器初始化
 + (instancetype)dnVideoPlayerViewWithDelegate:(id<DNVideoPlayerViewDelegate>)delegate;
 

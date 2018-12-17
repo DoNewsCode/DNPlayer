@@ -14,6 +14,7 @@
 #import "DNPlayerRotationManager.h"
 #import "DNPlayerRotationManagerProtocol.h"
 #import "DNPlayModel.h"
+#import "DNPlayModelPropertiesObserver.h"
 #import "UIColor+Hex.h"
 #import "UIImage+DNUtils.h"
 #import "UIView+DNResponder.h"
@@ -26,11 +27,13 @@
 #import "DNVideoPlayerTools.h"
 #import "DNPlayer.h"
 #import "DNVideoPlayerView+PlayControl.h"
+#import "DNVideoPlayerView+PlayModelPropertiesObserver.h"
 #import "DNVideoPlayerView.h"
 #import "DNIsAppearedHelper.h"
 #import "NSObject+DNObserverHelper.h"
 #import "UIScrollView+DNListVideoPlayerAutoPlay.h"
 #import "DNPlayerControlView.h"
+#import "DNPlayerControlViewProtocol.h"
 #import "DNAdPlayToEndView.h"
 
 FOUNDATION_EXPORT double DNVideoPlayerVersionNumber;
