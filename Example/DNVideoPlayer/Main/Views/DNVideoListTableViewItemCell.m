@@ -33,6 +33,7 @@
 {
     self.backgroundColor = [UIColor orangeColor];
     [self.contentView addSubview:self.placeHolderView];
+    self.placeHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.placeHolderView.frame = self.contentView.bounds;
 }
 
@@ -63,6 +64,7 @@
             make.center.equalTo(self->_placeHolderView);
             make.size.mas_equalTo(CGSizeMake(60, 60));
         }];
+        _placeHolderView.tag = 101;
     }
     return _placeHolderView;
 }

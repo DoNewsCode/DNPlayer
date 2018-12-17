@@ -114,6 +114,14 @@
     return _rotationManager;
 }
 
+- (void)stopAndFadeOut
+{
+    [self.containerView dn_fadeOutAndCompletion:^(UIView *view) {
+        [view removeFromSuperview];
+        [self restPlayer];
+    }];
+}
+
 - (void)_configRotationManager:(id<DNPlayerRotationManagerProtocol>)rotationManager {
     rotationManager.superview = self.containerView;
     rotationManager.target = self.player;

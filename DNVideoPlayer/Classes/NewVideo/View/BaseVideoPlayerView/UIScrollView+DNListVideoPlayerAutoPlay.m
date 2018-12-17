@@ -9,6 +9,7 @@
 #import "NSObject+DNObserverHelper.h"
 
 #import "DNIsAppearedHelper.h"
+#import <objc/runtime.h>
 #import <objc/message.h>
 NS_ASSUME_NONNULL_BEGIN
 

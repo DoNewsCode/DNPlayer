@@ -12,6 +12,7 @@
 #import "DNPlayer.h"
 #import "DNPlayerRotationManager.h"
 
+
 @class DNVideoPlayerView;
 @protocol DNVideoPlayerViewDelegate <NSObject>
 

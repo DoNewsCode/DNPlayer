@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "DNPlayerAutoPlayManagerConfig.h"
 #import "DNPlayerRotationManager.h"
 #import "DNPlayerRotationManagerProtocol.h"
 #import "DNPlayModel.h"
@@ -25,6 +26,9 @@
 #import "DNPlayer.h"
 #import "DNVideoPlayerView+PlayControl.h"
 #import "DNVideoPlayerView.h"
+#import "DNIsAppearedHelper.h"
+#import "NSObject+DNObserverHelper.h"
+#import "UIScrollView+DNListVideoPlayerAutoPlay.h"
 #import "DNPlayerControlView.h"
 #import "DNAdPlayToEndView.h"
 

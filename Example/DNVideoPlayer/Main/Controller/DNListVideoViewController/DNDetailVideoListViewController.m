@@ -8,14 +8,11 @@
 
 #import "DNDetailVideoListViewController.h"
 #import "DNVideoListTableViewItemCell.h"
-//#import "DNVideoPlayerView.h"
-
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-//#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
-//#import "UIScrollView+DNListVideoPlayerAutoPlay.h"
+#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 
 
-@interface DNDetailVideoListViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface DNDetailVideoListViewController ()<UITableViewDelegate,UITableViewDataSource,SJPlayerAutoplayDelegate>
 
 @property (nonatomic, strong) UITableView *videoListTableView;
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
@@ -26,8 +23,8 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@释放了",[self class]);
     [self.videoPlayer restPlayer];
+    NSLog(@"%@释放了",[self class]);
 }
 
 - (void)viewDidLoad {
@@ -37,8 +34,54 @@
     [self.view addSubview:self.videoListTableView];
     adjustsScrollViewInsets_NO(self.videoListTableView, self);
     self.videoListTableView.frame = CGRectMake(0, TGStatuBarHeight, ScreenWidth, ScreenHeight - TGStatuBarHeight);
+    [self.videoListTableView sj_enableAutoplayWithConfig:[DNPlayerAutoPlayManagerConfig configWithPlayerSuperviewTag:101 autoplayDelegate:self]];
+    [self.videoListTableView sj_needPlayNextAsset];
+}
+
+- (void)sj_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath
+{
+    DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
+    if ( !_videoPlayer || !_videoPlayer.isFullScreen ) {
+        [_videoPlayer stopAndFadeOut]; // 让旧的播放器淡出
+        _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self]; // 创建一个新的播放器
+//        _videoPlayer.generatePreviewImages = YES; // 生成预览缩略图, 大概20张
+        // fade in(淡入)
+        _videoPlayer.containerView.alpha = 0.001;
+        [UIView animateWithDuration:0.6 animations:^{
+            self.videoPlayer.containerView.alpha = 1;
+        }];
+    }
+
+    ///添加播放器容器视图
+    [cell addSubview:self.videoPlayer.containerView];
+    [self.videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(0);
+        make.leading.trailing.offset(0);    make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
+    }];
+
+
+    DNPlayModel *playModel = [[DNPlayModel alloc]init];
+    playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
+
+    [self.videoPlayer playVideoWithPlayModel:playModel completeBlock:nil];
+    cell.placeHolderView.hidden = YES;
+
+//    _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSBundle.mainBundle URLForResource:@"play" withExtension:@"mp4"] playModel:[SJPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.view.coverImageView.tag atIndexPath:indexPath tableView:self.tableView]];
+//    _player.URLAsset.title = @"Test Title";
+//    _player.URLAsset.alwaysShowTitle = YES;
 
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(DNVideoListTableViewItemCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    __weak typeof(self) _self = self;
+//    cell.placeHolderView. = ^(SJPlayView * _Nonnull view) {
+//        __strong typeof(_self) self = _self;
+//        if ( !self ) return;
+//        [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
+//    };
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
