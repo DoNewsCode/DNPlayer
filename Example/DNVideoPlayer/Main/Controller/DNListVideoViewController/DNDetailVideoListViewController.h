@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DNDetailVideoListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,SJPlayerAutoplayDelegate,DNVideoPlayerViewDelegate>

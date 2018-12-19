@@ -26,6 +26,7 @@
 #import "DNPlayerTypeDef.h"
 #import "DNVideoPlayerTools.h"
 #import "DNPlayer.h"
+#import "DNVideoPlayerView+MediaStateAction.h"
 #import "DNVideoPlayerView+PlayControl.h"
 #import "DNVideoPlayerView+PlayModelPropertiesObserver.h"
 #import "DNVideoPlayerView.h"

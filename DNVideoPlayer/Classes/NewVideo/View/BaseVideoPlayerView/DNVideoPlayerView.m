@@ -358,10 +358,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
                 [scrollView sj_needPlayNextAsset];
                 return;
             }
-
-
             //广告 -- 展示播放结束广告页面
-
         }
             //获取到第一帧事件
         case AliyunVodPlayerEventFirstFrame:{

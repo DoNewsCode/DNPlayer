@@ -33,7 +33,7 @@
 
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = MRandomColor;
+//        self.backgroundColor = MRandomColor;
         [self creatSubViews];
     }
     return self;
@@ -59,10 +59,10 @@
 
 }
 
-- (UIView *)placeHolderView
+- (UIImageView *)placeHolderView
 {
     if (!_placeHolderView) {
-        _placeHolderView = [[UIView alloc]init];
+        _placeHolderView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"abc.jpeg"]];
 //        _placeHolderView.backgroundColor = MRandomColor;
         UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [playBtn addTarget:self action:@selector(PlayBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -72,6 +72,8 @@
             make.center.equalTo(self->_placeHolderView);
             make.size.mas_equalTo(CGSizeMake(60, 60));
         }];
+        _placeHolderView.contentMode = UIViewContentModeScaleAspectFit;
+        _placeHolderView.userInteractionEnabled = YES;
         _placeHolderView.tag = 101;
     }
     return _placeHolderView;

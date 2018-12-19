@@ -245,7 +245,7 @@ static void sj_tableViewConsiderPlayNewAsset(UITableView *tableView) {
         CGRect half_l_rect = [half_l_view.superview convertRect:half_l_view.frame toView:tableView.superview];
         CGRect half_r_rect = [half_r_view.superview convertRect:half_r_view.frame toView:tableView.superview];
 
-        if ( ABS(CGRectGetMaxY(half_l_rect) - midLine) < ABS(CGRectGetMinY(half_r_rect) - midLine) ) {
+        if (ABS(CGRectGetMaxY(half_l_rect) - midLine) < ABS(CGRectGetMinY(half_r_rect) - midLine) ) {
             nextIndexPath = [tableView indexPathForCell:cell_l];
         }
         else {

@@ -20,6 +20,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		77076C2C21C8EDEE00239B77 /* DNVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */; };
 		7708F6F121C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */; };
 		770E15B821C37BAD0018BAF9 /* DNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E15AE21C37BAD0018BAF9 /* DNViewController.m */; };
 		770E15BA21C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */; };
@@ -67,6 +68,8 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72CC3AE7230B2158BDAA8C66 /* Pods-DNVideoPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNVideoPlayer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNVideoPlayer_Tests/Pods-DNVideoPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		77076C2A21C8EDEE00239B77 /* DNVideoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNVideoDetailViewController.h; sourceTree = "<group>"; };
+		77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNVideoDetailViewController.m; sourceTree = "<group>"; };
 		7708F6EF21C7B0B700CE28FA /* DNListVideoAutoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNListVideoAutoPlayViewController.h; sourceTree = "<group>"; };
 		7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNListVideoAutoPlayViewController.m; sourceTree = "<group>"; };
 		770E15AB21C37BAD0018BAF9 /* DNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNViewController.h; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 			children = (
 				77A4E52421C383AE00B2C940 /* DNDetailVideoListViewController.h */,
 				77A4E52521C383AE00B2C940 /* DNDetailVideoListViewController.m */,
+				77076C2A21C8EDEE00239B77 /* DNVideoDetailViewController.h */,
+				77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */,
 			);
 			path = DNListVideoViewController;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				770E15BC21C37BAD0018BAF9 /* DNBottomWebMainView.m in Sources */,
 				770E15BA21C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m in Sources */,
 				770E15B821C37BAD0018BAF9 /* DNViewController.m in Sources */,
+				77076C2C21C8EDEE00239B77 /* DNVideoDetailViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				77A4E52921C383AE00B2C940 /* DNDetailVideoListViewController.m in Sources */,
 			);

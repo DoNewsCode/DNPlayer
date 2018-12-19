@@ -8,9 +8,9 @@
 
 #import "DNDetailVideoListViewController.h"
 #import "DNVideoListTableViewItemCell.h"
+#import "DNVideoDetailViewController.h"
 
-
-@interface DNDetailVideoListViewController ()
+@interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
 
@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.navigationController.delegate = self;
 
     self.view.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.videoListTableView];
@@ -102,6 +104,12 @@
         if ( !self ) return;
         [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
     };
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
+    [self.navigationController pushViewController:desVc animated:YES];
 }
 
 
