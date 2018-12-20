@@ -7,6 +7,7 @@
 //
 
 #import "DNAppDelegate.h"
+#import "DNNavigationViewController.h"
 
 
 @implementation UINavigationController (Rotation)
@@ -35,7 +36,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+
+    DNNavigationViewController *nav = [[DNNavigationViewController alloc]init];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

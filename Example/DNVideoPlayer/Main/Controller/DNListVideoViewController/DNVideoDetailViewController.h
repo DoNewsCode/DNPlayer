@@ -6,11 +6,11 @@
 //  Copyright © 2018 563620078@qq.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <DNVideoPlayer/DNCustomAnimatorBaseViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNVideoDetailViewController : UIViewController
+@interface DNVideoDetailViewController : DNCustomAnimatorBaseViewController
 
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "DNVideoListTableViewItemCell.h"
-//#import "DNVideoPlayerView.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 
 @interface DNVideoListTableViewItemCell ()
@@ -42,15 +41,26 @@
 
 - (void)creatSubViews
 {
-    [self.contentView addSubview:self.placeHolderView];
-    self.placeHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.placeHolderView.frame = self.contentView.bounds;
+    [self.contentView addSubview:self.videoPlaceHolderView];
+    [self.contentView addSubview:self.bottomView];
+    @weakify(self)
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.offset(0);
+        make.leading.trailing.offset(0);
+        make.height.mas_equalTo(50);
+    }];
+    self.videoPlaceHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.videoPlaceHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(0);
+        make.leading.trailing.offset(0);
+        make.bottom.equalTo(self.bottomView.mas_top);
+    }];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.placeHolderView.frame = self.contentView.bounds;
+    
 }
 
 - (void)awakeFromNib
@@ -59,24 +69,33 @@
 
 }
 
-- (UIImageView *)placeHolderView
+- (UIView *)bottomView
 {
-    if (!_placeHolderView) {
-        _placeHolderView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"abc.jpeg"]];
-//        _placeHolderView.backgroundColor = MRandomColor;
+    if (!_bottomView) {
+        _bottomView = [[UIView alloc]init];
+        _bottomView.backgroundColor = MRandomColor;
+    }
+    return _bottomView;
+}
+
+- (UIImageView *)videoPlaceHolderView
+{
+    if (!_videoPlaceHolderView) {
+        _videoPlaceHolderView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"abc.jpeg"]];
+        _videoPlaceHolderView.backgroundColor = MRandomColor;
         UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [playBtn addTarget:self action:@selector(PlayBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
         playBtn.backgroundColor = [UIColor blueColor];
-        [_placeHolderView addSubview:playBtn];
+        [_videoPlaceHolderView addSubview:playBtn];
         [playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self->_placeHolderView);
+            make.center.equalTo(self->_videoPlaceHolderView);
             make.size.mas_equalTo(CGSizeMake(60, 60));
         }];
-        _placeHolderView.contentMode = UIViewContentModeScaleAspectFit;
-        _placeHolderView.userInteractionEnabled = YES;
-        _placeHolderView.tag = 101;
+        _videoPlaceHolderView.contentMode = UIViewContentModeScaleAspectFit;
+        _videoPlaceHolderView.userInteractionEnabled = YES;
+        _videoPlaceHolderView.tag = 101;
     }
-    return _placeHolderView;
+    return _videoPlaceHolderView;
 }
 
 - (void)PlayBtnClickAction:(UIButton *)sender

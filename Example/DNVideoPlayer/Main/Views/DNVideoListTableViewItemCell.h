@@ -15,7 +15,9 @@ typedef void(^ItemCellPlayBtnClickBlock)(id sender);
 
 @interface DNVideoListTableViewItemCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *placeHolderView;
+@property (nonatomic, strong) UIImageView *videoPlaceHolderView;
+@property (nonatomic, strong) UIView *bottomView;
+
 @property (nonatomic, copy) ItemCellPlayBtnClickBlock playBtnClickBlock;
 
 

@@ -13,6 +13,7 @@
 @interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
+@property (nonatomic, assign) CGRect markTempCellFrame;
 
 @end
 
@@ -27,15 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationController.delegate = self;
 
     self.view.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.videoListTableView];
+
     adjustsScrollViewInsets_NO(self.videoListTableView, self);
 
     [self configPlayMode];
 
-    self.videoListTableView.frame = CGRectMake(0, TGStatuBarHeight, ScreenWidth, ScreenHeight - TGStatuBarHeight);
+    self.videoListTableView.frame = CGRectMake(0, TGNavHeight, ScreenWidth, ScreenHeight - TGStatuBarHeight);
 
 }
 
@@ -77,14 +78,14 @@
     }];
 
     ///添加播放器容器视图
-    [cell.placeHolderView addSubview:self.videoPlayer.containerView];
+    [cell.videoPlaceHolderView addSubview:self.videoPlayer.containerView];
     [_videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.offset(0);
         make.leading.trailing.offset(0);    make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
 
 
-    DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.placeHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
+    DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
     playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
 
@@ -109,6 +110,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
+    
+    desVc.presentStyle = DNCustomPresentStyleFadeIn;
+    desVc.dismissStyle = DNCustomDismissStyleFadeOut;
+
     [self.navigationController pushViewController:desVc animated:YES];
 }
 
@@ -125,7 +130,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (ScreenWidth * 9 / 16);
+    return (ScreenWidth * 9 / 16)+50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -137,7 +142,7 @@
 - (UITableView *)videoListTableView
 {
     if (!_videoListTableView) {
-        _videoListTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _videoListTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
 
         _videoListTableView.backgroundColor = [UIColor blueColor];
         _videoListTableView.delegate = self;
@@ -153,5 +158,47 @@
 {
     return NO;
 }
+
+
+- (nonnull UIView *)transitionSourceView
+{
+    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
+    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
+    cell.frame = frameInSuperview;
+    self.markTempCellFrame = frameInSuperview;
+    return cell;
+}
+
+- (CGRect)transitionDestinationViewFrame
+{
+//    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
+//    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+//    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
+
+    NSLog(@"frameInSuperview===%f",self.markTempCellFrame.origin.y);
+//    frameInSuperview.origin.x -= cell.contentView.layoutMargins.left;
+//    frameInSuperview.origin.y -= cell.contentView.layoutMargins.top;
+    return self.markTempCellFrame;
+}
+
+- (void)customTransitionAnimator:(nonnull DNCustomAnimator *)animator
+           didCompleteTransition:(BOOL)didComplete
+             animatingSourceView:(nonnull UIView *)sourceView;
+{
+
+    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
+    //播放器视图放回原Cell sourceView暂时定为播放器
+    //设置cell在tableview上的frame;
+    NSLog(@"%@",sourceView.superview);
+    [self.videoListTableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+//    if (self.videoPlayer) {
+//        [cell.videoPlaceHolderView bringSubviewToFront:self.videoPlayer];
+//    }
+
+//    [self.videoListTableView insertRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 
 @end
