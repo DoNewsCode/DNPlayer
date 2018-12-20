@@ -6,7 +6,7 @@
 //
 
 #import "DNCustomPresentAnimator.h"
-
+#import "DNPlayerTypeDef.h"
 @implementation DNCustomPresentAnimator
 
 #pragma mark - UIViewControllerAnimatedTransitioning  Methods
@@ -49,7 +49,7 @@
                      animations:^{
                          toVC.view.alpha = 1;
                          sourceView.frame = [self.destinationTransition transitionDestinationViewFrame];
-                         sourceView.transform = CGAffineTransformMakeScale(1.03, 1.03);
+                         sourceView.transform = CGAffineTransformMakeScale(1.0, 1.0);
                      }
                      completion:^(BOOL finished) {
                          [transitionContext completeTransition:YES];
@@ -70,7 +70,7 @@
 //                                              [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 
                                               //[sourceView removeFromSuperview];
-//                                              [fromVC endAppearanceTransition];
+                                              [fromVC endAppearanceTransition];
                                           }];
                      }];
 }

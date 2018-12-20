@@ -6,7 +6,7 @@
 //  Copyright © 2018 donews. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DNVideoBaseView.h"
 #import "DNPlayerTypeDef.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "DNPlayer.h"
@@ -24,7 +24,7 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 
 @end
 
-@interface DNVideoPlayerView : UIView
+@interface DNVideoPlayerView : DNVideoBaseView
 
 /// 旋转管理对象: 指定旋转及管理视图的自动旋转
 @property (nonatomic, strong, null_resettable) id<DNPlayerRotationManagerProtocol> rotationManager;

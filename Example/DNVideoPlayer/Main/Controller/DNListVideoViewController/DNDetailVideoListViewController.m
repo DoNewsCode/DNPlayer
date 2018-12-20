@@ -13,7 +13,10 @@
 @interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
+/// 记录动画前的frame
 @property (nonatomic, assign) CGRect markTempCellFrame;
+/// 记录当前播放的 Cell indexPath
+@property (nonatomic, strong) NSIndexPath *markTempIndexPath;
 
 @end
 
@@ -48,6 +51,7 @@
 - (void)sj_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath
 {
     DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
+    self.markTempIndexPath = indexPath;
     if ( _videoPlayer &&
         !_videoPlayer.isFullScreen ) {
         // 有播放器或者小窗播放
@@ -109,12 +113,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    if (![self.markTempIndexPath isEqual:indexPath]) {
+        if (self.videoPlayer.player.isPlaying) {
+            [self.videoPlayer restPlayer];
+        }
+    }
+
+//    UIViewController *desVc = [[UIViewController alloc]init];
     DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
-    
+
     desVc.presentStyle = DNCustomPresentStyleFadeIn;
     desVc.dismissStyle = DNCustomDismissStyleFadeOut;
 
     [self.navigationController pushViewController:desVc animated:YES];
+
+    self.markTempIndexPath = indexPath;
 }
 
 
@@ -160,14 +174,29 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //设置顶部状态栏颜色 -- 黑色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
+
 - (nonnull UIView *)transitionSourceView
 {
     NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
     DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
-    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
-    cell.frame = frameInSuperview;
-    self.markTempCellFrame = frameInSuperview;
-    return cell;
+//    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
+
+    CGRect playerFrameInSuperview = [cell convertRect:cell.videoPlaceHolderView.frame toView:[UIApplication sharedApplication].keyWindow];
+
+    cell.videoPlaceHolderView.frame = playerFrameInSuperview;
+    //    cell.frame = frameInSuperview;
+
+    self.markTempCellFrame = playerFrameInSuperview;
+//    self.markTempCellFrame = frameInSuperview;
+
+    return cell.videoPlaceHolderView;
+//    return cell;
 }
 
 - (CGRect)transitionDestinationViewFrame
@@ -191,8 +220,14 @@
     //播放器视图放回原Cell sourceView暂时定为播放器
     //设置cell在tableview上的frame;
     NSLog(@"%@",sourceView.superview);
-    [self.videoListTableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+//    [self.videoListTableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+
+    [cell addSubview:sourceView];
+    sourceView.top = 0;
+
+    
+
 //    if (self.videoPlayer) {
 //        [cell.videoPlaceHolderView bringSubviewToFront:self.videoPlayer];
 //    }

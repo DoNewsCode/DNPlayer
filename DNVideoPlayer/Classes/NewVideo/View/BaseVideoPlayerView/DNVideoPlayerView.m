@@ -489,7 +489,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 - (DNPlayer *)player
 {
     if (!_player) {
-        _player = [DNPlayer sharedPlayerView];
+        _player = [DNPlayer sharedDNPlayer];
     }
     return _player;
 }

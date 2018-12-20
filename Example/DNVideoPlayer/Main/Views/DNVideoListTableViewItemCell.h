@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DNVideoPlayer/DNVideoPlaceHolderView.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +17,7 @@ typedef void(^ItemCellPlayBtnClickBlock)(id sender);
 
 @interface DNVideoListTableViewItemCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *videoPlaceHolderView;
+@property (nonatomic, strong) DNVideoPlaceHolderView *videoPlaceHolderView;
 @property (nonatomic, strong) UIView *bottomView;
 
 @property (nonatomic, copy) ItemCellPlayBtnClickBlock playBtnClickBlock;

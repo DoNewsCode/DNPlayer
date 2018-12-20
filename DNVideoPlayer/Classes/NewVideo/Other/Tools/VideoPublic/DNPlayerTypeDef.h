@@ -116,6 +116,7 @@ _Pragma("clang diagnostic pop") \
 #import "DNPlayModel.h"
 #import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import <Masonry/Masonry.h>
+#import "UIImage+PlaceImageAdd.h"
 
 #endif /* DNPlayerTypeDef_h */
 

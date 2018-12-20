@@ -21,7 +21,7 @@
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {
     switch (self.dismissStyle) {
         case DNCustomDismissStyleFadeOut:
-            return 0.15;
+            return 0.45;
     }
 }
 
@@ -61,14 +61,7 @@
                                                   [self.destinationTransition respondsToSelector:@selector(customTransitionAnimator:didCompleteTransition:animatingSourceView:)]) {
 
                                                   [self.destinationTransition customTransitionAnimator:self didCompleteTransition:![transitionContext transitionWasCancelled] animatingSourceView:sourceView];
-
                                               }
-//                                              [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//                                              if(![[UIApplication sharedApplication].keyWindow.subviews containsObject:toVC.view]) {
-//                                                  [[UIApplication sharedApplication].keyWindow addSubview:toVC.view];
-//                                              }
-//                                              [alphaView removeFromSuperview];
-                                              [sourceView removeFromSuperview];
                                           }];
                      }];
 }

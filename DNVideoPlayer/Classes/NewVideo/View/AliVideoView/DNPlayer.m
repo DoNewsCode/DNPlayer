@@ -18,7 +18,7 @@
 
 @implementation DNPlayer
 
-+ (instancetype)sharedPlayerView
++ (instancetype)sharedDNPlayer
 {
     static DNPlayer *playerView = nil;
     static dispatch_once_t onceToken;

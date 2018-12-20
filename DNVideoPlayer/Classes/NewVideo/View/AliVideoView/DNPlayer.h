@@ -57,7 +57,7 @@
  *  单例
  *  @return player
  */
-+ (instancetype)sharedPlayerView;
++ (instancetype)sharedDNPlayer;
 
 
 

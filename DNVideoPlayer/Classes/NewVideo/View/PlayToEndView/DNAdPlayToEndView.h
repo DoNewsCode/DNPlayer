@@ -6,13 +6,13 @@
 //  Copyright © 2018 Madjensen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DNVideoBaseView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^EndViewPublicClickBlock)(id sender);
 
-@interface DNAdPlayToEndView : UIView
+@interface DNAdPlayToEndView : DNVideoBaseView
 
 @property (nonatomic, copy) EndViewPublicClickBlock detailBtnClickBlock;
 @property (nonatomic, copy) EndViewPublicClickBlock replayBtnClickBlock;

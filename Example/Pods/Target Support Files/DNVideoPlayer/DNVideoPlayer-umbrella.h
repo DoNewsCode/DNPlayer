@@ -21,6 +21,7 @@
 #import "DNCustomPresentAnimator.h"
 #import "UIColor+Hex.h"
 #import "UIImage+DNUtils.h"
+#import "UIImage+PlaceImageAdd.h"
 #import "UIView+DNResponder.h"
 #import "UIView+DNVideoPlayerAdd.h"
 #import "UIView+JAExtForPageScroll.h"
@@ -39,6 +40,8 @@
 #import "UIScrollView+DNListVideoPlayerAutoPlay.h"
 #import "DNPlayerControlView.h"
 #import "DNPlayerControlViewProtocol.h"
+#import "DNVideoBaseView.h"
+#import "DNVideoPlaceHolderView.h"
 #import "DNAdPlayToEndView.h"
 
 FOUNDATION_EXPORT double DNVideoPlayerVersionNumber;

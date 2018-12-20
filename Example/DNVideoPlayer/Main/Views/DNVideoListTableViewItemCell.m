@@ -49,18 +49,22 @@
         make.leading.trailing.offset(0);
         make.height.mas_equalTo(50);
     }];
-    self.videoPlaceHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.videoPlaceHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(0);
-        make.leading.trailing.offset(0);
-        make.bottom.equalTo(self.bottomView.mas_top);
-    }];
+//    self.videoPlaceHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.videoPlaceHolderView.top = 0;
+    self.videoPlaceHolderView.left = 0;
+    self.videoPlaceHolderView.size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
+//    [self.videoPlaceHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        @strongify(self)
+//        make.top.mas_equalTo(0);
+//        make.leading.trailing.offset(0);
+//        make.size.mas_equalTo(CGSizeMake(ScreenWidth, ScreenWidth * 9 /16));
+//    }];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+
 }
 
 - (void)awakeFromNib
@@ -78,31 +82,24 @@
     return _bottomView;
 }
 
-- (UIImageView *)videoPlaceHolderView
+- (DNVideoPlaceHolderView *)videoPlaceHolderView
 {
     if (!_videoPlaceHolderView) {
-        _videoPlaceHolderView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"abc.jpeg"]];
+        _videoPlaceHolderView = [[DNVideoPlaceHolderView alloc]init];
         _videoPlaceHolderView.backgroundColor = MRandomColor;
-        UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [playBtn addTarget:self action:@selector(PlayBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
-        playBtn.backgroundColor = [UIColor blueColor];
-        [_videoPlaceHolderView addSubview:playBtn];
-        [playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self->_videoPlaceHolderView);
-            make.size.mas_equalTo(CGSizeMake(60, 60));
-        }];
         _videoPlaceHolderView.contentMode = UIViewContentModeScaleAspectFit;
         _videoPlaceHolderView.userInteractionEnabled = YES;
         _videoPlaceHolderView.tag = 101;
+        @weakify(self)
+        [_videoPlaceHolderView setPlaceHolderPlayBtnClickBlock:^(id sender) {
+            @strongify(self)
+            if (self.playBtnClickBlock) {
+                self.playBtnClickBlock(sender);
+            }
+        }];
     }
     return _videoPlaceHolderView;
 }
 
-- (void)PlayBtnClickAction:(UIButton *)sender
-{
-    if (self.playBtnClickBlock) {
-        self.playBtnClickBlock(sender);
-    }
-}
 
 @end

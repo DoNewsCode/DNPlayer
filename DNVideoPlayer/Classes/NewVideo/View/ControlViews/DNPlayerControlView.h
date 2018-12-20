@@ -6,11 +6,11 @@
 //  Copyright © 2018 donews. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DNVideoBaseView.h"
 #import "DNPlayerTypeDef.h"
 
 
-@interface DNPlayerControlView : UIView
+@interface DNPlayerControlView : DNVideoBaseView
 
 @property (nonatomic, assign) BOOL isFullScreen;
 @property (nonatomic, assign) BOOL isShowBackBtn;
