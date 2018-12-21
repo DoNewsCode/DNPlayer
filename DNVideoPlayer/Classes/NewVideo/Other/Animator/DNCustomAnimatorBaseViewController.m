@@ -47,10 +47,7 @@
         customPresentAnimator.destinationTransition = destinationTransition;
         return customPresentAnimator;
     }
-
     return nil;
-
-
 }
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed

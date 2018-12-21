@@ -9,11 +9,11 @@
 #ifndef DNPlayerTypeDef_h
 #define DNPlayerTypeDef_h
 
-/// 播放器控制层类型 点播 直播
-typedef NS_ENUM(int, PlayerControlViewType) {
-    PlayerControlViewType_Vod = 0,  /// 点播
-    PlayerControlViewType_Live      /// 直播
-};
+///// 播放器控制层类型 点播 直播
+//typedef NS_ENUM(int, PlayerControlViewType) {
+//    PlayerControlViewType_Vod = 0,  /// 点播
+//    PlayerControlViewType_Live      /// 直播
+//};
 
 
 typedef void(^PlayerPublicBlock)(id sender);
@@ -117,6 +117,7 @@ _Pragma("clang diagnostic pop") \
 #import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import <Masonry/Masonry.h>
 #import "UIImage+PlaceImageAdd.h"
+#import "UIColor+Hex.h"
 
 #endif /* DNPlayerTypeDef_h */
 

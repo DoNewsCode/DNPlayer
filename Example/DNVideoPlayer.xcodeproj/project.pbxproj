@@ -23,6 +23,8 @@
 		77076C2C21C8EDEE00239B77 /* DNVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */; };
 		77076C4621CA2FD400239B77 /* DNNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77076C4521CA2FD300239B77 /* DNNavigationViewController.m */; };
 		7708F6F121C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */; };
+		770ACDB521CC81C800FCF720 /* lightGray_backBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770ACDB321CC81C800FCF720 /* lightGray_backBtn@3x.png */; };
+		770ACDB621CC81C800FCF720 /* lightGray_backBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 770ACDB421CC81C800FCF720 /* lightGray_backBtn@2x.png */; };
 		770E15B821C37BAD0018BAF9 /* DNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E15AE21C37BAD0018BAF9 /* DNViewController.m */; };
 		770E15BA21C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */; };
 		770E15BB21C37BAD0018BAF9 /* DNCustonNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 770E15B421C37BAD0018BAF9 /* DNCustonNavView.m */; };
@@ -75,6 +77,8 @@
 		77076C4521CA2FD300239B77 /* DNNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNNavigationViewController.m; sourceTree = "<group>"; };
 		7708F6EF21C7B0B700CE28FA /* DNListVideoAutoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNListVideoAutoPlayViewController.h; sourceTree = "<group>"; };
 		7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNListVideoAutoPlayViewController.m; sourceTree = "<group>"; };
+		770ACDB321CC81C800FCF720 /* lightGray_backBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lightGray_backBtn@3x.png"; sourceTree = "<group>"; };
+		770ACDB421CC81C800FCF720 /* lightGray_backBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lightGray_backBtn@2x.png"; sourceTree = "<group>"; };
 		770E15AB21C37BAD0018BAF9 /* DNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNViewController.h; sourceTree = "<group>"; };
 		770E15AE21C37BAD0018BAF9 /* DNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNViewController.m; sourceTree = "<group>"; };
 		770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNVideoListTableViewItemCell.m; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				77A4E52521C383AE00B2C940 /* DNDetailVideoListViewController.m */,
 				77076C2A21C8EDEE00239B77 /* DNVideoDetailViewController.h */,
 				77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */,
+				770ACDB421CC81C800FCF720 /* lightGray_backBtn@2x.png */,
+				770ACDB321CC81C800FCF720 /* lightGray_backBtn@3x.png */,
 			);
 			path = DNListVideoViewController;
 			sourceTree = "<group>";
@@ -368,7 +374,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770ACDB621CC81C800FCF720 /* lightGray_backBtn@2x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				770ACDB521CC81C800FCF720 /* lightGray_backBtn@3x.png in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

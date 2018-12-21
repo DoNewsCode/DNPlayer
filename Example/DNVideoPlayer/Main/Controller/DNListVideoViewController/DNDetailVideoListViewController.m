@@ -11,7 +11,7 @@
 #import "DNVideoDetailViewController.h"
 
 @interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
-
+@property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
 /// 记录动画前的frame
 @property (nonatomic, assign) CGRect markTempCellFrame;
@@ -73,7 +73,10 @@
 
 - (void)playNewVideoWithCell:(DNVideoListTableViewItemCell *)cell indexPath:(NSIndexPath *)indexPath
 {
-    _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self]; // 创建一个新的播放器
+    // 创建一个新的播放器
+    _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self];
+    // 播放器控制层配置 
+    _videoPlayer.controlViewConfig = self.playerControlViewConfig;
     //        _videoPlayer.generatePreviewImages = YES; // 生成预览缩略图, 大概20张
     // fade in(淡入)
     _videoPlayer.containerView.alpha = 0.001;
@@ -82,10 +85,11 @@
     }];
 
     ///添加播放器容器视图
-    [cell.videoPlaceHolderView addSubview:self.videoPlayer.containerView];
+    [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
     [_videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.offset(0);
-        make.leading.trailing.offset(0);    make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
+        make.leading.trailing.offset(0);
+        make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
 
 
@@ -120,7 +124,6 @@
         }
     }
 
-//    UIViewController *desVc = [[UIViewController alloc]init];
     DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
 
     desVc.presentStyle = DNCustomPresentStyleFadeIn;
@@ -233,6 +236,15 @@
 //    }
 
 //    [self.videoListTableView insertRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (DNPlayerControlViewConfig *)playerControlViewConfig
+{
+    if (!_playerControlViewConfig) {
+        _playerControlViewConfig = [DNPlayerControlViewConfig new];
+        _playerControlViewConfig.isShowBackBtn = NO;
+    }
+    return _playerControlViewConfig;
 }
 
 

@@ -12,6 +12,7 @@
 #import "DNPlayer.h"
 #import "DNPlayerRotationManager.h"
 #import "DNPlayerControlViewProtocol.h"
+#import "DNPlayerControlViewConfig.h"
 
 typedef void(^DNVideoPlayerPublicBlock)(id sender);
 
@@ -35,8 +36,7 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 /// 是否为全屏播放
 @property (nonatomic, readonly, getter = isFullScreen) BOOL fullScreen;
 /// 播放器控制视图类型(可以设置直播或点播类型)
-@property (nonatomic, assign) PlayerControlViewType controlViewType;
-
+@property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
 /// 视频进度条的单击手势
 @property (nonatomic, strong) UITapGestureRecognizer *progressTap;
 /// 是否可以更新进度条

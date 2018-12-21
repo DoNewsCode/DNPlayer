@@ -8,14 +8,14 @@
 
 #import "DNVideoBaseView.h"
 #import "DNPlayerTypeDef.h"
-
+#import "DNPlayerControlViewConfig.h"
 
 @interface DNPlayerControlView : DNVideoBaseView
 
 @property (nonatomic, assign) BOOL isFullScreen;
-@property (nonatomic, assign) BOOL isShowBackBtn;
-@property (nonatomic, assign) PlayerControlViewType controlViewType;
+//@property (nonatomic, assign) BOOL isShowBackBtn;
 
+@property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
 
 @property (nonatomic, copy) PlayerPublicBlock fullScreenBtnClickBlock;
 @property (nonatomic, copy) PlayerPublicBlock backBtnClickBlock;

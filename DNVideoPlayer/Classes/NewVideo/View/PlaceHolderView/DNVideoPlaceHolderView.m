@@ -143,7 +143,8 @@
         _timeLabel.numberOfLines = 1;
         _timeLabel.font = [UIFont systemFontOfSize:11.0];
         _timeLabel.layer.cornerRadius = 10;
-        _timeLabel.backgroundColor = [UIColor blackColor];
+        _timeLabel.clipsToBounds = YES;
+        _timeLabel.backgroundColor = [UIColor colorWithRed:0/255.f green:0/255.f blue:0/255.f alpha:0.3];
     }
     return _timeLabel;
 }

@@ -97,25 +97,6 @@
     return self;
 }
 
-- (void)setControlViewType:(PlayerControlViewType)controlViewType
-{
-    _controlViewType = controlViewType;
-    switch (_controlViewType) {
-        case PlayerControlViewType_Vod:
-            //点播
-
-            break;
-            
-        case PlayerControlViewType_Live:
-            //直播
-            
-            break;
-            
-        default:
-            break;
-    }
-}
-
 - (void)makeSubViewsConstraints
 {
     @weakify(self)
@@ -278,11 +259,11 @@
     self.bottomloadingProgress.alpha = 1;
 }
 
-- (void)setIsShowBackBtn:(BOOL)isShowBackBtn
-{
-    _isShowBackBtn = isShowBackBtn;
-    self.backBtn.hidden = !_isShowBackBtn;
-}
+//- (void)setIsShowBackBtn:(BOOL)isShowBackBtn
+//{
+//    _isShowBackBtn = isShowBackBtn;
+//    self.backBtn.hidden = !_isShowBackBtn;
+//}
 
 - (void)setIsShowAdPlayToEndView:(BOOL)isShowAdPlayToEndView
 {
@@ -328,6 +309,30 @@
 }
 
 #pragma mark - setter
+- (void)setControlViewConfig:(DNPlayerControlViewConfig *)controlViewConfig
+{
+    _controlViewConfig = controlViewConfig;
+    //点播,直播界面设置
+    switch (_controlViewConfig.controlViewType) {
+        case PlayerControlViewType_Vod:
+            //点播
+
+            break;
+
+        case PlayerControlViewType_Live:
+            //直播
+
+            break;
+
+        default:
+            break;
+    }
+    self.backBtn.hidden = !_controlViewConfig.isShowBackBtn;
+
+}
+
+
+
 - (void)setTotalTime:(NSString *)totalTime
 {
     _totalTime = totalTime;
@@ -376,6 +381,12 @@
 {
     _isFullScreen = isFullScreen;
     self.isfullScreenBtnSelected = _isFullScreen;
+    //全屏的时候显示返回按钮
+    if (_isFullScreen) {
+        self.backBtn.hidden = NO;
+    }else{
+        self.backBtn.hidden = !self.controlViewConfig.isShowBackBtn;
+    }
 }
 
 - (void)setIsVolumeSelected:(BOOL)isVolumeSelected

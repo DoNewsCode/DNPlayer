@@ -39,6 +39,7 @@
 #import "NSObject+DNObserverHelper.h"
 #import "UIScrollView+DNListVideoPlayerAutoPlay.h"
 #import "DNPlayerControlView.h"
+#import "DNPlayerControlViewConfig.h"
 #import "DNPlayerControlViewProtocol.h"
 #import "DNVideoBaseView.h"
 #import "DNVideoPlaceHolderView.h"

@@ -74,6 +74,8 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 @property (nonatomic, strong) NSTimer *sliderTimer;
 
 @property (nonatomic, strong) DNPlayModel *playModel;
+
+
 @property (nonatomic, strong, nullable) DNPlayModelPropertiesObserver *playModelObserver;
 @end
 
@@ -88,8 +90,20 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 - (void)restPlayer
 {
     [self.player reset];
+    [self removeNotifications];
     self.playModelObserver = nil;
     self.controlLayerDelegate = nil;
+}
+
+- (void)removeNotifications
+{
+    // 添加检测app进入后台的观察者
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+
+    //监听系统音量
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
 }
 
 + (instancetype)dnVideoPlayerViewWithDelegate:(id<DNVideoPlayerViewDelegate>)delegate
@@ -115,10 +129,11 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     return self;
 }
 
-- (void)layoutSubviews
+/// 播放器控制层初始化设置
+- (void)setControlViewConfig:(DNPlayerControlViewConfig *)controlViewConfig
 {
-    [super layoutSubviews];
-
+    _controlViewConfig = controlViewConfig;
+    self.player.controlViewConfig = _controlViewConfig;
 }
 
 - (id<DNPlayerRotationManagerProtocol>)rotationManager
@@ -137,7 +152,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         [view removeFromSuperview];
         [self restPlayer];
         if (block) {
-            block(nil);
+            block(view);
         }
     }];
 }
@@ -196,8 +211,6 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         make.top.leading.trailing.bottom.equalTo(self.containerView);
     }];
     self.mpVolumVC = [MPMusicPlayerController applicationMusicPlayer];
-
-
 }
 
 
@@ -505,6 +518,11 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     return _containerView;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+}
 
 @end
 

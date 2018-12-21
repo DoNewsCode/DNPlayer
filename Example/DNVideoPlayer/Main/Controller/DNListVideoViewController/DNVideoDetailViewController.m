@@ -11,12 +11,13 @@
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
+#import "DNVideoListTableViewItemCell.h"
 @interface DNVideoDetailViewController ()
 
 @property (nonatomic, strong) UIView *sourceView;
 @property (nonatomic, strong) UIView *tempView;
 @property (nonatomic, strong) UIButton *closeBtn;
-@property (nonatomic, strong) UIViewController *destinationTransition;
+@property (nonatomic, weak) DNDetailVideoListViewController *sourceTransitionVc;
 
 @end
 
@@ -46,6 +47,7 @@
     if (!_closeBtn) {
         _closeBtn = [UIButton new];
         _closeBtn.backgroundColor = [UIColor redColor];
+        [_closeBtn setImage:[UIImage imageNamed:@"lightGray_backBtn"] forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(closeBtnClickAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeBtn;
@@ -79,6 +81,8 @@
            didCompleteTransition:(BOOL)didComplete
              animatingSourceView:(nonnull UIView *)sourceView;
 {
+    //记录上层控制器
+    self.sourceTransitionVc = (DNDetailVideoListViewController *)animator.sourceTransition;
     self.sourceView = sourceView;
     [self.tempView addSubview:self.sourceView];
     self.sourceView.frame = self.tempView.bounds;
@@ -99,7 +103,17 @@
     if (parent == nil) {
         NSLog(@"%@",self.sourceView);
         //让sourceView复原
-        
+        NSIndexPath *selectedIndexPath = [self.sourceTransitionVc.videoListTableView indexPathForSelectedRow];
+        //播放器视图放回原Cell sourceView暂时定为播放器
+        DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.sourceTransitionVc.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+        [cell addSubview:self.sourceView];
+        self.sourceView.alpha = 0;
+        self.sourceView.top = 0;
+
+        [UIView animateWithDuration:0.6 animations:^{
+            self.sourceView.alpha = 1;
+        }];
+
     }
 
 }

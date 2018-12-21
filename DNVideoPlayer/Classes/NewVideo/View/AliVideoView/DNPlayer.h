@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DNPlayerTypeDef.h"
 #import "DNPlayerControlView.h"
+#import "DNPlayerControlViewConfig.h"
 ///// 播放结束视图
 //#import "DNAdPlayToEndView.h"
 
@@ -16,13 +17,12 @@
 
 @interface DNPlayer : UIView
 
-@property (nonatomic, assign) PlayerControlViewType controlViewType;
-@property (nonatomic, strong) DNPlayerControlView *controlView;
-//@property (nonatomic, strong) DNAdPlayToEndView *adEndView;
+#pragma mark 播放器控制层设置 --------
+@property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
+@property (nonatomic, readonly, strong) DNPlayerControlView *controlView;
 
 /** 视频URL */
 @property (nonatomic, strong) NSURL *videoURL;
-
 /**
  * 功能：设置是否静音，YES为静音
  */

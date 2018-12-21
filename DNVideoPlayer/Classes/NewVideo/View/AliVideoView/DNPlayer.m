@@ -11,7 +11,7 @@
 @interface DNPlayer () 
 /// 阿里云播放器
 @property (nonatomic, strong) AliyunVodPlayer *aliPlayer;
-
+@property (nonatomic, readwrite, strong) DNPlayerControlView *controlView;
 
 @end
 
@@ -61,7 +61,6 @@
 
     [self setUpControlView];
 
-
     //设置frame
     self.aliPlayer.playerView.frame = self.bounds;
     self.controlView.frame = self.bounds;
@@ -79,12 +78,17 @@
     }
 }
 
+- (void)setControlViewConfig:(DNPlayerControlViewConfig *)controlViewConfig
+{
+    _controlViewConfig = controlViewConfig;
+    //设置控制层配置
+    self.controlView.controlViewConfig = _controlViewConfig;
+}
+
 - (void)setUpControlView
 {
     //重置控制层
     [self.controlView resetControlView];
-    //设置控制层类型
-    self.controlView.controlViewType = self.controlViewType;
     //播放时隐藏控制层
     [self.controlView hideControlView];
 }
@@ -230,7 +234,6 @@
 {
     if (!_controlView) {
         _controlView = [[DNPlayerControlView alloc]init];
-        _controlView.backgroundColor = [UIColor greenColor];
     }
     return _controlView;
 }
