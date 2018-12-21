@@ -272,8 +272,8 @@
 		77A4E52621C383AE00B2C940 /* DNBottomWebViewController */ = {
 			isa = PBXGroup;
 			children = (
-				77A4E52721C383AE00B2C940 /* DNBottomWebViewController.m */,
 				77A4E52821C383AE00B2C940 /* DNBottomWebViewController.h */,
+				77A4E52721C383AE00B2C940 /* DNBottomWebViewController.m */,
 			);
 			path = DNBottomWebViewController;
 			sourceTree = "<group>";

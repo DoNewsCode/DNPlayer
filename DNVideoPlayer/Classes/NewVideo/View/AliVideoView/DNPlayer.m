@@ -49,6 +49,7 @@
     
     if (!self.aliPlayer) {
         self.aliPlayer = [[AliyunVodPlayer alloc] init];
+//        self.aliPlayer.printLog = YES;
     }
     self.aliPlayer.delegate = delegate;
     //设置填充模式

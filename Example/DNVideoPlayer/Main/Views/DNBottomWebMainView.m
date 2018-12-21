@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) DNCustonNavView *navigationView;
 @property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
+@property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -101,6 +102,8 @@
 {
     ///初始化播放器
     self.videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self];
+    // 播放器控制层配置
+    self.videoPlayer.controlViewConfig = self.playerControlViewConfig;
     ///添加播放器容器视图
     [self addSubview:self.videoPlayer.containerView];
     [self.videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,6 +111,8 @@
         make.leading.trailing.offset(0);
         make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
+
+    self.videoPlayer.isAnimateShowContainerView = YES;
 
 
     DNPlayModel *playModel = [[DNPlayModel alloc]init];
@@ -223,5 +228,13 @@
 
 }
 
+- (DNPlayerControlViewConfig *)playerControlViewConfig
+{
+    if (!_playerControlViewConfig) {
+        _playerControlViewConfig = [DNPlayerControlViewConfig new];
+        _playerControlViewConfig.isShowBackBtn = YES;
+    }
+    return _playerControlViewConfig;
+}
 
 @end

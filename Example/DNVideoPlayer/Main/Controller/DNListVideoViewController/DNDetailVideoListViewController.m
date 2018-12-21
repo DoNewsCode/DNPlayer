@@ -24,7 +24,7 @@
 
 - (void)dealloc
 {
-    [self.videoPlayer restPlayer];
+    [self.videoPlayer releaseVideoPlayerView];
     NSLog(@"%@释放了",[self class]);
 }
 
@@ -98,6 +98,12 @@
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
     playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
+//    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
+
+
+//https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4
+
+
 
     [_videoPlayer playVideoWithPlayModel:playModel completeBlock:nil];
 }

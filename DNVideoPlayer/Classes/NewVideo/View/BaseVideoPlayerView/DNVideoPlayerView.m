@@ -87,10 +87,19 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     NSLog(@"DNVideoPlayerView-----%@释放了",[self class]);
 }
 
+- (void)releaseVideoPlayerView
+{
+//    [self.player releasePlayer];
+    [self.player reset];
+    [self removeNotifications];
+    self.playModelObserver = nil;
+    self.controlLayerDelegate = nil;
+
+}
+
 - (void)restPlayer
 {
     [self.player reset];
-    [self removeNotifications];
     self.playModelObserver = nil;
     self.controlLayerDelegate = nil;
 }
@@ -142,8 +151,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     _isAnimateShowContainerView = isAnimateShowContainerView;
     if (_isAnimateShowContainerView) {
         _containerView.alpha = 0.001;
+        @weakify(self)
         [UIView animateWithDuration:DNPlayerContainerShowTimeInterval animations:^{
-            _containerView.alpha = 1;
+            @strongify(self)
+            self->_containerView.alpha = 1;
         }];
     }
 }
