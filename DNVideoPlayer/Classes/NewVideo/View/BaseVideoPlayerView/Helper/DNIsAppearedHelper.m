@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-__kindof UIView *sj_getTarget(UIScrollView *scrollView, NSIndexPath *viewAtIndexPath, NSInteger viewTag) {
+__kindof UIView *dn_getTarget(UIScrollView *scrollView, NSIndexPath *viewAtIndexPath, NSInteger viewTag) {
     UIView *target = nil;
     if ( [scrollView isKindOfClass:[UITableView class]] ) {
         UITableViewCell *cell = [(UITableView *)scrollView cellForRowAtIndexPath:viewAtIndexPath];
@@ -22,11 +22,11 @@ __kindof UIView *sj_getTarget(UIScrollView *scrollView, NSIndexPath *viewAtIndex
     return target;
 }
 
-bool sj_isAppeared1(NSInteger viewTag, NSIndexPath *viewAtIndexPath, UIScrollView *scrollView) {
-    return sj_isAppeared2(sj_getTarget(scrollView, viewAtIndexPath, viewTag), scrollView);
+bool dn_isAppeared1(NSInteger viewTag, NSIndexPath *viewAtIndexPath, UIScrollView *scrollView) {
+    return dn_isAppeared2(dn_getTarget(scrollView, viewAtIndexPath, viewTag), scrollView);
 }
 
-extern bool sj_isAppeared2(UIView *_Nullable childView, UIScrollView *_Nullable scrollView) {
+extern bool dn_isAppeared2(UIView *_Nullable childView, UIScrollView *_Nullable scrollView) {
     if ( !childView ) return false;
     if ( !scrollView ) return false;
     if ( !scrollView.window ) return false;

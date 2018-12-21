@@ -87,7 +87,7 @@
         return;
     }
     @weakify(self)
-    [UIView animateWithDuration:DNPlayerControlBarAutoFadeOutTimeInterval animations:^{
+    [UIView animateWithDuration:DNPlayerControlViewShowOrHiddenTimeInterval animations:^{
         @strongify(self)
         [self.player.controlView hideControlView];
     }completion:^(BOOL finished) {
@@ -102,7 +102,7 @@
         return;
     }
     @weakify(self)
-    [UIView animateWithDuration:DNPlayerControlBarAutoFadeOutTimeInterval animations:^{
+    [UIView animateWithDuration:DNPlayerControlViewShowOrHiddenTimeInterval animations:^{
         @strongify(self)
         [self.player.controlView showControlView];
     } completion:^(BOOL finished) {
@@ -119,7 +119,7 @@
         return;
     }
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideControlView) object:nil];
-    [self performSelector:@selector(hideControlView) withObject:nil afterDelay:DNPlayerAnimationTimeInterval];
+    [self performSelector:@selector(hideControlView) withObject:nil afterDelay:DNPlayerControlViewAutoHiddenTimeInterval];
 }
 
 /// 取消延时隐藏controlView的方法

@@ -136,6 +136,18 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     self.player.controlViewConfig = _controlViewConfig;
 }
 
+/// 是否动画显示播放器
+- (void)setIsAnimateShowContainerView:(BOOL)isAnimateShowContainerView
+{
+    _isAnimateShowContainerView = isAnimateShowContainerView;
+    if (_isAnimateShowContainerView) {
+        _containerView.alpha = 0.001;
+        [UIView animateWithDuration:DNPlayerContainerShowTimeInterval animations:^{
+            _containerView.alpha = 1;
+        }];
+    }
+}
+
 - (id<DNPlayerRotationManagerProtocol>)rotationManager
 {
     if ( _rotationManager ) {
@@ -170,7 +182,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         //        if ( self.touchedScrollView ) return NO;
         //        if ( self.isPlayOnScrollView && !self.isScrollAppeared ) return NO;
         //        if ( self.isLockedScreen ) return NO;
-        //        if ( self.registrar.state == SJVideoPlayerAppState_ResignActive ) return NO;
+        //        if ( self.registrar.state == DNVideoPlayerAppState_ResignActive ) return NO;
         //        if ( self.useFitOnScreenAndDisableRotation ) return NO;
         //        if ( self.vc_isDisappeared ) return NO;
         //        if ( self.isTriggeringForPopGesture ) return NO;
@@ -224,8 +236,8 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 
     // 维护当前播放的indexPath
     UIScrollView *scrollView = _getScrollViewOfPlayModel(playModel);
-    if (scrollView.sj_enabledAutoplay ) {
-        scrollView.sj_currentPlayingIndexPath = [playModel performSelector:@selector(indexPath)];
+    if (scrollView.dn_enabledAutoplay ) {
+        scrollView.dn_currentPlayingIndexPath = [playModel performSelector:@selector(indexPath)];
     }
 
     self.playModelObserver = [[DNPlayModelPropertiesObserver alloc]initWithPlayModel:playModel];
@@ -364,11 +376,11 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             self.player.controlView.isShowAdPlayToEndView = YES;
 
             UIScrollView *scrollView = _getScrollViewOfPlayModel(self.playModel);
-            if (scrollView.sj_enabledAutoplay ) {
+            if (scrollView.dn_enabledAutoplay ) {
 //                if (self.playDidToEndExeBlock) {
 //                    self.playDidToEndExeBlock(self);
 //                }
-                [scrollView sj_needPlayNextAsset];
+                [scrollView dn_needPlayNextAsset];
                 return;
             }
             //广告 -- 展示播放结束广告页面

@@ -12,7 +12,7 @@
 #import <DNVideoPlayer/DNCustomAnimator.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNDetailVideoListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,SJPlayerAutoplayDelegate,DNVideoPlayerViewDelegate,DNCustomTransitionAnimating>
+@interface DNDetailVideoListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,DNPlayerAutoplayDelegate,DNVideoPlayerViewDelegate,DNCustomTransitionAnimating>
 
 @property (nonatomic, strong) UITableView *videoListTableView;
 /// 设置播放模式

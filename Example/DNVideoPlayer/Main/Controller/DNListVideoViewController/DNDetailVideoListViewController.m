@@ -39,16 +39,16 @@
 
     [self configPlayMode];
 
-    self.videoListTableView.frame = CGRectMake(0, TGNavHeight, ScreenWidth, ScreenHeight - TGStatuBarHeight);
+    self.videoListTableView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenHeight - STATUS_BAR_H_Decide);
 
 }
 
 - (void)configPlayMode
 {
-    [self.videoListTableView sj_disenableAutoplay];
+    [self.videoListTableView dn_disenableAutoplay];
 }
 
-- (void)sj_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath
+- (void)dn_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath
 {
     DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
     self.markTempIndexPath = indexPath;
@@ -73,16 +73,10 @@
 
 - (void)playNewVideoWithCell:(DNVideoListTableViewItemCell *)cell indexPath:(NSIndexPath *)indexPath
 {
-    // 创建一个新的播放器
+    // 创建播放器
     _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self];
     // 播放器控制层配置 
     _videoPlayer.controlViewConfig = self.playerControlViewConfig;
-    //        _videoPlayer.generatePreviewImages = YES; // 生成预览缩略图, 大概20张
-    // fade in(淡入)
-    _videoPlayer.containerView.alpha = 0.001;
-    [UIView animateWithDuration:0.6 animations:^{
-        self.videoPlayer.containerView.alpha = 1;
-    }];
 
     ///添加播放器容器视图
     [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
@@ -91,6 +85,14 @@
         make.leading.trailing.offset(0);
         make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
+
+    _videoPlayer.isAnimateShowContainerView = YES;
+    //        _videoPlayer.generatePreviewImages = YES; // 生成预览缩略图, 大概20张
+    // fade in(淡入)
+//    _videoPlayer.containerView.alpha = 0.001;
+//    [UIView animateWithDuration:DNPlayerContainerShowTimeInterval animations:^{
+//        self.videoPlayer.containerView.alpha = 1;
+//    }];
 
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
@@ -111,7 +113,7 @@
     cell.playBtnClickBlock = ^(id  _Nonnull sender) {
         @strongify(self)
         if ( !self ) return;
-        [self sj_playerNeedPlayNewAssetAtIndexPath:indexPath];
+        [self dn_playerNeedPlayNewAssetAtIndexPath:indexPath];
     };
 }
 

@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (DNObserverHelper)
 
 /// 添加观察者, 无需移除 (将会自动移除)
-- (void)sj_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;
+- (void)dn_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;
 
 /// 添加观察者, 无需移除 (将会自动移除)
-- (void)sj_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context;
+- (void)dn_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context;
 
 
 @end

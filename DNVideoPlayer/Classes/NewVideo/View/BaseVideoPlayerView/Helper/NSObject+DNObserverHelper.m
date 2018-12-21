@@ -40,16 +40,17 @@ NS_ASSUME_NONNULL_BEGIN
         [_target removeObserver:_observer forKeyPath:_keyPath];
     }
 }
+
 @end
 
 
 @implementation NSObject (DNObserverHelper)
 
-- (void)sj_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath {
-    [self sj_addObserver:observer forKeyPath:keyPath context:NULL];
+- (void)dn_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath {
+    [self dn_addObserver:observer forKeyPath:keyPath context:NULL];
 }
 
-- (void)sj_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context {
+- (void)dn_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context {
     NSParameterAssert(observer);
     NSParameterAssert(keyPath);
 
@@ -57,8 +58,8 @@ NS_ASSUME_NONNULL_BEGIN
 
     NSString *hashstr = [NSString stringWithFormat:@"%lu-%@", (unsigned long)[observer hash], keyPath];
 
-    if ( [[self sj_observerhashSet] containsObject:hashstr] ) return;
-    else [[self sj_observerhashSet] addObject:hashstr];
+    if ( [[self dn_observerhashSet] containsObject:hashstr] ) return;
+    else [[self dn_observerhashSet] addObject:hashstr];
 
     [self addObserver:observer forKeyPath:keyPath options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:context];
 
@@ -76,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
     objc_setAssociatedObject(observer, helper.key, sub, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSMutableSet<NSString *> *)sj_observerhashSet {
+- (NSMutableSet<NSString *> *)dn_observerhashSet {
     NSMutableSet<NSString *> *set = objc_getAssociatedObject(self, _cmd);
     if ( set ) return set;
     set = [NSMutableSet set];

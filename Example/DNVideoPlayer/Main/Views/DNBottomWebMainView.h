@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#define VideoMaxHeight ABS((ScreenWidth * 9 / 16) + TGStatuBarHeight)
-#define ScrollMaxOffSet (VideoMaxHeight - TGNavHeight)
+#define VideoMaxHeight ABS((ScreenWidth * 9 / 16) + STATUS_BAR_H_Decide)
+#define ScrollMaxOffSet (VideoMaxHeight - NAV_BAR_Y)
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DNBottomWebMainView : UIView
 
-
 + (instancetype)bottomWebMainViewWithFrame:(CGRect)frame;
+
 @end
 
 NS_ASSUME_NONNULL_END

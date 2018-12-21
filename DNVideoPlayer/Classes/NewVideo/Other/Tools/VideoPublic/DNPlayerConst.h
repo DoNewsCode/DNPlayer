@@ -12,10 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DNPlayerConst : NSObject
 
-//FOUNDATION_EXTERN NSString * const DNPlaceholderResource; // 占位图
-
-FOUNDATION_EXTERN CGFloat const DNPlayerAnimationTimeInterval;
-FOUNDATION_EXTERN CGFloat const DNPlayerControlBarAutoFadeOutTimeInterval;
+UIKIT_EXTERN CGFloat const DNPlayerControlViewAutoHiddenTimeInterval;
+UIKIT_EXTERN CGFloat const DNPlayerControlViewShowOrHiddenTimeInterval;
+UIKIT_EXTERN CGFloat const DNPlayerContainerShowTimeInterval;
 
 @end
 

@@ -8,10 +8,13 @@
 
 #import "DNVideoDetailViewController.h"
 #import "DNDetailVideoListViewController.h"
+#import "DNVideoListTableViewItemCell.h"
+
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
-#import "DNVideoListTableViewItemCell.h"
+#import <DNVideoPlayer/UIButton+EdgeConfig.h>
+
 @interface DNVideoDetailViewController ()
 
 @property (nonatomic, strong) UIView *sourceView;
@@ -32,8 +35,8 @@
     [self.view addSubview:self.tempView];
     self.closeBtn.top = 44;
     self.closeBtn.left = 15;
-    self.closeBtn.size = CGSizeMake(45, 45);
-    self.tempView.frame = CGRectMake(0, TGNavHeight, ScreenWidth, ScreenWidth*9 / 16);
+    self.closeBtn.size = CGSizeMake(15, 25);
+    self.tempView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenWidth*9 / 16);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -46,9 +49,11 @@
 {
     if (!_closeBtn) {
         _closeBtn = [UIButton new];
-        _closeBtn.backgroundColor = [UIColor redColor];
+//        _closeBtn.backgroundColor = [UIColor redColor];
         [_closeBtn setImage:[UIImage imageNamed:@"lightGray_backBtn"] forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(closeBtnClickAction) forControlEvents:UIControlEventTouchUpInside];
+        [_closeBtn ca_setEnlargeEdge:10];
+
     }
     return _closeBtn;
 }

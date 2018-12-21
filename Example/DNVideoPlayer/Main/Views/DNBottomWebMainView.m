@@ -104,7 +104,7 @@
     ///添加播放器容器视图
     [self addSubview:self.videoPlayer.containerView];
     [self.videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(STATUSBAR_H);
+        make.top.offset(STATUS_BAR_H_Decide);
         make.leading.trailing.offset(0);
         make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
@@ -202,7 +202,7 @@
 {
     //自定义顶导航
     DNCustonNavView *nav = [[DNCustonNavView alloc] init];
-    [nav setFrame:CGRectMake(0, 0, ScreenWidth, STATUSBAR_H)];
+    [nav setFrame:CGRectMake(0, 0, ScreenWidth, CUSTOM_NAV_BAR_HEIGHT)];
     [self addSubview:nav];
     self.navigationView = nav;
     [self.navigationView setAlpha:0];
@@ -217,5 +217,11 @@
     }
     return _webView;
 }
+
+- (void)dnVodPlayerDisappearScrollViewAction:(DNVideoPlayerView *)playerView
+{
+
+}
+
 
 @end

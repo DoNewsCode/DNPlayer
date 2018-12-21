@@ -12,25 +12,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// List view autoplay.
 /// 列表自动播放功能
-/// v1.3.0 新增
 @interface UIScrollView (DNListVideoPlayerAutoPlay)
 
-@property (nonatomic, readonly) BOOL sj_enabledAutoplay;
+@property (nonatomic, readonly) BOOL dn_enabledAutoplay;
 
 /// enable autoplay
 /// 开启
-- (void)sj_enableAutoplayWithConfig:(DNPlayerAutoPlayManagerConfig *)autoplayConfig;
+- (void)dn_enableAutoplayWithConfig:(DNPlayerAutoPlayManagerConfig *)autoplayConfig;
 
 /// 关闭
-- (void)sj_disenableAutoplay;
+- (void)dn_disenableAutoplay;
 
 @end
 
 
-@interface UIScrollView (SJPlayerCurrentPlayingIndexPath)
-@property (nonatomic, strong, nullable, readonly) NSIndexPath *sj_currentPlayingIndexPath;
-- (void)setSj_currentPlayingIndexPath:(nullable NSIndexPath *)sj_currentPlayingIndexPath;
-- (void)sj_needPlayNextAsset;
+@interface UIScrollView (DNPlayerCurrentPlayingIndexPath)
+@property (nonatomic, strong, nullable, readonly) NSIndexPath *dn_currentPlayingIndexPath;
+
+- (void)setDn_currentPlayingIndexPath:(nullable NSIndexPath *)dn_currentPlayingIndexPath;
+
+- (void)dn_needPlayNextAsset;
 @end
 
 

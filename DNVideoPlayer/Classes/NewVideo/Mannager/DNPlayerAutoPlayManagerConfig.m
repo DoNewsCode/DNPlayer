@@ -10,14 +10,14 @@
 @implementation DNPlayerAutoPlayManagerConfig
 
 + (instancetype)configWithPlayerSuperviewTag:(NSInteger)playerSuperviewTag
-                            autoplayDelegate:(id<SJPlayerAutoplayDelegate>)autoplayDelegate {
+                            autoplayDelegate:(id<DNPlayerAutoplayDelegate>)autoplayDelegate {
     NSParameterAssert(playerSuperviewTag != 0);
     NSParameterAssert(autoplayDelegate != nil);
 
     DNPlayerAutoPlayManagerConfig *config = [DNPlayerAutoPlayManagerConfig new];
     config->_playerSuperviewTag = playerSuperviewTag;
     config->_autoplayDelegate = autoplayDelegate;
-    config->_animationType = SJAutoplayScrollAnimationTypeMiddle;
+    config->_animationType = DNAutoplayScrollAnimationTypeMiddle;
     return config;
 }
 

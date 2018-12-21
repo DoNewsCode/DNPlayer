@@ -46,8 +46,8 @@ static NSString *kState = @"state";
 - (void)_observeScrollView:(UIScrollView *)scrollView {
     if ( !scrollView ) return;
     if ( ![scrollView isKindOfClass:[UIScrollView class]] ) return;
-    [scrollView sj_addObserver:self forKeyPath:kContentOffset context:&kContentOffset];
-    [scrollView.panGestureRecognizer sj_addObserver:self forKeyPath:kState context:&kState];
+    [scrollView dn_addObserver:self forKeyPath:kContentOffset context:&kContentOffset];
+    [scrollView.panGestureRecognizer dn_addObserver:self forKeyPath:kState context:&kState];
 }
 
 - (void)observeValueForKeyPath:(nullable NSString *)keyPath
@@ -110,7 +110,7 @@ static NSString *kState = @"state";
 }
 
 - (BOOL)_isAppearedInTheScrollingView:(UIScrollView *)scrollView {
-    return sj_isAppeared2(_playModel.playerSuperview, scrollView);
+    return dn_isAppeared2(_playModel.playerSuperview, scrollView);
 }
 
 - (void)_scrollViewDidScroll:(UIScrollView *)scrollView {

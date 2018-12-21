@@ -19,6 +19,7 @@
 #import "DNCustomAnimatorBaseViewController.h"
 #import "DNCustomDismissAnimator.h"
 #import "DNCustomPresentAnimator.h"
+#import "UIButton+EdgeConfig.h"
 #import "UIColor+Hex.h"
 #import "UIImage+DNUtils.h"
 #import "UIImage+PlaceImageAdd.h"

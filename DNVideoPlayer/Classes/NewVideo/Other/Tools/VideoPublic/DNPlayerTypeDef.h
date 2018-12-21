@@ -9,15 +9,7 @@
 #ifndef DNPlayerTypeDef_h
 #define DNPlayerTypeDef_h
 
-///// 播放器控制层类型 点播 直播
-//typedef NS_ENUM(int, PlayerControlViewType) {
-//    PlayerControlViewType_Vod = 0,  /// 点播
-//    PlayerControlViewType_Live      /// 直播
-//};
-
-
 typedef void(^PlayerPublicBlock)(id sender);
-
 
 // 适配 iOS 11 重写 adjustsScrollViewInsets
 #define  adjustsScrollViewInsets_NO(scrollView,vc)\
@@ -95,18 +87,35 @@ _Pragma("clang diagnostic pop") \
 #endif
 //========= end ========
 
+
 //随机颜色
 #define MRandomColor  [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0]
 
-#define iPhoneX                         [UIScreen mainScreen].bounds.size.height >= 812
-#define STATUSBAR_H [UIApplication sharedApplication].statusBarFrame.size.height
-#define TGStatuBarHeight  (iPhoneX ? 44.00 : 20.00)
-#define TGNavHeight       (TGStatuBarHeight + 44)
-///状态栏高度
-//#define TGStatuBarH [UIApplication sharedApplication].statusBarFrame.size.height
+//判断机型
+#define iphoneSE    [UIScreen mainScreen].bounds.size.height == 568
+#define iPhoneX     [UIScreen mainScreen].bounds.size.height >= 812
 
+/// 判断后的系统状态栏高度 (默认用这个就可以)
+#define STATUS_BAR_HEIGHT (isHaveStatuBarH ? STATUS_BAR_H_System : STATUS_BAR_H_Decide)
+/// 适配后选择相应机型的状态栏高度
+#define STATUS_BAR_H_Decide (iPhoneX ? 44.00 : 20.00)
+/// 顶部导航栏高度
+#define NAV_BAR_Y (STATUS_BAR_H_Decide + 44)
+
+/// 自定义导航栏高度
+#define CUSTOM_NAV_BAR_HEIGHT 44
+
+
+/// 系统状态栏高度
+#define STATUS_BAR_H_System [UIApplication sharedApplication].statusBarFrame.size.height
+/// 是否有系统状态栏
+#define isHaveStatuBarH STATUS_BAR_H_System != 0
+///状态栏高度
+
+/// 屏幕高度
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+/// 屏幕宽度
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 
 #import "DNVideoPlayerTools.h"
 #import "UIView+JAExtForPageScroll.h"

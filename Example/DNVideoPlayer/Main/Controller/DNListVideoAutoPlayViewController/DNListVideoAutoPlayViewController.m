@@ -22,8 +22,8 @@
 
 - (void)configPlayMode
 {
-    [self.videoListTableView sj_enableAutoplayWithConfig:[DNPlayerAutoPlayManagerConfig configWithPlayerSuperviewTag:101 autoplayDelegate:self]];
-    [self.videoListTableView sj_needPlayNextAsset];
+    [self.videoListTableView dn_enableAutoplayWithConfig:[DNPlayerAutoPlayManagerConfig configWithPlayerSuperviewTag:101 autoplayDelegate:self]];
+    [self.videoListTableView dn_needPlayNextAsset];
 }
 
 

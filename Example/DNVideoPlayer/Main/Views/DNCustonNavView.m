@@ -37,7 +37,7 @@
     
     UIView *contentView = [[UIView alloc] init];
     contentView.backgroundColor = [UIColor clearColor];
-    [contentView setFrame:CGRectMake(0, STATUSBAR_H, ScreenWidth, 44)];
+    [contentView setFrame:CGRectMake(0, STATUS_BAR_H_Decide, ScreenWidth, 44)];
     [self addSubview:contentView];
     self.contentView = contentView;
     

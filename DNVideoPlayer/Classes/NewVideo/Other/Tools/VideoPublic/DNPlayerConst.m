@@ -10,9 +10,11 @@
 
 @implementation DNPlayerConst
 
-//NSString * const DNPlaceholderResource = @"DNPlayerResource";
-
-CGFloat const DNPlayerAnimationTimeInterval  = 3.0f;
-CGFloat const DNPlayerControlBarAutoFadeOutTimeInterval = 0.5f;
+/// 播放器控制层 - 自动隐藏时间(多少秒后隐藏)
+CGFloat const DNPlayerControlViewAutoHiddenTimeInterval  = 3.0f;
+/// 播放器控制层 - 显示/隐藏动画时间
+CGFloat const DNPlayerControlViewShowOrHiddenTimeInterval = 0.5f;
+/// 播放器显示动画时间
+CGFloat const DNPlayerContainerShowTimeInterval = 0.5f;
 
 @end
