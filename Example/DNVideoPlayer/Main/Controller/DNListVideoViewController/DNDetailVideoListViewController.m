@@ -125,9 +125,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    //有问题
     if (![self.markTempIndexPath isEqual:indexPath]) {
-        if (self.videoPlayer.player.isPlaying) {
+        if (self.videoPlayer.player.playerState == AliyunVodPlayerStatePlay ||
+            self.videoPlayer.player.playerState == AliyunVodPlayerStatePause ) {
             [self.videoPlayer restPlayer];
         }
     }
