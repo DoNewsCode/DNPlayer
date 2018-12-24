@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
       'DNVideoPlayer' => ['DNVideoPlayer/Assets/*.png']
   }
 
-  s.public_header_files = 'Pod/Classes/**/**/**/*.h'
+  #s.public_header_files = 'Pod/Classes/**/**/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'Masonry'
   s.dependency 'AliyunPlayer_iOS/AliyunVodPlayerSDK'
