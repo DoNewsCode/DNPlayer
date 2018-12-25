@@ -97,7 +97,7 @@
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
-    playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
+    playModel.videourl = [NSString stringWithFormat:@"https://niuerdata.g.com.cn/data/shareimg_oss/big_media_article_video/YLZX-MP-2/bd6b5602c872793998941755b3c7e8cb.mp4"];
 //    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
 
 
@@ -125,22 +125,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //有问题
-    if (![self.markTempIndexPath isEqual:indexPath]) {
-        if (self.videoPlayer.player.playerState == AliyunVodPlayerStatePlay ||
-            self.videoPlayer.player.playerState == AliyunVodPlayerStatePause ) {
-            [self.videoPlayer restPlayer];
-        }
-    }
 
-    DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
+    [self.videoFrameModels enumerateObjectsUsingBlock:^(DNVideoListItemFrameModel * _Nonnull frameModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        frameModel.isSelected = NO;
+    }];
 
-    desVc.presentStyle = DNCustomPresentStyleFadeIn;
-    desVc.dismissStyle = DNCustomDismissStyleFadeOut;
+    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+    frameModel.isSelected = YES;
 
-    [self.navigationController pushViewController:desVc animated:YES];
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationFade)];
 
-    self.markTempIndexPath = indexPath;
+    //0.cell底部视图动画改变,cell刷新.
+//    DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
+//    //cell.bottomView.frame =
+//
+    //1.视频开始播放
+    [self dn_playerNeedPlayNewAssetAtIndexPath:indexPath];
+
+//    //有问题
+//    if (![self.markTempIndexPath isEqual:indexPath]) {
+//        if (self.videoPlayer.player.playerState == AliyunVodPlayerStatePlay ||
+//            self.videoPlayer.player.playerState == AliyunVodPlayerStatePause ) {
+//            [self.videoPlayer restPlayer];
+//        }
+//    }
+//
+//    DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
+//
+//    desVc.presentStyle = DNCustomPresentStyleFadeIn;
+//    desVc.dismissStyle = DNCustomDismissStyleFadeOut;
+//
+//    [self.navigationController pushViewController:desVc animated:YES];
+//
+//    self.markTempIndexPath = indexPath;
 }
 
 
@@ -151,17 +168,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.videoFrameModels.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (ScreenWidth * 9 / 16)+50;
+    return self.videoFrameModels[indexPath.row].cellItemHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+//    DNVideoListItemFrameModel *selectFrameModel = self.videoFrameModels[[tableView indexPathForSelectedRow].row];
+
+    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+
+
     DNVideoListTableViewItemCell *cell = [DNVideoListTableViewItemCell cellWithTableView:tableView indexPath:indexPath];
+
+    [cell setLayout:frameModel];
+
     return cell;
 }
 
@@ -254,6 +280,19 @@
         _playerControlViewConfig.isShowBackBtn = NO;
     }
     return _playerControlViewConfig;
+}
+
+- (NSArray<DNVideoListItemFrameModel *> *)videoFrameModels
+{
+    if (!_videoFrameModels) {
+        NSMutableArray *marr = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 20; i ++) {
+            DNVideoListItemFrameModel *frameModel = [[DNVideoListItemFrameModel alloc]initWithModel:nil];
+            [marr addObject:frameModel];
+        }
+        _videoFrameModels = marr.copy;
+    }
+    return _videoFrameModels;
 }
 
 

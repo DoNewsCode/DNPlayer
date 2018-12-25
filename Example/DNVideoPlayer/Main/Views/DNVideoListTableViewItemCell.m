@@ -43,23 +43,26 @@
 {
     [self.contentView addSubview:self.videoPlaceHolderView];
     [self.contentView addSubview:self.bottomView];
-    @weakify(self)
-    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.offset(0);
-        make.leading.trailing.offset(0);
-        make.height.mas_equalTo(50);
-    }];
-//    self.videoPlaceHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.videoPlaceHolderView.top = 0;
-    self.videoPlaceHolderView.left = 0;
-    self.videoPlaceHolderView.size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
-//    [self.videoPlaceHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        @strongify(self)
-//        make.top.mas_equalTo(0);
+//    @weakify(self)
+//    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.offset(0);
 //        make.leading.trailing.offset(0);
-//        make.size.mas_equalTo(CGSizeMake(ScreenWidth, ScreenWidth * 9 /16));
+//        make.height.mas_equalTo(50);
 //    }];
+////    self.videoPlaceHolderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    self.videoPlaceHolderView.top = 0;
+//    self.videoPlaceHolderView.left = 0;
+//    self.videoPlaceHolderView.size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
+////    [self.videoPlaceHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
+////        @strongify(self)
+////        make.top.mas_equalTo(0);
+////        make.leading.trailing.offset(0);
+////        make.size.mas_equalTo(CGSizeMake(ScreenWidth, ScreenWidth * 9 /16));
+////    }];
 }
+
+
+
 
 - (void)layoutSubviews
 {
@@ -73,10 +76,10 @@
 
 }
 
-- (UIView *)bottomView
+- (DNVideoCellBottomView *)bottomView
 {
     if (!_bottomView) {
-        _bottomView = [[UIView alloc]init];
+        _bottomView = [DNVideoCellBottomView dnVideoCellBottomView];
         _bottomView.backgroundColor = MRandomColor;
     }
     return _bottomView;
@@ -101,5 +104,10 @@
     return _videoPlaceHolderView;
 }
 
+
+- (void)setLayout:(id<DNVideoFrameModelProtocol>)layoutModel
+{
+    [layoutModel layout:self];
+}
 
 @end

@@ -206,10 +206,16 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 /// 将要旋转
 - (void)rotationManager:(id<DNPlayerRotationManagerProtocol>)manager willRotateView:(BOOL)isFullscreen
 {
+//    if (isFullscreen) {
+//        [self.player fullScreenMode];
+//    }else{
+//        [self.player smallScreenMode];
+//    }
     //将要旋转时隐藏控制层.
     [self hideControlView];
 }
 
+/// 已经旋转
 - (void)rotationManager:(id<DNPlayerRotationManagerProtocol>)manager didRotateView:(BOOL)isFullscreen
 {
     self.fullScreen = isFullscreen;
@@ -529,7 +535,6 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     }
     return _player;
 }
-
 
 - (UIView *)containerView
 {

@@ -39,6 +39,15 @@
     return self;
 }
 
+- (void)fullScreenMode
+{
+    self.aliPlayer.displayMode = AliyunVodPlayerDisplayModeFit;
+}
+
+- (void)smallScreenMode
+{
+    self.aliPlayer.displayMode = AliyunVodPlayerDisplayModeFitWithCropping;
+}
 
 
 - (void)playVideoWithPlayModel:(DNPlayModel *)playModel playerDelegate:(id)delegate completeBlock:(PlayerPublicBlock)completeBlock

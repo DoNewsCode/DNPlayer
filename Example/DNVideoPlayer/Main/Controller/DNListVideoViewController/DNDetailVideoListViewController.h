@@ -10,10 +10,13 @@
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 #import <DNVideoPlayer/DNCustomAnimator.h>
+
+#import "DNVideoListItemFrameModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DNDetailVideoListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,DNPlayerAutoplayDelegate,DNVideoPlayerViewDelegate,DNCustomTransitionAnimating>
 
+@property (nonatomic, strong) NSArray <DNVideoListItemFrameModel *> *videoFrameModels;
 @property (nonatomic, strong) UITableView *videoListTableView;
 /// 设置播放模式
 - (void)configPlayMode;

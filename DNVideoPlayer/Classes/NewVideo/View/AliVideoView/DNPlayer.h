@@ -107,4 +107,7 @@
 /// 播放器状态
 - (AliyunVodPlayerState)playerState;
 
+
+- (void)fullScreenMode;
+- (void)smallScreenMode;
 @end
