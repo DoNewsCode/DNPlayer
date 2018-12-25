@@ -34,8 +34,22 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self creatSubViews];
+
+        //添加点击事件
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tapGesture];
+
     }
     return self;
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)gesture
+{
+    NSLog(@"单击事件");
+    if (self.placeHolderPlayBtnClickBlock) {
+        self.placeHolderPlayBtnClickBlock(gesture);
+    }
+
 }
 
 - (void)creatSubViews

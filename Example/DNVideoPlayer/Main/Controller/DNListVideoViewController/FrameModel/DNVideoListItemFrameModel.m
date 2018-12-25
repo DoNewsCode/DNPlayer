@@ -13,6 +13,7 @@
 @interface DNVideoListItemFrameModel ()
 @property (nonatomic, assign) CGFloat itemCellHeight; // cell预缓存的行高
 @property (nonatomic, assign) CGFloat itemCellSelectHeight;
+@property (nonatomic, strong) DNVideoListTableViewItemCell *cell;
 @end
 
 @implementation DNVideoListItemFrameModel
@@ -31,29 +32,41 @@
 
 - (void)layout:(DNVideoListTableViewItemCell *)view
 {
+    self.cell = view;
     [self setData:view]; //赋值
 
     view.videoPlaceHolderView.top = 0;
     view.videoPlaceHolderView.left = 0;
     view.videoPlaceHolderView.size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
 
+    view.bottomView.top = CGRectGetMaxY(view.videoPlaceHolderView.frame);
+    view.bottomView.width = ScreenWidth;
+    view.bottomView.left = 0;
+//
+    if (self.isSelected) {
+        view.bottomView.height = 100;
+    }else{
+        view.bottomView.height = 50;
+    }
 
-//    @weakify(self)
-    [view.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.offset(0);
-        make.leading.trailing.offset(0);
-        make.height.mas_equalTo(50);
-    }];
+    view.bottomView.frameModel = self;
 }
 
 - (void)setIsSelected:(BOOL)isSelected
 {
     _isSelected = isSelected;
+    self.cell.bottomView.frameModel = self;
+
     if (_isSelected) {
+
         self.cellItemHeight = self.itemCellSelectHeight;
+        self.cell.bottomView.height = 100;
     }else{
+
         self.cellItemHeight = self.itemCellHeight;
+        self.cell.bottomView.height = 50;
     }
+
 }
 
 
@@ -64,7 +77,6 @@
 
 - (CGSize)itemSize
 {
-
     if (self.isSelected) {
         return CGSizeMake(ScreenWidth, self.itemCellSelectHeight);
     }else{

@@ -108,9 +108,9 @@
     if (parent == nil) {
         NSLog(@"%@",self.sourceView);
         //让sourceView复原
-        NSIndexPath *selectedIndexPath = [self.sourceTransitionVc.videoListTableView indexPathForSelectedRow];
+//        NSIndexPath *selectedIndexPath = [self.sourceTransitionVc.videoListTableView indexPathForSelectedRow];
         //播放器视图放回原Cell sourceView暂时定为播放器
-        DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.sourceTransitionVc.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+        DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.sourceTransitionVc.videoListTableView cellForRowAtIndexPath:self.sourceTransitionVc.markTempIndexPath];
         [cell addSubview:self.sourceView];
         self.sourceView.alpha = 0;
         self.sourceView.top = 0;

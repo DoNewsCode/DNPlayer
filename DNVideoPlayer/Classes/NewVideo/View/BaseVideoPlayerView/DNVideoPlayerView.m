@@ -175,7 +175,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         [view removeFromSuperview];
         [self restPlayer];
         if (block) {
-            block(view);
+            block(nil);
         }
     }];
 }

@@ -16,7 +16,7 @@
 /// 记录动画前的frame
 @property (nonatomic, assign) CGRect markTempCellFrame;
 /// 记录当前播放的 Cell indexPath
-@property (nonatomic, strong) NSIndexPath *markTempIndexPath;
+@property (nonatomic, readwrite, strong) NSIndexPath *markTempIndexPath;
 
 @end
 
@@ -50,28 +50,50 @@
 
 - (void)dn_playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath
 {
-    DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
-    self.markTempIndexPath = indexPath;
-    if ( _videoPlayer &&
-        !_videoPlayer.isFullScreen ) {
-        // 有播放器或者小窗播放
-        @weakify(self)
-        [_videoPlayer stopAndFadeOutCompletion:^(UIView *view) {
-            //让旧的播放器淡出
-            @strongify(self)
-            [self playNewVideoWithCell:cell indexPath:indexPath];
-        }];
-    }else{
-         [self playNewVideoWithCell:cell indexPath:indexPath];
-    }
-
-//    _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSBundle.mainBundle URLForResource:@"play" withExtension:@"mp4"] playModel:[SJPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.view.coverImageView.tag atIndexPath:indexPath tableView:self.tableView]];
-//    _player.URLAsset.title = @"Test Title";
-//    _player.URLAsset.alwaysShowTitle = YES;
-
+    [self __playerNeedPlayNewAssetAtIndexPath:indexPath completeBlock:nil];
 }
 
-- (void)playNewVideoWithCell:(DNVideoListTableViewItemCell *)cell indexPath:(NSIndexPath *)indexPath
+
+- (void)__playerNeedPlayNewAssetAtIndexPath:(NSIndexPath *)indexPath completeBlock:(void(^)(id sender))completeBlock
+{
+    @weakify(self)
+    [self animateCurrentItemCellWithIndexPath:indexPath completion:^(BOOL finished) {
+        @strongify(self)
+        DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
+
+        //播放的Cell相同--是否正在播放(根据模型判断.若当前播放的视频模型相同)
+        if ([indexPath isEqual:self.markTempIndexPath])
+        {
+            if (completeBlock) {completeBlock(nil);}
+            return ;
+        }
+
+
+        self.markTempIndexPath = indexPath;
+
+        if ( self->_videoPlayer &&
+            !self->_videoPlayer.isFullScreen ) {
+            // 有播放器或者小窗播放 -- 播放新的视频(先让旧的播放器淡出,然后在播放)
+            [self->_videoPlayer stopAndFadeOutCompletion:^(UIView *view) {
+                //让旧的播放器淡出
+                @strongify(self)
+                [self playNewVideoWithCell:cell indexPath:indexPath completeBlock:completeBlock];
+            }];
+
+        }else{
+            //初次播放
+            [self playNewVideoWithCell:cell indexPath:indexPath completeBlock:completeBlock];
+
+        }
+    }];
+
+
+    //    _player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSBundle.mainBundle URLForResource:@"play" withExtension:@"mp4"] playModel:[SJPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.view.coverImageView.tag atIndexPath:indexPath tableView:self.tableView]];
+    //    _player.URLAsset.title = @"Test Title";
+    //    _player.URLAsset.alwaysShowTitle = YES;
+}
+
+- (void)playNewVideoWithCell:(DNVideoListTableViewItemCell *)cell indexPath:(NSIndexPath *)indexPath completeBlock:(void(^)(id sender))completeBlock
 {
     // 创建播放器
     _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self];
@@ -80,32 +102,24 @@
 
     ///添加播放器容器视图
     [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
-    [_videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(0);
-        make.leading.trailing.offset(0);
-        make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
-    }];
-
-    _videoPlayer.isAnimateShowContainerView = YES;
-    //        _videoPlayer.generatePreviewImages = YES; // 生成预览缩略图, 大概20张
-    // fade in(淡入)
-//    _videoPlayer.containerView.alpha = 0.001;
-//    [UIView animateWithDuration:DNPlayerContainerShowTimeInterval animations:^{
-//        self.videoPlayer.containerView.alpha = 1;
+    _videoPlayer.containerView.top = 0;
+    _videoPlayer.containerView.left= 0;
+    _videoPlayer.containerView.size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
+//    [_videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.offset(0);
+//        make.leading.trailing.offset(0);
+//        make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
 //    }];
 
+    _videoPlayer.isAnimateShowContainerView = YES;
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
     playModel.videourl = [NSString stringWithFormat:@"https://niuerdata.g.com.cn/data/shareimg_oss/big_media_article_video/YLZX-MP-2/bd6b5602c872793998941755b3c7e8cb.mp4"];
 //    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
-
-
 //https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4
+    [_videoPlayer playVideoWithPlayModel:playModel completeBlock:completeBlock];
 
-
-
-    [_videoPlayer playVideoWithPlayModel:playModel completeBlock:nil];
 }
 
 - (void)dnVodPlayerDisappearScrollViewAction:(DNVideoPlayerView *)playerView
@@ -123,41 +137,87 @@
     };
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)animateCurrentItemCellWithIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion
 {
+
+    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+    if (frameModel.isSelected) {
+        if (completion) {completion(nil);}
+         return;
+    }
 
     [self.videoFrameModels enumerateObjectsUsingBlock:^(DNVideoListItemFrameModel * _Nonnull frameModel, NSUInteger idx, BOOL * _Nonnull stop) {
         frameModel.isSelected = NO;
     }];
 
-    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
     frameModel.isSelected = YES;
+//    [self.videoListTableView reloadData];
 
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationFade)];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-    //0.cell底部视图动画改变,cell刷新.
-//    DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
-//    //cell.bottomView.frame =
-//
+//        DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+//        frameModel.isSelected = YES;
+
+        [self.videoListTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationNone)];
+        if (completion) {
+            completion(YES);
+        }
+//    });
+
+}
+
+
+- (void)playVideoOnDetailVcActionWithIndexPath:(NSIndexPath *)indexPath
+{
     //1.视频开始播放
-    [self dn_playerNeedPlayNewAssetAtIndexPath:indexPath];
+    @weakify(self)
+    [self __playerNeedPlayNewAssetAtIndexPath:indexPath completeBlock:^(id sender) {
 
-//    //有问题
-//    if (![self.markTempIndexPath isEqual:indexPath]) {
-//        if (self.videoPlayer.player.playerState == AliyunVodPlayerStatePlay ||
-//            self.videoPlayer.player.playerState == AliyunVodPlayerStatePause ) {
-//            [self.videoPlayer restPlayer];
-//        }
-//    }
-//
-//    DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
-//
-//    desVc.presentStyle = DNCustomPresentStyleFadeIn;
-//    desVc.dismissStyle = DNCustomDismissStyleFadeOut;
-//
-//    [self.navigationController pushViewController:desVc animated:YES];
-//
+        @strongify(self)
+        if (![self.markTempIndexPath isEqual:indexPath]) {
+            //根据frameModel判断(如果模型相同则不重新播放)
+            if (![self.videoFrameModels[self.markTempIndexPath.row] isEqual:self.videoFrameModels[indexPath.row]]) {
+                [self.videoPlayer restPlayer];
+            }
+        }
+
+        DNVideoDetailViewController *desVc = [[DNVideoDetailViewController alloc]init];
+
+        desVc.presentStyle = DNCustomPresentStyleFadeIn;
+        desVc.dismissStyle = DNCustomDismissStyleFadeOut;
+
+        [self.navigationController pushViewController:desVc animated:YES];
+
+//        self.markTempIndexPath = indexPath;
+
+    }];
+
+//    DNVideoListTableViewItemCell *cell = [self.videoListTableView cellForRowAtIndexPath:indexPath];
 //    self.markTempIndexPath = indexPath;
+//
+//    if ( self->_videoPlayer &&
+//        !self->_videoPlayer.isFullScreen ) {
+//        // 有播放器或者小窗播放
+//        @weakify(self)
+//        [self->_videoPlayer stopAndFadeOutCompletion:^(UIView *view) {
+//            //让旧的播放器淡出
+//            @strongify(self)
+//            [self playNewVideoWithCell:cell indexPath:indexPath];
+//        }];
+//
+//    }else{
+//
+//        [self playNewVideoWithCell:cell indexPath:indexPath];
+//
+//    }
+
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectRowAtIndexPath");
 }
 
 
@@ -179,14 +239,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-//    DNVideoListItemFrameModel *selectFrameModel = self.videoFrameModels[[tableView indexPathForSelectedRow].row];
-
     DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
-
 
     DNVideoListTableViewItemCell *cell = [DNVideoListTableViewItemCell cellWithTableView:tableView indexPath:indexPath];
 
     [cell setLayout:frameModel];
+
+    @weakify(self)
+    cell.bottomView.bottomViewTapActionBlock = ^(id  _Nonnull sender) {
+        @strongify(self)
+
+        //跳转详情页
+        [self playVideoOnDetailVcActionWithIndexPath:indexPath];
+
+    };
 
     return cell;
 }
@@ -195,6 +261,10 @@
 {
     if (!_videoListTableView) {
         _videoListTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+
+        _videoListTableView.estimatedRowHeight = 0;
+        _videoListTableView.estimatedSectionHeaderHeight = 0;
+        _videoListTableView.estimatedSectionFooterHeight = 0;
 
         _videoListTableView.backgroundColor = [UIColor blueColor];
         _videoListTableView.delegate = self;
@@ -221,9 +291,9 @@
 
 - (nonnull UIView *)transitionSourceView
 {
-    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
-    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
-//    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
+//    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
+    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:self.markTempIndexPath];
+
 
     CGRect playerFrameInSuperview = [cell convertRect:cell.videoPlaceHolderView.frame toView:[UIApplication sharedApplication].keyWindow];
 
@@ -239,13 +309,7 @@
 
 - (CGRect)transitionDestinationViewFrame
 {
-//    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
-//    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
-//    CGRect frameInSuperview = [self.videoListTableView convertRect:cell.frame toView:[UIApplication sharedApplication].keyWindow];
-
     NSLog(@"frameInSuperview===%f",self.markTempCellFrame.origin.y);
-//    frameInSuperview.origin.x -= cell.contentView.layoutMargins.left;
-//    frameInSuperview.origin.y -= cell.contentView.layoutMargins.top;
     return self.markTempCellFrame;
 }
 
@@ -254,23 +318,15 @@
              animatingSourceView:(nonnull UIView *)sourceView;
 {
 
-    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
+//    NSIndexPath *selectedIndexPath = [self.videoListTableView indexPathForSelectedRow];
     //播放器视图放回原Cell sourceView暂时定为播放器
     //设置cell在tableview上的frame;
     NSLog(@"%@",sourceView.superview);
-//    [self.videoListTableView reloadRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:selectedIndexPath];
+    DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.videoListTableView cellForRowAtIndexPath:self.markTempIndexPath];
 
     [cell addSubview:sourceView];
     sourceView.top = 0;
 
-    
-
-//    if (self.videoPlayer) {
-//        [cell.videoPlaceHolderView bringSubviewToFront:self.videoPlayer];
-//    }
-
-//    [self.videoListTableView insertRowsAtIndexPaths:@[selectedIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (DNPlayerControlViewConfig *)playerControlViewConfig
