@@ -18,7 +18,7 @@
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
-#import <DNVideoPlayer/UIButton+EdgeConfig.h>
+#import "UIButton+EdgeConfig.h"
 
 @interface DNListVideoDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 

@@ -146,15 +146,19 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunVodPlayerSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DNCommonKit/DNCommonKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DNVideoPlayer/DNVideoPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunVodPlayerSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DNCommonKit/DNCommonKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DNVideoPlayer/DNVideoPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

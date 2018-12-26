@@ -2,12 +2,16 @@ use_frameworks!
 
 platform :ios, '8.0'
 
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/DoNewsCode/DNSpecs.git'
+
 
 target 'DNVideoPlayer_Example' do
 #  inhibit_warnings 忽略警告
     pod 'DNVideoPlayer', :path => '../'
     pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
     pod 'Masonry', :inhibit_warnings => true
+    pod 'DNCommonKit', :subspecs => ['DNBaseMacro', 'DNHandyCategory']
 
   target 'DNVideoPlayer_Tests' do
     inherit! :search_paths

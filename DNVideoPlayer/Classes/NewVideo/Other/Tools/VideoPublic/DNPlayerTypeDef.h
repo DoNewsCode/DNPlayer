@@ -118,15 +118,17 @@ _Pragma("clang diagnostic pop") \
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 
 #import "DNVideoPlayerTools.h"
-#import "UIView+JAExtForPageScroll.h"
 #import "DNPlayerConst.h"
-#import "UIViewController+Add.h"
+#import <DNCommonKit/UIView+JAExt.h>
+
 #import "UIView+DNVideoPlayerAdd.h"
 #import "DNPlayModel.h"
 #import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import <Masonry/Masonry.h>
 #import "UIImage+PlaceImageAdd.h"
-#import "UIColor+Hex.h"
+#import <DNCommonKit/UIColor+Hex.h>
+#import <DNCommonKit/NSObject+UIViewController.h>
+#import <DNCommonKit/UINavigationController+FDFullscreenPopGesture.h>
 
 #endif /* DNPlayerTypeDef_h */
 

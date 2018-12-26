@@ -2,13 +2,23 @@ PODS:
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.8)
   - AliyunPlayer_iOS/AliyunVodPlayerSDK (3.4.8):
     - AliyunPlayer_iOS/AliyunPlayerSDK
-  - DNVideoPlayer (0.1.1):
+  - DNCommonKit/DNBaseMacro (6)
+  - DNCommonKit/DNHandyCategory (6):
+    - SDWebImage
+  - DNVideoPlayer (0.1.5):
     - AliyunPlayer_iOS/AliyunVodPlayerSDK
+    - DNCommonKit/DNBaseMacro
+    - DNCommonKit/DNHandyCategory
     - Masonry
   - Masonry (1.1.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
 
 DEPENDENCIES:
   - AliyunPlayer_iOS/AliyunVodPlayerSDK
+  - DNCommonKit/DNBaseMacro
+  - DNCommonKit/DNHandyCategory
   - DNVideoPlayer (from `../`)
   - Masonry
 
@@ -16,6 +26,9 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AliyunPlayer_iOS
     - Masonry
+    - SDWebImage
+  https://github.com/DoNewsCode/DNSpecs.git:
+    - DNCommonKit
 
 EXTERNAL SOURCES:
   DNVideoPlayer:
@@ -23,9 +36,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
-  DNVideoPlayer: cf3324c20f432e5a6abad43355ecc7f7e33b87ff
+  DNCommonKit: 7f7a99150d7752b3e5a00ae081f21245b8ebf1ab
+  DNVideoPlayer: 5e2b1e7869e9882d7d13feee584287166c351b74
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: e83042f8f7ad17a4d3f1249c7696bce69c3b021c
+PODFILE CHECKSUM: 78369c723286768b943c9470a062d2632118b21b
 
 COCOAPODS: 1.5.3

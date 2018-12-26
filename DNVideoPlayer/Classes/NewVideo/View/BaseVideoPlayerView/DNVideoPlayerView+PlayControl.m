@@ -165,7 +165,7 @@
         NSLog(@"退出播放器");
         //清空播放器
         [self releaseVideoPlayerView];
-        UIViewController *rootVC = [UIViewController ca_currentTopViewController];
+        UIViewController *rootVC = [UIViewController zz_currentTopViewController];
         [rootVC.navigationController popViewControllerAnimated:YES];
     }
 }

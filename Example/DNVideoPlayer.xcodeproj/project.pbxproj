@@ -35,6 +35,12 @@
 		7707A80021D374670095379E /* DNListVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A7FF21D374670095379E /* DNListVideoDetailViewController.m */; };
 		7707A80321D376300095379E /* DNListVideoDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80221D376300095379E /* DNListVideoDetailTableViewCell.m */; };
 		7707A80621D3849D0095379E /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80521D3849C0095379E /* UINavigationController+FDFullscreenPopGesture.m */; };
+		7707A81721D38DCC0095379E /* UIView+DNResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80A21D38DCC0095379E /* UIView+DNResponder.m */; };
+		7707A81821D38DCC0095379E /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80C21D38DCC0095379E /* UIColor+Hex.m */; };
+		7707A81921D38DCC0095379E /* UIButton+EdgeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80D21D38DCC0095379E /* UIButton+EdgeConfig.m */; };
+		7707A81A21D38DCC0095379E /* UIView+JAExtForPageScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80E21D38DCC0095379E /* UIView+JAExtForPageScroll.m */; };
+		7707A81B21D38DCC0095379E /* UIImage+DNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A80F21D38DCC0095379E /* UIImage+DNUtils.m */; };
+		7707A81C21D38DCC0095379E /* UIViewController+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707A81521D38DCC0095379E /* UIViewController+Add.m */; };
 		7708F6F121C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */; };
 		7709B2B621D0C8DC0090C277 /* DNVideoCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7709B2B521D0C8DC0090C277 /* DNVideoCellBottomView.m */; };
 		7709B2BE21D0ECB80090C277 /* DNVideoListItemFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7709B2BD21D0ECB80090C277 /* DNVideoListItemFrameModel.m */; };
@@ -108,6 +114,18 @@
 		7707A80221D376300095379E /* DNListVideoDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNListVideoDetailTableViewCell.m; sourceTree = "<group>"; };
 		7707A80421D3849A0095379E /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		7707A80521D3849C0095379E /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		7707A80A21D38DCC0095379E /* UIView+DNResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DNResponder.m"; sourceTree = "<group>"; };
+		7707A80B21D38DCC0095379E /* UIImage+DNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DNUtils.h"; sourceTree = "<group>"; };
+		7707A80C21D38DCC0095379E /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		7707A80D21D38DCC0095379E /* UIButton+EdgeConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EdgeConfig.m"; sourceTree = "<group>"; };
+		7707A80E21D38DCC0095379E /* UIView+JAExtForPageScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JAExtForPageScroll.m"; sourceTree = "<group>"; };
+		7707A80F21D38DCC0095379E /* UIImage+DNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DNUtils.m"; sourceTree = "<group>"; };
+		7707A81021D38DCC0095379E /* UIView+DNResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DNResponder.h"; sourceTree = "<group>"; };
+		7707A81121D38DCC0095379E /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		7707A81221D38DCC0095379E /* UIView+JAExtForPageScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JAExtForPageScroll.h"; sourceTree = "<group>"; };
+		7707A81321D38DCC0095379E /* UIButton+EdgeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EdgeConfig.h"; sourceTree = "<group>"; };
+		7707A81521D38DCC0095379E /* UIViewController+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Add.m"; sourceTree = "<group>"; };
+		7707A81621D38DCC0095379E /* UIViewController+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Add.h"; sourceTree = "<group>"; };
 		7708F6EF21C7B0B700CE28FA /* DNListVideoAutoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNListVideoAutoPlayViewController.h; sourceTree = "<group>"; };
 		7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNListVideoAutoPlayViewController.m; sourceTree = "<group>"; };
 		7709B2B421D0C8DC0090C277 /* DNVideoCellBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNVideoCellBottomView.h; sourceTree = "<group>"; };
@@ -281,6 +299,49 @@
 			path = DNListVideoDetailViewController;
 			sourceTree = "<group>";
 		};
+		7707A80721D38DCC0095379E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7707A80821D38DCC0095379E /* UIKit */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7707A80821D38DCC0095379E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				7707A80921D38DCC0095379E /* View */,
+				7707A81421D38DCC0095379E /* ViewController */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		7707A80921D38DCC0095379E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7707A80A21D38DCC0095379E /* UIView+DNResponder.m */,
+				7707A80B21D38DCC0095379E /* UIImage+DNUtils.h */,
+				7707A80C21D38DCC0095379E /* UIColor+Hex.m */,
+				7707A80D21D38DCC0095379E /* UIButton+EdgeConfig.m */,
+				7707A80E21D38DCC0095379E /* UIView+JAExtForPageScroll.m */,
+				7707A80F21D38DCC0095379E /* UIImage+DNUtils.m */,
+				7707A81021D38DCC0095379E /* UIView+DNResponder.h */,
+				7707A81121D38DCC0095379E /* UIColor+Hex.h */,
+				7707A81221D38DCC0095379E /* UIView+JAExtForPageScroll.h */,
+				7707A81321D38DCC0095379E /* UIButton+EdgeConfig.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7707A81421D38DCC0095379E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7707A81521D38DCC0095379E /* UIViewController+Add.m */,
+				7707A81621D38DCC0095379E /* UIViewController+Add.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7708F6EE21C7B07F00CE28FA /* DNListVideoAutoPlayViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +368,7 @@
 		770E15A821C37BAD0018BAF9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7707A80721D38DCC0095379E /* Category */,
 				770E15A921C37BAD0018BAF9 /* Controller */,
 				770E15B021C37BAD0018BAF9 /* Views */,
 			);
@@ -540,16 +602,20 @@
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunVodPlayerSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/DNCommonKit/DNCommonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DNVideoPlayer/DNVideoPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliThirdparty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunVodPlayerSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNCommonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DNVideoPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -581,9 +647,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7707A81721D38DCC0095379E /* UIView+DNResponder.m in Sources */,
+				7707A81B21D38DCC0095379E /* UIImage+DNUtils.m in Sources */,
+				7707A81C21D38DCC0095379E /* UIViewController+Add.m in Sources */,
+				7707A81821D38DCC0095379E /* UIColor+Hex.m in Sources */,
 				6003F59E195388D20070C39A /* DNAppDelegate.m in Sources */,
 				770E15BB21C37BAD0018BAF9 /* DNCustonNavView.m in Sources */,
 				7708F6F121C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m in Sources */,
+				7707A81A21D38DCC0095379E /* UIView+JAExtForPageScroll.m in Sources */,
 				77A4E52A21C383AE00B2C940 /* DNBottomWebViewController.m in Sources */,
 				770E15BC21C37BAD0018BAF9 /* DNBottomWebMainView.m in Sources */,
 				770E15BA21C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m in Sources */,
@@ -595,6 +666,7 @@
 				7709B2C521D0EEA90090C277 /* DNVideoListItemModel.m in Sources */,
 				7707A80621D3849D0095379E /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				77076C2C21C8EDEE00239B77 /* DNVideoDetailViewController.m in Sources */,
+				7707A81921D38DCC0095379E /* UIButton+EdgeConfig.m in Sources */,
 				7707A80321D376300095379E /* DNListVideoDetailTableViewCell.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				77A4E52921C383AE00B2C940 /* DNDetailVideoListViewController.m in Sources */,
