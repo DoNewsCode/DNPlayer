@@ -70,7 +70,7 @@ typedef void(^BottomViewPublicBlock)(id sender);
 
 /// 点击事件
 @property (nonatomic, copy) BottomViewPublicBlock bottomViewTapActionBlock;
-
+@property (nonatomic, copy) BottomViewPublicBlock headerImageTapActionBlock;
 
 + (instancetype)dnVideoCellBottomView;
 @end

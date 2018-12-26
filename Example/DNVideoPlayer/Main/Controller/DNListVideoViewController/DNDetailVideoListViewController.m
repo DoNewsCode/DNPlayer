@@ -9,6 +9,8 @@
 #import "DNDetailVideoListViewController.h"
 #import "DNVideoListTableViewItemCell.h"
 #import "DNVideoDetailViewController.h"
+#import "DNListVideoDetailViewController.h"
+
 
 @interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;
@@ -167,6 +169,18 @@
 
 }
 
+- (void)playVideoOnListVideoDetailVcWithIndexPath:(NSIndexPath *)indexPath
+{
+
+    DNListVideoDetailViewController *desVc = [[DNListVideoDetailViewController alloc]init];
+
+    desVc.presentStyle = DNCustomPresentStyleFadeIn;
+    desVc.dismissStyle = DNCustomDismissStyleFadeOut;
+
+    [self.navigationController pushViewController:desVc animated:YES];
+
+}
+
 
 - (void)playVideoOnDetailVcActionWithIndexPath:(NSIndexPath *)indexPath
 {
@@ -253,6 +267,14 @@
         [self playVideoOnDetailVcActionWithIndexPath:indexPath];
 
     };
+
+
+    cell.bottomView.headerImageTapActionBlock = ^(id  _Nonnull sender) {
+        @strongify(self)
+        //跳转列表详情页
+        [self playVideoOnListVideoDetailVcWithIndexPath:indexPath];
+    };
+
 
     return cell;
 }

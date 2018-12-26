@@ -11,10 +11,10 @@
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 
 #define Margin 15
-#define SelectedHeight 60+51
+#define SelectedHeight 60+50
 #define ImageIconWH 30
 #define TopView_WH 60
-#define BottomView_WH 51
+#define BottomView_WH 50
 #define AnimateDuration 0.35
 /// 屏幕高度
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -164,6 +164,7 @@
         _headerImageView.backgroundColor = MRandomColor;
         _headerImageView.layer.cornerRadius = 15;
         _headerImageView.clipsToBounds = YES;
+        _headerImageView.userInteractionEnabled = YES;
     }
     return _headerImageView;
 }
@@ -208,21 +209,61 @@
 
 - (void)setUpSubViewsFrame
 {
-//    self.shareButton.size = CGSizeMake(20, 20);
-//    self.shareButton.right = Margin;
-//    self.shareButton.top = Margin;
+    self.shareButton.top = Margin;
+    self.shareButton.size = CGSizeMake(20, 20);
+
+    self.commentButton.top = self.shareButton.top;
+    self.commentButton.size = CGSizeMake(20, 20);
+
+    self.collectButton.top = self.commentButton.top;
+    self.collectButton.size = CGSizeMake(20, 20);
+
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    self.shareButton.right = self.width;
+    self.commentButton.right = self.width - (20 + Margin*2);
+    self.collectButton.right = self.width - (20 + Margin*2) - (20 + Margin*2);
+
 }
 
 - (UIButton *)shareButton
 {
     if (!_shareButton) {
         _shareButton  = [[UIButton alloc] init];
-        _shareButton.backgroundColor = [UIColor redColor];
+//        _shareButton.backgroundColor = [UIColor redColor];
 //        [_shareButton addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_shareButton setImage:[UIImage imageNamed:@"bottomView_share_icon"] forState:UIControlStateNormal];
     }
     return _shareButton;
 }
+
+- (UIButton *)collectButton
+{
+    if (!_collectButton) {
+        _collectButton  = [[UIButton alloc] init];
+//        _collectButton.backgroundColor = [UIColor redColor];
+        //        [_shareButton addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_collectButton setImage:[UIImage imageNamed:@"bottomView_collect_icon"] forState:UIControlStateNormal];
+    }
+    return _collectButton;
+}
+
+- (UIButton *)commentButton
+{
+    if (!_commentButton) {
+        _commentButton  = [[UIButton alloc] init];
+//        _commentButton.backgroundColor = [UIColor redColor];
+        //        [_shareButton addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_commentButton setImage:[UIImage imageNamed:@"bottomView_reply_icon"] forState:UIControlStateNormal];
+    }
+    return _commentButton;
+}
+
+
 
 
 @end
@@ -256,12 +297,23 @@
     [self addSubview:self.centerLineView];
     [self addSubview:self.rightCollectView];
 
-//    [self setUpSubViewsFrame];
+    //添加点击事件
+    //添加点击事件
+    UITapGestureRecognizer *tapHeaderImagGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImageTapAction:)];
+    [self.leftAuthorView.headerImageView addGestureRecognizer:tapHeaderImagGesture];
+}
+
+- (void)headerImageTapAction:(UITapGestureRecognizer *)gesture
+{
+    NSLog(@"headerImageTapActionBlock--单击事件");
+    if (self.headerImageTapActionBlock) {
+        self.headerImageTapActionBlock(gesture);
+    }
 }
 
 - (void)bottomViewTapAction:(UITapGestureRecognizer *)gesture
 {
-    NSLog(@"单击事件");
+    NSLog(@"bottomViewTapActionBlock--单击事件");
     if (self.bottomViewTapActionBlock) {
         self.bottomViewTapActionBlock(gesture);
     }
@@ -277,15 +329,15 @@
 //    CGFloat authorView_Y = SelectedHeight/4 - (ImageIconWH/2);
     self.leftAuthorView.frame = CGRectMake(Margin, 0, 150, TopView_WH);
 
-    CGFloat rightView_W = 2*Margin + 3*TopView_WH;
-    self.rightCollectView.frame = CGRectMake(ScreenWidth-rightView_W-Margin, 0, rightView_W, TopView_WH);
+    CGFloat rightView_W = 2*Margin + 150;
+    self.rightCollectView.frame = CGRectMake(ScreenWidth-rightView_W-Margin, 5, rightView_W, BottomView_WH);
 
     self.leftShareView.frame = CGRectMake(Margin, SelectedHeight, 130, 51);
 
     self.leftTagsView.alpha = 0;
-    self.leftAuthorView.alpha = 1;
     self.leftShareView.alpha = 0;
-
+    self.centerLineView.alpha = 0;
+    self.leftAuthorView.alpha = 1;
 
     CGFloat RightCollectView_SelectCenterY = BottomView_WH/2 + TopView_WH;
 
@@ -297,7 +349,7 @@
             self.leftTagsView.alpha = 1;
             self.leftAuthorView.alpha = 0;
             self.leftShareView.alpha = 1;
-
+            self.centerLineView.alpha = 1;
 
             self.leftTagsView.centerY = TopView_WH/2;
             self.rightCollectView.centerY = RightCollectView_SelectCenterY;
@@ -345,7 +397,7 @@
 {
     if (!_leftShareView) {
         _leftShareView = [DNLeftShareView dnLeftShareView];
-        _leftShareView.backgroundColor = [UIColor whiteColor];
+        _leftShareView.backgroundColor = [UIColor clearColor];
     }
     return _leftShareView;
 }
@@ -354,7 +406,8 @@
 {
     if (!_leftAuthorView) {
         _leftAuthorView = [DNLeftAuthorView dnLeftAuthorView];
-        _leftAuthorView.backgroundColor = [UIColor whiteColor];
+        _leftAuthorView.backgroundColor = [UIColor clearColor];
+
     }
     return _leftAuthorView;
 }
@@ -363,7 +416,7 @@
 {
     if (!_rightCollectView) {
         _rightCollectView = [DNRightCollectView dnRightCollectView];
-        _rightCollectView.backgroundColor = [UIColor orangeColor];
+        _rightCollectView.backgroundColor = [UIColor clearColor];
     }
     return _rightCollectView;
 }

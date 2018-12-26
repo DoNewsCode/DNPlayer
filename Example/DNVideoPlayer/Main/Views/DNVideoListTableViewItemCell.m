@@ -80,7 +80,7 @@
 {
     if (!_bottomView) {
         _bottomView = [DNVideoCellBottomView dnVideoCellBottomView];
-        _bottomView.backgroundColor = MRandomColor;
+        _bottomView.backgroundColor = [UIColor whiteColor];
     }
     return _bottomView;
 }

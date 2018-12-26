@@ -26,7 +26,6 @@
 #import "UIView+DNResponder.h"
 #import "UIView+DNVideoPlayerAdd.h"
 #import "UIView+JAExtForPageScroll.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
 #import "UIViewController+Add.h"
 #import "DNPlayerConst.h"
 #import "DNPlayerTypeDef.h"
