@@ -271,8 +271,8 @@ static DNOrientation _DNOrientationForDeviceOrentation(UIDeviceOrientation orien
                 [self.target layoutIfNeeded];
 
             } else {
-                CGFloat width  = ScreenWidth;//window.bounds.size.width;
-                CGFloat height = ScreenHeight;//window.bounds.size.height;
+                CGFloat width  = window.bounds.size.width;
+                CGFloat height = window.bounds.size.height;
                 CGFloat max = MAX(width, height);
                 CGFloat min = MIN(width, height);
                 self.target.bounds = (CGRect){CGPointZero, (CGSize){max, min}};
