@@ -23,8 +23,8 @@
     if (self = [super initWithModel:model]) {
 
         self.isSelected = NO;
-        self.itemCellHeight = (ScreenWidth * 9 / 16)+50;
-        self.itemCellSelectHeight = (ScreenWidth * 9 / 16)+50+50;
+        self.itemCellHeight = (ScreenWidth * 9 / 16)+60;
+        self.itemCellSelectHeight = (ScreenWidth * 9 / 16)+60+51;
         self.cellItemHeight = self.itemCellHeight;
     }
     return self;
@@ -44,9 +44,9 @@
     view.bottomView.left = 0;
 //
     if (self.isSelected) {
-        view.bottomView.height = 100;
+        view.bottomView.height = 60+51;
     }else{
-        view.bottomView.height = 50;
+        view.bottomView.height = 60;
     }
 
     view.bottomView.frameModel = self;
@@ -60,11 +60,11 @@
     if (_isSelected) {
 
         self.cellItemHeight = self.itemCellSelectHeight;
-        self.cell.bottomView.height = 100;
+        self.cell.bottomView.height = 60+51;
     }else{
 
         self.cellItemHeight = self.itemCellHeight;
-        self.cell.bottomView.height = 50;
+        self.cell.bottomView.height = 60;
     }
 
 }

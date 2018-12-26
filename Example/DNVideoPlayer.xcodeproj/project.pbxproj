@@ -22,6 +22,16 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		77076C2C21C8EDEE00239B77 /* DNVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */; };
 		77076C4621CA2FD400239B77 /* DNNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77076C4521CA2FD300239B77 /* DNNavigationViewController.m */; };
+		7707A7F321D322270095379E /* bottomView_WechatTimeLine_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7E921D322270095379E /* bottomView_WechatTimeLine_icon@2x.png */; };
+		7707A7F421D322270095379E /* bottomView_reply_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7EA21D322270095379E /* bottomView_reply_icon@2x.png */; };
+		7707A7F521D322270095379E /* bottomView_reply_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7EB21D322270095379E /* bottomView_reply_icon@3x.png */; };
+		7707A7F621D322270095379E /* bottomView_WechatTimeLine_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7EC21D322270095379E /* bottomView_WechatTimeLine_icon@3x.png */; };
+		7707A7F721D322270095379E /* bottomView_share_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7ED21D322270095379E /* bottomView_share_icon@2x.png */; };
+		7707A7F821D322270095379E /* bottomView_collect_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7EE21D322270095379E /* bottomView_collect_icon@3x.png */; };
+		7707A7F921D322270095379E /* bottomView_collect_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7EF21D322270095379E /* bottomView_collect_icon@2x.png */; };
+		7707A7FA21D322270095379E /* bottomView_share_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7F021D322270095379E /* bottomView_share_icon@3x.png */; };
+		7707A7FB21D322270095379E /* bottomView_WechatSesstion_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7F121D322270095379E /* bottomView_WechatSesstion_icon@2x.png */; };
+		7707A7FC21D322270095379E /* bottomView_WechatSesstion_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7707A7F221D322270095379E /* bottomView_WechatSesstion_icon@3x.png */; };
 		7708F6F121C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */; };
 		7709B2B621D0C8DC0090C277 /* DNVideoCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7709B2B521D0C8DC0090C277 /* DNVideoCellBottomView.m */; };
 		7709B2BE21D0ECB80090C277 /* DNVideoListItemFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7709B2BD21D0ECB80090C277 /* DNVideoListItemFrameModel.m */; };
@@ -79,6 +89,16 @@
 		77076C2B21C8EDEE00239B77 /* DNVideoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNVideoDetailViewController.m; sourceTree = "<group>"; };
 		77076C4421CA2FD300239B77 /* DNNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNNavigationViewController.h; sourceTree = "<group>"; };
 		77076C4521CA2FD300239B77 /* DNNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNNavigationViewController.m; sourceTree = "<group>"; };
+		7707A7E921D322270095379E /* bottomView_WechatTimeLine_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_WechatTimeLine_icon@2x.png"; sourceTree = "<group>"; };
+		7707A7EA21D322270095379E /* bottomView_reply_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_reply_icon@2x.png"; sourceTree = "<group>"; };
+		7707A7EB21D322270095379E /* bottomView_reply_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_reply_icon@3x.png"; sourceTree = "<group>"; };
+		7707A7EC21D322270095379E /* bottomView_WechatTimeLine_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_WechatTimeLine_icon@3x.png"; sourceTree = "<group>"; };
+		7707A7ED21D322270095379E /* bottomView_share_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_share_icon@2x.png"; sourceTree = "<group>"; };
+		7707A7EE21D322270095379E /* bottomView_collect_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_collect_icon@3x.png"; sourceTree = "<group>"; };
+		7707A7EF21D322270095379E /* bottomView_collect_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_collect_icon@2x.png"; sourceTree = "<group>"; };
+		7707A7F021D322270095379E /* bottomView_share_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_share_icon@3x.png"; sourceTree = "<group>"; };
+		7707A7F121D322270095379E /* bottomView_WechatSesstion_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_WechatSesstion_icon@2x.png"; sourceTree = "<group>"; };
+		7707A7F221D322270095379E /* bottomView_WechatSesstion_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomView_WechatSesstion_icon@3x.png"; sourceTree = "<group>"; };
 		7708F6EF21C7B0B700CE28FA /* DNListVideoAutoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNListVideoAutoPlayViewController.h; sourceTree = "<group>"; };
 		7708F6F021C7B0B700CE28FA /* DNListVideoAutoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNListVideoAutoPlayViewController.m; sourceTree = "<group>"; };
 		7709B2B421D0C8DC0090C277 /* DNVideoCellBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNVideoCellBottomView.h; sourceTree = "<group>"; };
@@ -224,6 +244,23 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		7707A7E821D322270095379E /* BottomViewIcon */ = {
+			isa = PBXGroup;
+			children = (
+				7707A7E921D322270095379E /* bottomView_WechatTimeLine_icon@2x.png */,
+				7707A7EC21D322270095379E /* bottomView_WechatTimeLine_icon@3x.png */,
+				7707A7EA21D322270095379E /* bottomView_reply_icon@2x.png */,
+				7707A7EB21D322270095379E /* bottomView_reply_icon@3x.png */,
+				7707A7ED21D322270095379E /* bottomView_share_icon@2x.png */,
+				7707A7F021D322270095379E /* bottomView_share_icon@3x.png */,
+				7707A7EE21D322270095379E /* bottomView_collect_icon@3x.png */,
+				7707A7EF21D322270095379E /* bottomView_collect_icon@2x.png */,
+				7707A7F121D322270095379E /* bottomView_WechatSesstion_icon@2x.png */,
+				7707A7F221D322270095379E /* bottomView_WechatSesstion_icon@3x.png */,
+			);
+			path = BottomViewIcon;
+			sourceTree = "<group>";
+		};
 		7708F6EE21C7B07F00CE28FA /* DNListVideoAutoPlayViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +310,7 @@
 		770E15B021C37BAD0018BAF9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7707A7E821D322270095379E /* BottomViewIcon */,
 				770E15B521C37BAD0018BAF9 /* DNVideoListTableViewItemCell.h */,
 				770E15B121C37BAD0018BAF9 /* DNVideoListTableViewItemCell.m */,
 				770E15B221C37BAD0018BAF9 /* DNCustonNavView.h */,
@@ -406,9 +444,19 @@
 			files = (
 				770ACDB621CC81C800FCF720 /* lightGray_backBtn@2x.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				7707A7F421D322270095379E /* bottomView_reply_icon@2x.png in Resources */,
+				7707A7FB21D322270095379E /* bottomView_WechatSesstion_icon@2x.png in Resources */,
 				770ACDB521CC81C800FCF720 /* lightGray_backBtn@3x.png in Resources */,
+				7707A7F621D322270095379E /* bottomView_WechatTimeLine_icon@3x.png in Resources */,
+				7707A7F721D322270095379E /* bottomView_share_icon@2x.png in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				7707A7FC21D322270095379E /* bottomView_WechatSesstion_icon@3x.png in Resources */,
+				7707A7F521D322270095379E /* bottomView_reply_icon@3x.png in Resources */,
+				7707A7F921D322270095379E /* bottomView_collect_icon@2x.png in Resources */,
+				7707A7F321D322270095379E /* bottomView_WechatTimeLine_icon@2x.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				7707A7FA21D322270095379E /* bottomView_share_icon@3x.png in Resources */,
+				7707A7F821D322270095379E /* bottomView_collect_icon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

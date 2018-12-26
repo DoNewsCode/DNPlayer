@@ -11,9 +11,10 @@
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 
 #define Margin 15
-#define SelectedHeight 100
+#define SelectedHeight 60+51
 #define ImageIconWH 30
-#define RightBtnWH 50
+#define TopView_WH 60
+#define BottomView_WH 51
 #define AnimateDuration 0.35
 /// 屏幕高度
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -21,6 +22,7 @@
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 
 //四个View
+#pragma mark - 左侧标签视图
 //1.标签视图
 @implementation DNLeftTagLabelsView
 
@@ -40,6 +42,7 @@
 
 @end
 
+#pragma mark - 左侧分享视图
 //2.分享视图
 @implementation DNLeftShareView
 
@@ -53,12 +56,73 @@
     self = [super init];
     if (self) {
 
+        [self addSubview:self.shareLabel];
+        [self addSubview:self.shareToWechatTimeLine];
+        [self addSubview:self.shareToWechatSession];
+
+        [self setSubViewsFrame];
+
     }
     return self;
 }
 
+- (void)setSubViewsFrame
+{
+    self.shareLabel.top = Margin;
+    self.shareLabel.left = 0;
+    self.shareLabel.size = CGSizeMake(47, 21);
+//    self.shareLabel.centerY = self.centerY;
+
+    self.shareToWechatTimeLine.top = Margin;
+    self.shareToWechatTimeLine.left = CGRectGetMaxX(self.shareLabel.frame) + 15;
+    self.shareToWechatTimeLine.size = CGSizeMake(23, 21);
+//    self.shareToWechatTimeLine.centerY = self.shareLabel.centerY;
+
+    self.shareToWechatSession.top = Margin;
+    self.shareToWechatSession.left = CGRectGetMaxX(self.shareToWechatTimeLine.frame) + Margin;
+    self.shareToWechatSession.size = CGSizeMake(23, 21);
+//    self.shareToWechatSession.centerY = self.shareLabel.centerY;
+}
+
+
+- (UILabel *)shareLabel
+{
+    if (!_shareLabel) {
+        _shareLabel = [[UILabel alloc]init];
+        _shareLabel.text = @"分享到";
+//        _shareLabel.backgroundColor = MRandomColor;
+        _shareLabel.textColor = [UIColor blackColor];
+        _shareLabel.font = [UIFont systemFontOfSize:15];
+    }
+    return _shareLabel;
+}
+
+- (UIButton *)shareToWechatSession
+{
+    if (!_shareToWechatSession) {
+        _shareToWechatSession = [[UIButton alloc]init];
+//        _shareToWechatSession.backgroundColor = MRandomColor;
+        _shareToWechatSession.adjustsImageWhenHighlighted = NO;
+        [_shareToWechatSession setImage:[UIImage imageNamed:@"bottomView_WechatSesstion_icon"] forState:UIControlStateNormal];
+    }
+    return _shareToWechatSession;
+}
+
+- (UIButton *)shareToWechatTimeLine
+{
+    if (!_shareToWechatTimeLine) {
+        _shareToWechatTimeLine = [[UIButton alloc]init];
+//        _shareToWechatTimeLine.backgroundColor = MRandomColor;
+        _shareToWechatTimeLine.adjustsImageWhenHighlighted = NO;
+        [_shareToWechatTimeLine setImage:[UIImage imageNamed:@"bottomView_WechatTimeLine_icon"] forState:UIControlStateNormal];
+    }
+    return _shareToWechatTimeLine;
+}
+
+
 @end
 
+#pragma mark - 左侧作者头像名称视图
 //3.作者头像名称视图
 @implementation DNLeftAuthorView
 
@@ -72,12 +136,55 @@
     self = [super init];
     if (self) {
 
+        [self addSubview:self.headerImageView];
+        [self addSubview:self.nameLabel];
+
+        [self setSubViewsFrame];
     }
     return self;
 }
 
+- (void)setSubViewsFrame
+{
+    self.headerImageView.top = Margin;
+    self.headerImageView.left = 0;
+    self.headerImageView.size = CGSizeMake(30, 30);
+
+    self.nameLabel.top = Margin+5;
+    self.nameLabel.left = CGRectGetMaxX(self.headerImageView.frame)+10;
+//    self.nameLabel.centerY = self.headerImageView.centerY;
+    self.nameLabel.size = CGSizeMake(100, 21);
+
+}
+
+- (UIImageView *)headerImageView
+{
+    if (!_headerImageView) {
+        _headerImageView = [[UIImageView alloc]init];
+        _headerImageView.backgroundColor = MRandomColor;
+        _headerImageView.layer.cornerRadius = 15;
+        _headerImageView.clipsToBounds = YES;
+    }
+    return _headerImageView;
+}
+
+- (UILabel *)nameLabel
+{
+    if (!_nameLabel) {
+        _nameLabel = [[UILabel alloc]init];
+        _nameLabel.textColor = [UIColor blackColor];
+        _nameLabel.textAlignment = NSTextAlignmentLeft;
+        _nameLabel.numberOfLines = 1;
+        _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        _nameLabel.font = [UIFont systemFontOfSize:15.0f];
+        _nameLabel.text = @"发布者名称";
+    }
+    return _nameLabel;
+}
+
 @end
 
+#pragma mark - 右侧收藏,评论,分享弹窗视图
 //4.收藏,评论,分享弹窗视图
 @implementation DNRightCollectView
 
@@ -90,14 +197,38 @@
 {
     self = [super init];
     if (self) {
+        [self addSubview:self.shareButton];
+        [self addSubview:self.commentButton];
+        [self addSubview:self.collectButton];
 
+        [self setUpSubViewsFrame];
     }
     return self;
 }
 
+- (void)setUpSubViewsFrame
+{
+//    self.shareButton.size = CGSizeMake(20, 20);
+//    self.shareButton.right = Margin;
+//    self.shareButton.top = Margin;
+}
+
+- (UIButton *)shareButton
+{
+    if (!_shareButton) {
+        _shareButton  = [[UIButton alloc] init];
+        _shareButton.backgroundColor = [UIColor redColor];
+//        [_shareButton addTarget:self action:@selector(shareButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_shareButton setImage:[UIImage imageNamed:@"bottomView_share_icon"] forState:UIControlStateNormal];
+    }
+    return _shareButton;
+}
+
+
 @end
 
 
+#pragma mark - 底部主视图
 @implementation DNVideoCellBottomView
 
 + (instancetype)dnVideoCellBottomView
@@ -140,23 +271,23 @@
 {
     _frameModel = frameModel;
 
-    self.leftTagsView.frame = CGRectMake(Margin, -(RightBtnWH/2), 100, RightBtnWH);
+    self.leftTagsView.frame = CGRectMake(Margin, -(TopView_WH/2), 100, TopView_WH);
 
-    self.centerLineView.frame = CGRectMake(Margin, SelectedHeight/2 - 0.5f, ScreenWidth - 2*Margin, 0.5f);
-    CGFloat authorView_Y = SelectedHeight/4 - (ImageIconWH/2);
-    self.leftAuthorView.frame = CGRectMake(Margin, authorView_Y, ImageIconWH, ImageIconWH);
+    self.centerLineView.frame = CGRectMake(Margin, TopView_WH, ScreenWidth - 2*Margin, 0.5f);
+//    CGFloat authorView_Y = SelectedHeight/4 - (ImageIconWH/2);
+    self.leftAuthorView.frame = CGRectMake(Margin, 0, 150, TopView_WH);
 
-    CGFloat rightView_W = 2*Margin + 3*RightBtnWH;
-    self.rightCollectView.frame = CGRectMake(ScreenWidth-rightView_W-Margin, 0, rightView_W, RightBtnWH);
+    CGFloat rightView_W = 2*Margin + 3*TopView_WH;
+    self.rightCollectView.frame = CGRectMake(ScreenWidth-rightView_W-Margin, 0, rightView_W, TopView_WH);
 
-    self.leftShareView.frame = CGRectMake(Margin, SelectedHeight, 100, RightBtnWH);
+    self.leftShareView.frame = CGRectMake(Margin, SelectedHeight, 130, 51);
 
     self.leftTagsView.alpha = 0;
     self.leftAuthorView.alpha = 1;
     self.leftShareView.alpha = 0;
 
 
-    CGFloat RightCollectView_SelectCenterY = SelectedHeight/2 + SelectedHeight/4;
+    CGFloat RightCollectView_SelectCenterY = BottomView_WH/2 + TopView_WH;
 
     if (_frameModel.isSelected) {
 
@@ -164,11 +295,15 @@
         [UIView animateWithDuration:AnimateDuration animations:^{
             @strongify(self)
             self.leftTagsView.alpha = 1;
-            self.leftTagsView.centerY = SelectedHeight/2 - SelectedHeight/4;
-            self.rightCollectView.centerY = RightCollectView_SelectCenterY;
-            self.leftAuthorView.centerY = RightCollectView_SelectCenterY;
             self.leftAuthorView.alpha = 0;
             self.leftShareView.alpha = 1;
+
+
+            self.leftTagsView.centerY = TopView_WH/2;
+            self.rightCollectView.centerY = RightCollectView_SelectCenterY;
+            self.leftAuthorView.centerY = RightCollectView_SelectCenterY;
+
+
 
 
         }completion:^(BOOL finished) {
@@ -184,7 +319,7 @@
 
     }else{
 
-        self.leftAuthorView.top = authorView_Y;
+        self.leftAuthorView.top = 0;
 
     }
 
@@ -210,7 +345,7 @@
 {
     if (!_leftShareView) {
         _leftShareView = [DNLeftShareView dnLeftShareView];
-        _leftShareView.backgroundColor = [UIColor greenColor];
+        _leftShareView.backgroundColor = [UIColor whiteColor];
     }
     return _leftShareView;
 }
@@ -219,7 +354,7 @@
 {
     if (!_leftAuthorView) {
         _leftAuthorView = [DNLeftAuthorView dnLeftAuthorView];
-        _leftAuthorView.backgroundColor = [UIColor blueColor];
+        _leftAuthorView.backgroundColor = [UIColor whiteColor];
     }
     return _leftAuthorView;
 }
@@ -237,7 +372,7 @@
 {
     if (!_centerLineView) {
         _centerLineView = [[UIView alloc]init];
-        _centerLineView.backgroundColor = [UIColor redColor];
+        _centerLineView.backgroundColor = [UIColor grayColor];
     }
     return _centerLineView;
 }
