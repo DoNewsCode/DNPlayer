@@ -10,36 +10,35 @@
 
 @interface NSDate (ZZString)
 
-/// 将NSData对象按照yyyy_MM_dd_HH_mm_ss字符串显示
-- (NSString *)zz_stringWithyyyy_MM_dd_HH_mm_ss;
-/// 将NSData对象按照yyyy_MM_dd字符串显示
-- (NSString *)zz_stringWithyyyy_MM_dd;
-/// 返回yyyy_MM_dd格式的Date
-- (NSDate *)zz_dateWithyyyy_MM_dd;
+
+/// 将日期按照yyyy_MM_dd_HH_mm_ss字符串显示
+- (NSString *)ca_stringWithyyyy_MM_dd_HH_mm_ss;
+- (NSString *)ca_stringWithyyyy_MM_dd;
+- (NSDate *)ca_dateWithyyyy_MM_dd;
 
 /** 是否为今年 */
-- (BOOL)zz_isThisYear;
+- (BOOL)ca_isThisYear;
 /** 是否为明天 */
-- (BOOL)zz_isTomorrow;
+- (BOOL)ca_isTomorrow;
 /** 是否为后天 */
-- (BOOL)zz_isDayAfterTomorrow;
+- (BOOL)ca_isDayAfterTomorrow;
 /** 是否为3-30天后 */
-- (BOOL)zz_isThreeToThirtyDay;
+- (BOOL)ca_isThreeToThirtyDay;
 /** 是否为今天 */
-- (BOOL)zz_isToday;
+- (BOOL)ca_isToday;
 /** 是否为昨天 */
-- (BOOL)zz_isYesterday;
+- (BOOL)ca_isYesterday;
 /** 是否为前天 */
-- (BOOL)zz_isBeforeYesterday;
+- (BOOL)ca_isBeforeYesterday;
 /** 是否为3-9天内 */
-- (BOOL)zz_isThreeToNineDay;
+- (BOOL)ca_isThreeToNineDay;
 /** 距离现在一个小时以内 */
-- (BOOL)zz_isInAnHour;
+- (BOOL)ca_isInAnHour;
 /** 距今日的时间天数 */
-- (NSInteger)zz_daysBeforToday;
+- (NSInteger)ca_daysBeforToday;
 /** 同一年中距本月的月份差 */
-- (NSInteger)zz_mouthBeforMouth;
+- (NSInteger)ca_mouthBeforMouth;
 /** 获得与当前时间的差距*/
-- (NSDateComponents *)zz_deltaWithNow;
+- (NSDateComponents *)ca_deltaWithNow;
 
 @end

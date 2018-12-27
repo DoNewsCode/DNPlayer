@@ -8,10 +8,9 @@
 #ifndef DNHandyCategory_h
 #define DNHandyCategory_h
 
-#import "UIView+JAExt.h"
 #import "UIView+Shadow.h"
 #import "UIColor+Hex.h"
-#import "UIImage+ZZAdd.h"
+#import "UIImage+Add.h"
 #import "UIImageView+TGCache.h"
 #import "UIButton+TitlePlace.h"
 #import "UIButton+TGActionBlock.h"
@@ -29,7 +28,6 @@
 #import "NSString+ZZHash.h"
 
 #import "NSDate+ZZString.h"
-
 #import "NSObject+ZZIP.h"
 #import "NSObject+ZZAlert.h"
 #import "NSObject+USerDefault.h"

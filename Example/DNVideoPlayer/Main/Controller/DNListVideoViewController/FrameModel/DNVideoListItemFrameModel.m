@@ -9,7 +9,7 @@
 #import "DNVideoListItemFrameModel.h"
 #import "DNVideoListTableViewItemCell.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-
+#import <DNCommonKit/UIView+Layout.h>
 @interface DNVideoListItemFrameModel ()
 @property (nonatomic, assign) CGFloat itemCellHeight; // cell预缓存的行高
 @property (nonatomic, assign) CGFloat itemCellSelectHeight;
@@ -35,18 +35,18 @@
     self.cell = view;
     [self setData:view]; //赋值
 
-    view.videoPlaceHolderView.top = 0;
-    view.videoPlaceHolderView.left = 0;
-    view.videoPlaceHolderView.size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
+    view.videoPlaceHolderView.ct_top = 0;
+    view.videoPlaceHolderView.ct_left = 0;
+    view.videoPlaceHolderView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
 
-    view.bottomView.top = CGRectGetMaxY(view.videoPlaceHolderView.frame);
-    view.bottomView.width = ScreenWidth;
-    view.bottomView.left = 0;
+    view.bottomView.ct_top = CGRectGetMaxY(view.videoPlaceHolderView.frame);
+    view.bottomView.ct_width = ScreenWidth;
+    view.bottomView.ct_left = 0;
 //
     if (self.isSelected) {
-        view.bottomView.height = 60+51;
+        view.bottomView.ct_height = 60+51;
     }else{
-        view.bottomView.height = 60;
+        view.bottomView.ct_height = 60;
     }
 
     view.bottomView.frameModel = self;
@@ -60,11 +60,11 @@
     if (_isSelected) {
 
         self.cellItemHeight = self.itemCellSelectHeight;
-        self.cell.bottomView.height = 60+51;
+        self.cell.bottomView.ct_height = 60+51;
     }else{
 
         self.cellItemHeight = self.itemCellHeight;
-        self.cell.bottomView.height = 60;
+        self.cell.bottomView.ct_height = 60;
     }
 
 }

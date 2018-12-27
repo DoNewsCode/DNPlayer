@@ -7,11 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DNVideoFrameModelProtocol.h"
+#import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNListVideoDetailTableViewCell : UITableViewCell
+typedef void(^ItemCellPlayBtnClickBlock)(id sender);
 
+@interface DNListVideoDetailTableViewCell : UITableViewCell
+<DNVideoFrameModelProtocol>
+
+@property (nonatomic, strong) DNVideoPlaceHolderView *videoPlaceHolderView;
+
+@property (nonatomic, copy) ItemCellPlayBtnClickBlock playBtnClickBlock;
+
+
+
++ (DNListVideoDetailTableViewCell *)cellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
 @end
 
 NS_ASSUME_NONNULL_END

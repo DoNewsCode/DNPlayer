@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+TGCache.h"
-#import "UIImage+ZZAdd.h"
+#import "UIImage+Add.h"
 
 @implementation UIImageView (TGCache)
 
@@ -29,7 +29,7 @@
         
         if (options == SDWebImageAvoidAutoSetImage) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                UIImage *tempImage = [UIImage zz_imageClip:image];//[UIImage zz_imageClip:image]; // 后台线程剪裁图片
+                UIImage *tempImage = [UIImage ca_imageClip:image];//[UIImage zz_imageClip:image]; // 后台线程剪裁图片
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.image = tempImage;
                     [self setNeedsLayout];
@@ -59,7 +59,7 @@
     [self sd_setImageWithURL:url placeholderImage:placeholderImage options:options completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         if (options == SDWebImageAvoidAutoSetImage) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                UIImage *tempImage = [UIImage zz_imageClip:image]; // 后台线程剪裁图片
+                UIImage *tempImage = [UIImage ca_imageClip:image]; // 后台线程剪裁图片
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.image = tempImage;
                     [self setNeedsLayout];

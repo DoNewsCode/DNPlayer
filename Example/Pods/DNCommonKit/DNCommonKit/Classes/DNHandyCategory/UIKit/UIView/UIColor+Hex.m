@@ -1,32 +1,32 @@
 //
 //  UIColor+Hex.m
-//  DoNews
+//  Gravity
 //
-//  Created by 耿森森 on 2017/12/29.
-//  Copyright © 2017年 donews. All rights reserved.
+//  Created by Ming on 2018/9/4.
+//  Copyright © 2018 DoNews. All rights reserved.
 //
 
 #import "UIColor+Hex.h"
+#import "NSString+TGAdd.h"
 
 @implementation UIColor (Hex)
 
 
 // 透明度固定为1，以0x开头的十六进制转换成的颜色
-+ (UIColor*) colorWithHex:(long)hexColor;
-{
-    return [UIColor colorWithHex:hexColor alpha:1.];
++ (UIColor *)ca_colorWithHex:(long)hexColor{
+    return [UIColor ca_colorWithHex:hexColor alpha:1.];
 }
+
 // 0x开头的十六进制转换成的颜色,透明度可调整
-+ (UIColor *)colorWithHex:(long)hexColor alpha:(float)opacity
-{
++ (UIColor *)ca_colorWithHex:(long)hexColor alpha:(float)opacity {
     float red = ((float)((hexColor & 0xFF0000) >> 16))/255.0;
     float green = ((float)((hexColor & 0xFF00) >> 8))/255.0;
     float blue = ((float)(hexColor & 0xFF))/255.0;
     return [UIColor colorWithRed:red green:green blue:blue alpha:opacity];
 }
+
 // 颜色转换三：iOS中十六进制的颜色（以#开头）转换为UIColor
-+ (UIColor *) colorWithHexString: (NSString *)color 
-{
++ (UIColor *)ca_colorWithHexString: (NSString *)color {
     NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
     
     // String should be 6 or 8 characters
@@ -48,13 +48,13 @@
     range.length = 2;
     
     //R、G、B
-    NSString *rString = [cString substringWithRange:range];
+    NSString *rString = [cString dn_substringWithRange:range];
     
     range.location = 2;
-    NSString *gString = [cString substringWithRange:range];
+    NSString *gString = [cString dn_substringWithRange:range];
     
     range.location = 4;
-    NSString *bString = [cString substringWithRange:range];
+    NSString *bString = [cString dn_substringWithRange:range];
     
     // Scan values
     unsigned int r, g, b;

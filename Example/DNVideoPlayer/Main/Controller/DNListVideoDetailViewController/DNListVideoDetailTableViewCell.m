@@ -7,18 +7,73 @@
 //
 
 #import "DNListVideoDetailTableViewCell.h"
+#import <DNVideoPlayer/DNVideoPlayerView.h>
 
 @implementation DNListVideoDetailTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
++ (DNListVideoDetailTableViewCell *)cellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+{
+    NSString *DNListVideoDetailTableViewCellID = [NSString stringWithFormat:@"DNListVideoDetailTableViewCellID-%ld-%ld",indexPath.section,indexPath.row];
+
+    DNListVideoDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DNListVideoDetailTableViewCellID];
+    if ( !cell ) cell = [[DNListVideoDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:DNListVideoDetailTableViewCellID];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
 
-    // Configure the view for the selected state
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        //        self.backgroundColor = MRandomColor;
+        [self creatSubViews];
+    }
+    return self;
+}
+
+
+- (void)creatSubViews
+{
+    [self.contentView addSubview:self.videoPlaceHolderView];
+//    [self.contentView addSubview:self.bottomView];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+
+}
+
+- (DNVideoPlaceHolderView *)videoPlaceHolderView
+{
+    if (!_videoPlaceHolderView) {
+        _videoPlaceHolderView = [[DNVideoPlaceHolderView alloc]init];
+//        _videoPlaceHolderView.backgroundColor = MRandomColor;
+        _videoPlaceHolderView.contentMode = UIViewContentModeScaleAspectFit;
+        _videoPlaceHolderView.userInteractionEnabled = YES;
+        _videoPlaceHolderView.tag = 101;
+        @weakify(self)
+        [_videoPlaceHolderView setPlaceHolderPlayBtnClickBlock:^(id sender) {
+            @strongify(self)
+            if (self.playBtnClickBlock) {
+                self.playBtnClickBlock(sender);
+            }
+        }];
+    }
+    return _videoPlaceHolderView;
+}
+
+
+- (void)setLayout:(id<DNVideoFrameModelProtocol>)layoutModel
+{
+    [layoutModel layout:self];
 }
 
 @end

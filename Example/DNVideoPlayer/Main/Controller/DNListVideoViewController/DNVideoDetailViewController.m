@@ -14,6 +14,7 @@
 #import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
 #import "UIButton+EdgeConfig.h"
+#import <DNCommonKit/UIView+Layout.h>
 
 @interface DNVideoDetailViewController ()
 
@@ -33,9 +34,9 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.closeBtn];
     [self.view addSubview:self.tempView];
-    self.closeBtn.top = 44;
-    self.closeBtn.left = 15;
-    self.closeBtn.size = CGSizeMake(15, 25);
+    self.closeBtn.ct_top = 44;
+    self.closeBtn.ct_left = 15;
+    self.closeBtn.ct_size = CGSizeMake(15, 25);
     self.tempView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenWidth*9 / 16);
 }
 
@@ -113,7 +114,7 @@
         DNVideoListTableViewItemCell *cell = (DNVideoListTableViewItemCell *)[self.sourceTransitionVc.videoListTableView cellForRowAtIndexPath:self.sourceTransitionVc.markTempIndexPath];
         [cell addSubview:self.sourceView];
         self.sourceView.alpha = 0;
-        self.sourceView.top = 0;
+        self.sourceView.ct_top = 0;
 
         [UIView animateWithDuration:0.6 animations:^{
             self.sourceView.alpha = 1;

@@ -7,6 +7,7 @@
 //
 
 #import "DNBottomWebMainView.h"
+#import <DNCommonKit/UIView+Layout.h>
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 //#import "DNVideoPlayerView.h"
 #import "DNCustonNavView.h"
@@ -142,7 +143,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offSet = roundf(scrollView.contentOffset.y);
-    NSLog(@"%f",self.webView.top);
+    NSLog(@"%f",self.webView.ct_top);
     NSLog(@"scrollView.contentOffset.y===%f",offSet);
     CGFloat alpha = offSet / ScrollMaxOffSet;
 // ****************** 暂时这么处理 ****************** //

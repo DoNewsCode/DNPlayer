@@ -2,10 +2,12 @@ PODS:
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.8)
   - AliyunPlayer_iOS/AliyunVodPlayerSDK (3.4.8):
     - AliyunPlayer_iOS/AliyunPlayerSDK
-  - DNCommonKit/DNBaseMacro (6)
-  - DNCommonKit/DNHandyCategory (6):
+  - DNCommonKit/DNBaseMacro (9.1)
+  - DNCommonKit/DNHandyCategory (9.1):
+    - DNCommonKit/DNLayout
     - SDWebImage
-  - DNVideoPlayer (0.1.5):
+  - DNCommonKit/DNLayout (9.1)
+  - DNVideoPlayer (0.1.6):
     - AliyunPlayer_iOS/AliyunVodPlayerSDK
     - DNCommonKit/DNBaseMacro
     - DNCommonKit/DNHandyCategory
@@ -36,8 +38,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
-  DNCommonKit: 7f7a99150d7752b3e5a00ae081f21245b8ebf1ab
-  DNVideoPlayer: 5e2b1e7869e9882d7d13feee584287166c351b74
+  DNCommonKit: 4290347488174294c51a02418786bc7d3fad0345
+  DNVideoPlayer: 1fa9ded3883b173890ec708deab7e4b3003b6bd7
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 

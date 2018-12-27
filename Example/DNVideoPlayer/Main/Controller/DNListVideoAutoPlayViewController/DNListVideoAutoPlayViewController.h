@@ -6,11 +6,21 @@
 //  Copyright © 2018 563620078@qq.com. All rights reserved.
 //
 
-#import "DNDetailVideoListViewController.h"
+#import <UIKit/UIKit.h>
+#import <DNVideoPlayer/DNVideoPlayerView.h>
+#import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
+#import <DNVideoPlayer/DNCustomAnimator.h>
 
+#import "DNVideoListItemFrameModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DNListVideoAutoPlayViewController : DNDetailVideoListViewController
+@interface DNListVideoAutoPlayViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,DNPlayerAutoplayDelegate,DNVideoPlayerViewDelegate,DNCustomTransitionAnimating>
+
+
+@property (nonatomic, strong) NSArray <DNVideoListItemFrameModel *> *videoFrameModels;
+@property (nonatomic, strong) UITableView *videoListTableView;
+/// 记录当前播放的 Cell indexPath
+@property (nonatomic, readonly, strong) NSIndexPath *markTempIndexPath;
 
 @end
 

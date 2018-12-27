@@ -7,12 +7,12 @@
 //
 
 #import "DNListVideoDetailViewController.h"
+#import <DNCommonKit/UIView+Layout.h>
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 
 #import "DNVideoListItemFrameModel.h"
 #import "DNListVideoDetailTableViewCell.h"
-#import "DNVideoListTableViewItemCell.h"
 #import "DNDetailVideoListViewController.h"
 
 #import <DNVideoPlayer/DNVideoPlayerView.h>
@@ -20,9 +20,13 @@
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
 #import "UIButton+EdgeConfig.h"
 
+#import "DNListVideoDetailCellFrameModel.h"
+//#import <DNCommonKit/UINavigationController+FDFullscreenPopGesture.h>
+
+
 @interface DNListVideoDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray <DNVideoListItemFrameModel *> *videoFrameModels;
+@property (nonatomic, strong) NSArray <DNListVideoDetailCellFrameModel *> *videoFrameModels;
 @property (nonatomic, strong) UITableView *videoListTableView;
 /// 记录当前播放的 Cell indexPath
 @property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;
@@ -48,21 +52,21 @@
 
     [self.view addSubview:self.closeBtn];
     [self.view addSubview:self.videoListTableView];
-
-    self.videoListTableView.tableHeaderView = self.tempView;
+    [self.view addSubview:self.tempView];
 
     adjustsScrollViewInsets_NO(self.videoListTableView, self);
 
+    self.videoListTableView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenHeight - STATUS_BAR_H_Decide);
+    self.tempView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenWidth*9 / 16);
+//    self.videoListTableView.tableHeaderView = self.tempView;
+
     [self configPlayMode];
 
-    self.videoListTableView.frame = CGRectMake(0, NAV_BAR_Y, ScreenWidth, ScreenHeight - STATUS_BAR_H_Decide);
+    self.closeBtn.ct_top = 44;
+    self.closeBtn.ct_left = 15;
+    self.closeBtn.ct_size = CGSizeMake(15, 25);
 
 
-    self.closeBtn.top = 44;
-    self.closeBtn.left = 15;
-    self.closeBtn.size = CGSizeMake(15, 25);
-
-    self.tempView.frame = CGRectMake(0, 0, ScreenWidth, ScreenWidth*9 / 16);
 }
 
 
@@ -93,6 +97,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)configPlayMode
+{
+    [self.videoListTableView dn_disenableAutoplay];
+}
+
+#pragma mark - 过场动画
 - (CGRect)transitionDestinationViewFrame
 {
     return self.tempView.frame;
@@ -112,6 +122,7 @@
     self.sourceView = sourceView;
     [self.tempView addSubview:self.sourceView];
     self.sourceView.frame = self.tempView.bounds;
+    self.videoListTableView.tableHeaderView = self.tempView;
     //播放器开始播放视频
     if (![DNPlayer sharedDNPlayer].isPlaying) {
         DNVideoPlaceHolderView *holderView = (DNVideoPlaceHolderView *)sourceView;
@@ -122,10 +133,27 @@
 }
 
 
-
-- (void)configPlayMode
+- (void)didMoveToParentViewController:(UIViewController *)parent
 {
-    [self.videoListTableView dn_disenableAutoplay];
+    NSLog(@"parent = %@",parent);
+    //push进来会调用 parent 不为空
+    //pop回上一页面会调用 parent 为空
+    if (parent == nil) {
+        NSLog(@"%@",self.sourceView);
+        //让sourceView复原
+        //        NSIndexPath *selectedIndexPath = [self.sourceTransitionVc.videoListTableView indexPathForSelectedRow];
+        //播放器视图放回原Cell sourceView暂时定为播放器
+        DNListVideoDetailTableViewCell *cell = (DNListVideoDetailTableViewCell *)[self.sourceTransitionVc.videoListTableView cellForRowAtIndexPath:self.sourceTransitionVc.markTempIndexPath];
+        [cell addSubview:self.sourceView];
+        self.sourceView.alpha = 0;
+        self.sourceView.ct_top = 0;
+
+        [UIView animateWithDuration:0.6 animations:^{
+            self.sourceView.alpha = 1;
+        }];
+
+    }
+
 }
 
 
@@ -179,13 +207,12 @@
 
     ///添加播放器容器视图
 //    [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
-    _videoPlayer.containerView.top = 0;
-    _videoPlayer.containerView.left= 0;
-    _videoPlayer.containerView.size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
+    _videoPlayer.containerView.ct_top = 0;
+    _videoPlayer.containerView.ct_left= 0;
+    _videoPlayer.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
 
 
     _videoPlayer.isAnimateShowContainerView = YES;
-
 
 }
 
@@ -203,25 +230,21 @@
 - (void)animateCurrentItemCellWithIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion
 {
 
-    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
-    if (frameModel.isSelected) {
-        if (completion) {completion(nil);}
-        return;
-    }
+//    DNListVideoDetailCellFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+//    if (frameModel.isSelected) {
+//        if (completion) {completion(nil);}
+//        return;
+//    }
 
-    [self.videoFrameModels enumerateObjectsUsingBlock:^(DNVideoListItemFrameModel * _Nonnull frameModel, NSUInteger idx, BOOL * _Nonnull stop) {
-        frameModel.isSelected = NO;
-    }];
 
-    frameModel.isSelected = YES;
+//    frameModel.isSelected = YES;
 
-    [self.videoListTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationNone)];
+//    [self.videoListTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationNone)];
     if (completion) {
         completion(YES);
     }
 
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -241,15 +264,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.videoFrameModels[indexPath.row].cellItemHeight;
+    return [self.videoFrameModels[indexPath.row] itemSize].height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    DNVideoListItemFrameModel *frameModel= self.videoFrameModels[indexPath.row];
+    DNListVideoDetailCellFrameModel *frameModel= self.videoFrameModels[indexPath.row];
 
-    DNVideoListTableViewItemCell *cell = [DNVideoListTableViewItemCell cellWithTableView:tableView indexPath:indexPath];
+    DNListVideoDetailTableViewCell *cell = [DNListVideoDetailTableViewCell cellWithTableView:tableView indexPath:indexPath];
 
     [cell setLayout:frameModel];
 
@@ -265,7 +288,7 @@
         _videoListTableView.estimatedSectionHeaderHeight = 0;
         _videoListTableView.estimatedSectionFooterHeight = 0;
 
-        _videoListTableView.backgroundColor = [UIColor blueColor];
+        _videoListTableView.backgroundColor = [UIColor blackColor];
         _videoListTableView.delegate = self;
         _videoListTableView.dataSource = self;
 
@@ -278,6 +301,11 @@
 - (BOOL)shouldAutorotate
 {
     return NO;
+}
+
+- (BOOL)fd_prefersNavigationBarHidden
+{
+    return YES;
 }
 
 
@@ -297,12 +325,12 @@
     return _playerControlViewConfig;
 }
 
-- (NSArray<DNVideoListItemFrameModel *> *)videoFrameModels
+- (NSArray<DNListVideoDetailCellFrameModel *> *)videoFrameModels
 {
     if (!_videoFrameModels) {
         NSMutableArray *marr = [[NSMutableArray alloc]init];
         for (int i = 0; i < 20; i ++) {
-            DNVideoListItemFrameModel *frameModel = [[DNVideoListItemFrameModel alloc]initWithModel:nil];
+            DNListVideoDetailCellFrameModel *frameModel = [[DNListVideoDetailCellFrameModel alloc]initWithModel:nil];
             [marr addObject:frameModel];
         }
         _videoFrameModels = marr.copy;

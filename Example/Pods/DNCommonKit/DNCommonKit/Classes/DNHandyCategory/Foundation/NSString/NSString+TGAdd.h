@@ -13,4 +13,6 @@
 /// 评论数超过999 返回字符串 1000->1k 1001->1万 1100->1.1k 1200->1.2k...
 + (instancetype)tg_commentCountStringWithCount:(NSUInteger)count;
 
+- (instancetype)dn_substringWithRange:(NSRange)range;
+
 @end

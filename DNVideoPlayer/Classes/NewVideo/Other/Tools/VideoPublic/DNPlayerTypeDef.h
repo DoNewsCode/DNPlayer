@@ -119,7 +119,7 @@ _Pragma("clang diagnostic pop") \
 
 #import "DNVideoPlayerTools.h"
 #import "DNPlayerConst.h"
-#import <DNCommonKit/UIView+JAExt.h>
+
 
 #import "UIView+DNVideoPlayerAdd.h"
 #import "DNPlayModel.h"

@@ -44,10 +44,11 @@
 #define iPhoneX                         [UIScreen mainScreen].bounds.size.height==812
 
 // 适配iOS 11 & iPhoneX
-#define TGStatuBarHeight  (iPhoneX ? 44.00 : 20.00)
-#define TGNavHeight       (TGStatuBarHeight + 44)
-#define TGTabbarHeight    (iPhoneX ? 83 : 49)
-#define TGPageScrollHeight  44.0
+#define DNStatuBarHeight  (iPhoneX ? 44.00 : 20.00)
+#define DNNavHeight       (DNStatuBarHeight + 44)
+#define DNTabbarHeight    (iPhoneX ? 83 : 49)
+#define DNPageScrollHeight  44.0
+#define DNStatuBarH [UIApplication sharedApplication].statusBarFrame.size.height
 
 //顶导航+状态栏高度
 #define kNAVSTATE_H (self.navigationController.navigationBar.height + [UIApplication sharedApplication].statusBarFrame.size.height)

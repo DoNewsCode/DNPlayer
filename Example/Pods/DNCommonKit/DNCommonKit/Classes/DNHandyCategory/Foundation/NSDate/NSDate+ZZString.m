@@ -1,39 +1,40 @@
 //
-//  NSDate+ZZString.m
-//  ZZHandyCategory
+//  NSDate+String.m
+//  Gravity
 //
-//  Created by donews on 2018/7/20.
-//  Copyright © 2018年 donews. All rights reserved.
+//  Created by Ming on 2018/9/4.
+//  Copyright © 2018 DoNews. All rights reserved.
 //
 
 #import "NSDate+ZZString.h"
 
-@implementation NSDate (ZZString)
+@implementation NSDate (String)
 
-- (NSString *)zz_stringWithyyyy_MM_dd_HH_mm_ss {
+
+- (NSString *)ca_stringWithyyyy_MM_dd_HH_mm_ss {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     return [dateFormatter stringFromDate:self];
 }
 
-- (NSString *)zz_stringWithyyyy_MM_dd {
+- (NSString *)ca_stringWithyyyy_MM_dd {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd";
     return [dateFormatter stringFromDate:self];
 }
 
-- (NSDate *)zz_dateWithyyyy_MM_dd {
+- (NSDate *)ca_dateWithyyyy_MM_dd {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd";
-    NSString *string = [self zz_stringWithyyyy_MM_dd];
+    NSString *string = [self ca_stringWithyyyy_MM_dd];
     return [dateFormatter dateFromString:string];
 }
 
 
-- (BOOL)zz_isThisYear {
+- (BOOL)ca_isThisYear {
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     int unit = NSCalendarUnitYear;
@@ -42,7 +43,7 @@
     return nowCmps.year == selfCmps.year;
 }
 
-- (BOOL)zz_isToday{
+- (BOOL)ca_isToday{
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     int unit = NSCalendarUnitDay | NSCalendarUnitMonth |  NSCalendarUnitYear;
@@ -55,21 +56,21 @@
     (selfCmps.day == nowCmps.day);
 }
 
-- (BOOL)zz_isYesterday {
-    return  ([self zz_daysBeforToday] == 1);
+- (BOOL)ca_isYesterday {
+    return  ([self ca_daysBeforToday] == 1);
 }
 
-- (BOOL)zz_isBeforeYesterday {
-    return  ([self zz_daysBeforToday] == 2);
+- (BOOL)ca_isBeforeYesterday {
+    return  ([self ca_daysBeforToday] == 2);
 }
 
-- (BOOL)zz_isThreeToNineDay {
+- (BOOL)ca_isThreeToNineDay {
     
-    NSUInteger day = [self zz_daysBeforToday];
+    NSUInteger day = [self ca_daysBeforToday];
     return (day <= 9 && day >= 3);
 }
 
-- (BOOL)zz_isInAnHour {
+- (BOOL)ca_isInAnHour {
     
     NSTimeInterval lasttimeInterval = [self timeIntervalSince1970];
     NSTimeInterval NowtimeInterval = [[NSDate date] timeIntervalSince1970];
@@ -82,39 +83,39 @@
     }
 }
 
-- (NSInteger)zz_daysBeforToday {
-   
-    NSDate *nowDate = [[NSDate date] zz_dateWithyyyy_MM_dd];  // 例如 2014-05-01
-    NSDate *selfDate = [self zz_dateWithyyyy_MM_dd]; // 例如 2014-04-30    
+- (NSInteger)ca_daysBeforToday {
+    
+    NSDate *nowDate = [[NSDate date] ca_dateWithyyyy_MM_dd];  // 例如 2014-05-01
+    NSDate *selfDate = [self ca_dateWithyyyy_MM_dd]; // 例如 2014-04-30
     NSCalendar *calendar = [NSCalendar currentCalendar];// 获得差距
     NSDateComponents *cmps = [calendar components:NSCalendarUnitDay fromDate:selfDate toDate:nowDate options:0];
     return cmps.day;
 }
 
 
-- (NSInteger)zz_mouthBeforMouth {
+- (NSInteger)ca_mouthBeforMouth {
     
-    NSDate *nowDate = [[NSDate date] zz_dateWithyyyy_MM_dd];  // 例如 2014-05-01
-    NSDate *selfDate = [self zz_dateWithyyyy_MM_dd]; // 例如 2014-04-30
+    NSDate *nowDate = [[NSDate date] ca_dateWithyyyy_MM_dd];  // 例如 2014-05-01
+    NSDate *selfDate = [self ca_dateWithyyyy_MM_dd]; // 例如 2014-04-30
     NSCalendar *calendar = [NSCalendar currentCalendar];// 获得差距
     NSDateComponents *cmps = [calendar components:NSCalendarUnitMonth fromDate:selfDate toDate:nowDate options:0];
     return cmps.month;
 }
 
-- (BOOL)zz_isTomorrow {
-    return ([self zz_daysBeforToday] == -1);
+- (BOOL)ca_isTomorrow {
+    return ([self ca_daysBeforToday] == -1);
 }
 
-- (BOOL)zz_isDayAfterTomorrow {
-    return ([self zz_daysBeforToday] == -2);
+- (BOOL)ca_isDayAfterTomorrow {
+    return ([self ca_daysBeforToday] == -2);
 }
 
-- (BOOL)zz_isThreeToThirtyDay {
-    NSUInteger day = [self zz_daysBeforToday];
+- (BOOL)ca_isThreeToThirtyDay {
+    NSUInteger day = [self ca_daysBeforToday];
     return (day <= -3 && day >= -30);
 }
 
-- (NSDateComponents *)zz_deltaWithNow {
+- (NSDateComponents *)ca_deltaWithNow {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     int unit = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     return [calendar components:unit fromDate:self toDate:[NSDate date] options:0];

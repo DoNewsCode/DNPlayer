@@ -9,6 +9,7 @@
 #import "DNVideoCellBottomView.h"
 #import "DNVideoListItemFrameModel.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
+#import <DNCommonKit/UIView+Layout.h>
 
 #define Margin 15
 #define SelectedHeight 60+50
@@ -68,19 +69,19 @@
 
 - (void)setSubViewsFrame
 {
-    self.shareLabel.top = Margin;
-    self.shareLabel.left = 0;
-    self.shareLabel.size = CGSizeMake(47, 21);
+    self.shareLabel.ct_top = Margin;
+    self.shareLabel.ct_left = 0;
+    self.shareLabel.ct_size = CGSizeMake(47, 21);
 //    self.shareLabel.centerY = self.centerY;
 
-    self.shareToWechatTimeLine.top = Margin;
-    self.shareToWechatTimeLine.left = CGRectGetMaxX(self.shareLabel.frame) + 15;
-    self.shareToWechatTimeLine.size = CGSizeMake(23, 21);
+    self.shareToWechatTimeLine.ct_top = Margin;
+    self.shareToWechatTimeLine.ct_left = CGRectGetMaxX(self.shareLabel.frame) + 15;
+    self.shareToWechatTimeLine.ct_size = CGSizeMake(23, 21);
 //    self.shareToWechatTimeLine.centerY = self.shareLabel.centerY;
 
-    self.shareToWechatSession.top = Margin;
-    self.shareToWechatSession.left = CGRectGetMaxX(self.shareToWechatTimeLine.frame) + Margin;
-    self.shareToWechatSession.size = CGSizeMake(23, 21);
+    self.shareToWechatSession.ct_top = Margin;
+    self.shareToWechatSession.ct_left = CGRectGetMaxX(self.shareToWechatTimeLine.frame) + Margin;
+    self.shareToWechatSession.ct_size = CGSizeMake(23, 21);
 //    self.shareToWechatSession.centerY = self.shareLabel.centerY;
 }
 
@@ -146,14 +147,14 @@
 
 - (void)setSubViewsFrame
 {
-    self.headerImageView.top = Margin;
-    self.headerImageView.left = 0;
-    self.headerImageView.size = CGSizeMake(30, 30);
+    self.headerImageView.ct_top = Margin;
+    self.headerImageView.ct_left = 0;
+    self.headerImageView.ct_size = CGSizeMake(30, 30);
 
-    self.nameLabel.top = Margin+5;
-    self.nameLabel.left = CGRectGetMaxX(self.headerImageView.frame)+10;
+    self.nameLabel.ct_top = Margin+5;
+    self.nameLabel.ct_left = CGRectGetMaxX(self.headerImageView.frame)+10;
 //    self.nameLabel.centerY = self.headerImageView.centerY;
-    self.nameLabel.size = CGSizeMake(100, 21);
+    self.nameLabel.ct_size = CGSizeMake(100, 21);
 
 }
 
@@ -209,14 +210,14 @@
 
 - (void)setUpSubViewsFrame
 {
-    self.shareButton.top = Margin;
-    self.shareButton.size = CGSizeMake(20, 20);
+    self.shareButton.ct_top = Margin;
+    self.shareButton.ct_size = CGSizeMake(20, 20);
 
-    self.commentButton.top = self.shareButton.top;
-    self.commentButton.size = CGSizeMake(20, 20);
+    self.commentButton.ct_top = self.shareButton.ct_top;
+    self.commentButton.ct_size = CGSizeMake(20, 20);
 
-    self.collectButton.top = self.commentButton.top;
-    self.collectButton.size = CGSizeMake(20, 20);
+    self.collectButton.ct_top = self.commentButton.ct_top;
+    self.collectButton.ct_size = CGSizeMake(20, 20);
 
 }
 
@@ -224,9 +225,9 @@
 {
     [super layoutSubviews];
 
-    self.shareButton.right = self.width;
-    self.commentButton.right = self.width - (20 + Margin*2);
-    self.collectButton.right = self.width - (20 + Margin*2) - (20 + Margin*2);
+//    self.shareButton.ct_right = self.ct_width;
+//    self.commentButton.ct_right = self.ct_width - (20 + Margin*2);
+//    self.collectButton.ct_right = self.ct_width - (20 + Margin*2) - (20 + Margin*2);
 
 }
 
@@ -351,9 +352,9 @@
             self.leftShareView.alpha = 1;
             self.centerLineView.alpha = 1;
 
-            self.leftTagsView.centerY = TopView_WH/2;
-            self.rightCollectView.centerY = RightCollectView_SelectCenterY;
-            self.leftAuthorView.centerY = RightCollectView_SelectCenterY;
+            self.leftTagsView.ct_centerY = TopView_WH/2;
+            self.rightCollectView.ct_centerY = RightCollectView_SelectCenterY;
+            self.leftAuthorView.ct_centerY = RightCollectView_SelectCenterY;
 
 
 
@@ -363,7 +364,7 @@
 
             [UIView animateWithDuration:AnimateDuration animations:^{
                 @strongify(self)
-                self.leftShareView.centerY = self.leftAuthorView.centerY;
+                self.leftShareView.ct_centerY = self.leftAuthorView.ct_centerY;
 
             }];
 
@@ -371,7 +372,7 @@
 
     }else{
 
-        self.leftAuthorView.top = 0;
+        self.leftAuthorView.ct_top = 0;
 
     }
 

@@ -1,24 +1,24 @@
 //
-//  UIImage+ZZAdd.m
-//  TGBus
+//  UIImage+Add.m
+//  Gravity
 //
-//  Created by donews on 2018/7/27.
-//  Copyright © 2018年 Jamie. All rights reserved.
+//  Created by Ming on 2018/9/4.
+//  Copyright © 2018 DoNews. All rights reserved.
 //
 
-#import "UIImage+ZZAdd.h"
+#import "UIImage+Add.h"
 
-@implementation UIImage (ZZAdd)
+@implementation UIImage (Add)
 
-+ (instancetype)zz_imageName:(NSString *)imageName inBundle:(NSString *)bundle {
+
++ (instancetype)ca_imageName:(NSString *)imageName inBundle:(NSString *)bundle {
     NSString *imgBundlePath = [[NSBundle mainBundle] pathForResource:bundle ofType:@"bundle"];
     NSBundle *imgBundle = [NSBundle bundleWithPath:imgBundlePath];
     UIImage *image = [UIImage imageNamed:imageName inBundle:imgBundle compatibleWithTraitCollection:nil];
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
-+ (instancetype)zz_imageClip:(UIImage *)image {
-    
++ (instancetype)ca_imageClip:(UIImage *)image {
     CGSize newSize;
     CGImageRef imageRef =nil;
     
@@ -33,16 +33,16 @@
         
         newSize.height = image.size.height;
         newSize.width = image.size.height * 1;
-
+        
         imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(fabs(image.size.width - newSize.width) / 2, 0, newSize.width, newSize.height));
     }
     
     
-   return [UIImage imageWithCGImage:imageRef];
-
+    return [UIImage imageWithCGImage:imageRef];
+    
 }
 
-+ (instancetype)zz_imageWithColor:(UIColor *)color {
++ (instancetype)ca_imageWithColor:(UIColor *)color {
     
     CGRect rect = CGRectMake(0.0f,0.0f,1.0f,1.0f);UIGraphicsBeginImageContext(rect.size);
     
@@ -53,22 +53,21 @@
     UIGraphicsEndImageContext();
     return theImage;
 }
-    
-    //返回特定尺寸的UImage  ,  image参数为原图片，size为要设定的图片大小
-+ (instancetype)zz_resizeImageToSize:(CGSize)size
-                     sizeOfImage:(UIImage*)image
-    {
-        UIGraphicsBeginImageContext(size);
-        //获取上下文内容
-        CGContextRef ctx= UIGraphicsGetCurrentContext();
-        CGContextTranslateCTM(ctx, 0.0, size.height);
-        CGContextScaleCTM(ctx, 1.0, -1.0);
-        //重绘image
-        CGContextDrawImage(ctx,CGRectMake(0.0f, 0.0f, size.width, size.height), image.CGImage);
-        //根据指定的size大小得到新的image
-        UIImage* scaled= UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return scaled;
-    }
+
+//返回特定尺寸的UImage  ,  image参数为原图片，size为要设定的图片大小
++ (UIImage*)ca_resizeImageToSize:(CGSize)size sizeOfImage:(UIImage*)image {
+    UIGraphicsBeginImageContext(size);
+    //获取上下文内容
+    CGContextRef ctx= UIGraphicsGetCurrentContext();
+    CGContextTranslateCTM(ctx, 0.0, size.height);
+    CGContextScaleCTM(ctx, 1.0, -1.0);
+    //重绘image
+    CGContextDrawImage(ctx,CGRectMake(0.0f, 0.0f, size.width, size.height), image.CGImage);
+    //根据指定的size大小得到新的image
+    UIImage* scaled= UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaled;
+}
+
 
 @end
