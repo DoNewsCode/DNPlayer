@@ -225,9 +225,9 @@
 {
     [super layoutSubviews];
 
-//    self.shareButton.ct_right = self.ct_width;
-//    self.commentButton.ct_right = self.ct_width - (20 + Margin*2);
-//    self.collectButton.ct_right = self.ct_width - (20 + Margin*2) - (20 + Margin*2);
+    self.shareButton.ct_right = self.ct_width;
+    self.commentButton.ct_right = self.ct_width - (20 + Margin*2);
+    self.collectButton.ct_right = self.ct_width - (20 + Margin*2) - (20 + Margin*2);
 
 }
 

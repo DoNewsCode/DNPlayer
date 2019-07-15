@@ -16,6 +16,7 @@ target 'DNVideoPlayer_Example' do
   target 'DNVideoPlayer_Tests' do
     inherit! :search_paths
 
+
     
   end
 end

@@ -121,7 +121,10 @@ static NSString *kState = @"state";
 }
 
 - (void)setIsAppeared:(BOOL)isAppeared {
-    if ( isAppeared == _isAppeared ) return;
+    if ( isAppeared == _isAppeared )
+    {
+        return;
+    }
     _isAppeared = isAppeared;
     if ( isAppeared ) {
         if ( [self.delegate respondsToSelector:@selector(playerWillAppearForObserver:superview:)] ) {

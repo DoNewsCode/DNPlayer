@@ -30,13 +30,15 @@ static NSString *kIdentifier = @"kIdentifier";
     self.titles = @[
                     @"底部加载广告Web类型",
                     @"列表点击播放",
-                    @"列表自动播放"
+                    @"列表自动播放",
+                    @"全屏滚动切换播放"
                     ];
 
     self.viewControllers = @[
                              @"DNBottomWebViewController",
                              @"DNDetailVideoListViewController",
-                             @"DNListVideoAutoPlayViewController"
+                             @"DNListVideoAutoPlayViewController",
+                             @"DNLiveShowScrollViewController"
                              ];
 
 }

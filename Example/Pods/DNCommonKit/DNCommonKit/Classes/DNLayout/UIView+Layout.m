@@ -67,6 +67,7 @@ static void *kUIViewLayoutMethodPropertyRightGap = &kUIViewLayoutMethodPropertyR
     return self.frame.size.width + self.frame.origin.x;
 }
 
+
 - (void)setCt_x:(CGFloat)x {
     self.frame = CGRectMake(x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
@@ -77,6 +78,19 @@ static void *kUIViewLayoutMethodPropertyRightGap = &kUIViewLayoutMethodPropertyR
 
 - (void)setCt_left:(CGFloat)left {
     self.ct_x = left;
+}
+
+- (void)setCt_right:(CGFloat)right
+{
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = frame;
+}
+
+- (void)setCt_bottom:(CGFloat)bottom {
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = frame;
 }
 
 - (void)setCt_top:(CGFloat)top {

@@ -103,11 +103,6 @@
     _videoPlayer.containerView.ct_top = 0;
     _videoPlayer.containerView.ct_left= 0;
     _videoPlayer.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
-//    [_videoPlayer.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.offset(0);
-//        make.leading.trailing.offset(0);
-//        make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
-//    }];
 
     _videoPlayer.isAnimateShowContainerView = YES;
 
@@ -320,6 +315,9 @@
 
 - (CGRect)transitionDestinationViewFrame
 {
+
+//    CGRect playerFrameInSuperview = [self.headerCell convertRect:self.headerCell.videoPlaceHolderView.frame toView:[UIApplication sharedApplication].keyWindow];
+
     NSLog(@"frameInSuperview===%f",self.markTempCellFrame.origin.y);
     return self.markTempCellFrame;
 }

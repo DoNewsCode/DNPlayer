@@ -9,6 +9,12 @@
 #import "DNListVideoDetailTableViewCell.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 
+
+@interface DNListVideoDetailTableViewCell ()
+
+
+@end
+
 @implementation DNListVideoDetailTableViewCell
 
 + (DNListVideoDetailTableViewCell *)cellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
@@ -35,8 +41,9 @@
 
 - (void)creatSubViews
 {
+    [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.videoPlaceHolderView];
-//    [self.contentView addSubview:self.bottomView];
+    [self.contentView addSubview:self.bottomView];
 }
 
 - (void)layoutSubviews
@@ -58,7 +65,7 @@
 //        _videoPlaceHolderView.backgroundColor = MRandomColor;
         _videoPlaceHolderView.contentMode = UIViewContentModeScaleAspectFit;
         _videoPlaceHolderView.userInteractionEnabled = YES;
-        _videoPlaceHolderView.tag = 101;
+        _videoPlaceHolderView.tag = 10001;
         @weakify(self)
         [_videoPlaceHolderView setPlaceHolderPlayBtnClickBlock:^(id sender) {
             @strongify(self)
@@ -68,6 +75,30 @@
         }];
     }
     return _videoPlaceHolderView;
+}
+
+- (UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc]init];
+        _titleLabel.backgroundColor = [UIColor greenColor];
+        _titleLabel.text = @"视频详情列表页ItemCell标题视频详情列表页ItemCell标题视频详情列表页ItemCell标题";
+        _titleLabel.numberOfLines = 2;
+        _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+        _titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    }
+    return _titleLabel;
+}
+
+- (DNDetailVideoCellBottomView *)bottomView
+{
+    if (!_bottomView) {
+        _bottomView = [DNDetailVideoCellBottomView dnDetailVideoCellBottomView];
+        _bottomView.backgroundColor = [UIColor purpleColor];
+    }
+    return _bottomView;
 }
 
 

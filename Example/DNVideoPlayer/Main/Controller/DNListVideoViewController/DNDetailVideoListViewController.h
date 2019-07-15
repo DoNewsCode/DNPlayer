@@ -4,7 +4,7 @@
 //
 //  Created by Madjensen on 2018/12/13.
 //  Copyright © 2018 563620078@qq.com. All rights reserved.
-//
+//  视频列表控制器
 
 #import <UIKit/UIKit.h>
 #import <DNVideoPlayer/DNVideoPlayerView.h>

@@ -11,6 +11,9 @@
 #import "DNListVideoDetailTableViewCell.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 
+#define Title_H 15+45+15
+#define VideoView_H (ScreenWidth * 9 / 16)
+#define BottomView_H 15+30+10+20+15
 @interface DNListVideoDetailCellFrameModel ()
 
 @property (nonatomic, assign) CGFloat itemCellHeight; // cell预缓存的行高
@@ -23,7 +26,8 @@
 - (instancetype)initWithModel:(DNVideoListItemModel *)model {
     if (self = [super initWithModel:model]) {
 
-        self.itemCellHeight = (45+15) + (ScreenWidth * 9 / 16) + (107 - 30);
+        self.itemCellHeight = Title_H + 15 + VideoView_H + BottomView_H;
+
     }
     return self;
 }
@@ -33,15 +37,19 @@
     self.cell = view;
 //    [self setData:view]; //赋值
 
-    view.videoPlaceHolderView.ct_top = 0;
-    view.videoPlaceHolderView.ct_left = 0;
-    view.videoPlaceHolderView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth * 9 /16);
+    view.titleLabel.ct_top = 0;
+    view.titleLabel.ct_left = 0;
+    view.titleLabel.ct_size = CGSizeMake(ScreenWidth, Title_H);
 
-//    view.bottomView.top = CGRectGetMaxY(view.videoPlaceHolderView.frame);
-//    view.bottomView.width = ScreenWidth;
-//    view.bottomView.left = 0;
-//
-//    view.bottomView.frameModel = self;
+    view.videoPlaceHolderView.ct_top = CGRectGetMaxY(view.titleLabel.frame)+15;
+    view.videoPlaceHolderView.ct_left = 0;
+    view.videoPlaceHolderView.ct_size = CGSizeMake(ScreenWidth, VideoView_H);
+
+    view.bottomView.ct_top = CGRectGetMaxY(view.videoPlaceHolderView.frame);
+    view.bottomView.ct_left = 0;
+    view.bottomView.ct_size = CGSizeMake(ScreenWidth, BottomView_H);
+
+
 }
 
 - (CGSize)itemSize
