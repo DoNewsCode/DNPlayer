@@ -631,7 +631,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-frameworks.sh",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunVodPlayerSDK.framework",
@@ -652,7 +652,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AB6CD099C71649D31D0A0183 /* [CP] Copy Pods Resources */ = {
@@ -661,7 +661,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-resources.sh",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -670,7 +670,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
