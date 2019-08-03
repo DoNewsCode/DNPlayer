@@ -9,7 +9,7 @@
 #import "DNVideoListItemFrameModel.h"
 #import "DNVideoListTableViewItemCell.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-#import <DNCommonKit/UIView+Layout.h>
+#import <DNCommonKit/UIView+CTLayout.h>
 @interface DNVideoListItemFrameModel ()
 @property (nonatomic, assign) CGFloat itemCellHeight; // cell预缓存的行高
 @property (nonatomic, assign) CGFloat itemCellSelectHeight;

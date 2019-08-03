@@ -7,7 +7,7 @@
 //
 
 #import "DNBottomWebMainView.h"
-#import <DNCommonKit/UIView+Layout.h>
+#import "UIView+CTLayout.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 //#import "DNVideoPlayerView.h"
 #import "DNCustonNavView.h"

@@ -10,7 +10,7 @@
 #import "DNVideoListTableViewItemCell.h"
 #import "DNVideoDetailViewController.h"
 #import "DNListVideoDetailViewController.h"
-#import <DNCommonKit/UIView+Layout.h>
+#import <DNCommonKit/UIView+CTLayout.h>
 
 @interface DNListVideoAutoPlayViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;

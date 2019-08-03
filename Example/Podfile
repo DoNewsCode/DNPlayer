@@ -11,7 +11,7 @@ target 'DNVideoPlayer_Example' do
     pod 'DNVideoPlayer', :path => '../'
     pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
     pod 'Masonry', :inhibit_warnings => true
-    pod 'DNCommonKit', :subspecs => ['DNBaseMacro', 'DNHandyCategory']
+    pod 'DNCommonKit'
 
   target 'DNVideoPlayer_Tests' do
     inherit! :search_paths

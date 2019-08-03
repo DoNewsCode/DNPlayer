@@ -126,8 +126,8 @@ _Pragma("clang diagnostic pop") \
 #import <AliyunVodPlayerSDK/AliyunVodPlayerSDK.h>
 #import <Masonry/Masonry.h>
 #import "UIImage+PlaceImageAdd.h"
-#import <DNCommonKit/UIColor+Hex.h>
-#import <DNCommonKit/NSObject+UIViewController.h>
+#import <DNCommonKit/UIColor+CTHex.h>
+#import <DNCommonKit/NSObject+CTUIViewController.h>
 #import <DNCommonKit/UINavigationController+FDFullscreenPopGesture.h>
 
 #endif /* DNPlayerTypeDef_h */

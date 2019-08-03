@@ -7,7 +7,7 @@
 //  视频详情列表控制器
 
 #import "DNListVideoDetailViewController.h"
-#import <DNCommonKit/UIView+Layout.h>
+#import <DNCommonKit/UIView+CTLayout.h>
 #import <DNVideoPlayer/DNVideoPlayerView.h>
 #import <DNVideoPlayer/UIScrollView+DNListVideoPlayerAutoPlay.h>
 

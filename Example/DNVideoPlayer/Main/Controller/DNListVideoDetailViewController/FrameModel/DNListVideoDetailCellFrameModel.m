@@ -7,10 +7,10 @@
 //
 
 #import "DNListVideoDetailCellFrameModel.h"
-#import <DNCommonKit/UIView+Layout.h>
+//#import <DNCommonKit/UIView+CTLayout.h>
 #import "DNListVideoDetailTableViewCell.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-
+#import "UIView+CTLayout.h"
 #define Title_H 15+45+15
 #define VideoView_H (ScreenWidth * 9 / 16)
 #define BottomView_H 15+30+10+20+15

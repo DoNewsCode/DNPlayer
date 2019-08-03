@@ -41,7 +41,15 @@
 #define iphone6                         [UIScreen mainScreen].bounds.size.height==667
 #define iphone6p                        [UIScreen mainScreen].bounds.size.height==736
 #define iphonePlush                     [UIScreen mainScreen].bounds.size.width==414
-#define iPhoneX                         [UIScreen mainScreen].bounds.size.height==812
+//#define iPhoneX                         [UIScreen mainScreen].bounds.size.height==812
+// 判断是否为iPhone X 系列  这样写消除了在Xcode10上的警告
+#define iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
 
 // 适配iOS 11 & iPhoneX
 #define DNStatuBarHeight  (iPhoneX ? 44.00 : 20.00)
@@ -53,25 +61,43 @@
 //顶导航+状态栏高度
 #define kNAVSTATE_H (self.navigationController.navigationBar.height + [UIApplication sharedApplication].statusBarFrame.size.height)
 
+
 // 适配 iOS 11 重写 adjustsScrollViewInsets
-#define adjustsScrollViewInsets(scrollView)\
-do {\
-_Pragma("clang diagnostic push")\
-_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")\
-if ([scrollView respondsToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
-NSMethodSignature *signature = [UIScrollView instanceMethodSignatureForSelector:@selector(setContentInsetAdjustmentBehavior:)];\
-NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];\
-NSInteger argument = 2;\
-invocation.target = scrollView;\
-invocation.selector = @selector(setContentInsetAdjustmentBehavior:);\
-[invocation setArgument:&argument atIndex:2];\
-[invocation retainArguments];\
-[invocation invoke];\
+#define  adjustsScrollViewInsets_NO(scrollView,vc)\
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+if ([UIScrollView instancesRespondToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
+[scrollView   performSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:") withObject:@(2)];\
+} else {\
+vc.automaticallyAdjustsScrollViewInsets = NO;\
 }\
-_Pragma("clang diagnostic pop")\
+_Pragma("clang diagnostic pop") \
 } while (0)
 
 
+///-----------------------
+///  常用宏定义、预编译指令
+///-----------------------
+
+/// 判断一个对象是否为nil或null 返回YES说明对象为nil
+#define DNIsNil(_ref)  (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]))
+/// 判断字符串是否为空 返回YES说明为空
+#define DNIsEmptyStr(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length]< 1 ? YES : NO )
+/// 判断数组是否为空 返回YES说明为空
+#define DNIsEmptyArray(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+/// 判断字典是否为空 返回YES说明为空
+#define DNIsEmptyDict(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+
+
+/// NSLog 的宏定义
+#ifdef DEBUG
+# define DNLog(fmt, ...) NSLog((@"\n#####%s-》%s [line %d]\n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#else
+# define DLog(...);
+# define DNLogError(...);
+#endif
 
 /**
  Synthsize a weak or strong reference.
@@ -132,3 +158,5 @@ _Pragma("clang diagnostic pop")\
 
 
 #endif /* DNBaseMacro_h */
+
+

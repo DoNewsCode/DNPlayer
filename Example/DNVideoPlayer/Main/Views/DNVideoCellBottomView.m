@@ -9,7 +9,7 @@
 #import "DNVideoCellBottomView.h"
 #import "DNVideoListItemFrameModel.h"
 #import <DNVideoPlayer/DNVideoPlayerView.h>
-#import <DNCommonKit/UIView+Layout.h>
+#import "UIView+CTLayout.h"
 
 #define Margin 15
 #define SelectedHeight 60+50

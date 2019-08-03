@@ -7,7 +7,7 @@
 //
 
 #import "DNDetailVideoCellBottomView.h"
-#import <DNCommonKit/UIView+Layout.h>
+#import <DNCommonKit/UIView+CTLayout.h>
 
 #define marginNormal 15
 

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DNVideoPlayer'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'A short description of DNVideoPlayer.'
 
 # This description is used to generate tags and improve search results.
@@ -40,7 +40,6 @@ TODO: Add long description of the pod here.
   s.frameworks = 'UIKit'
   s.dependency 'Masonry'
   s.dependency 'AliyunPlayer_iOS/AliyunVodPlayerSDK'
-  s.dependency 'DNCommonKit/DNBaseMacro'
-  s.dependency 'DNCommonKit/DNHandyCategory'
+  s.dependency 'DNCommonKit'
   
 end

@@ -14,7 +14,7 @@
 #import <DNVideoPlayer/DNVideoPlaceHolderView.h>
 #import <DNVideoPlayer/DNCustomDismissAnimator.h>
 #import "UIButton+EdgeConfig.h"
-#import <DNCommonKit/UIView+Layout.h>
+#import "UIView+CTLayout.h"
 
 @interface DNVideoDetailViewController ()
 
