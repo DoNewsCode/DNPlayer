@@ -17,7 +17,7 @@ PODS:
   - DNCommonKit/DNLayout (9.9.1)
   - DNCommonKit/DNTools (9.9.1):
     - YYText
-  - DNVideoPlayer (0.1.8):
+  - DNVideoPlayer (0.1.9):
     - AliyunPlayer_iOS/AliyunVodPlayerSDK
     - DNCommonKit
     - Masonry
@@ -34,7 +34,7 @@ DEPENDENCIES:
   - Masonry
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AliyunPlayer_iOS
     - Masonry
     - SDWebImage
@@ -49,11 +49,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
   DNCommonKit: 2d6a33ccee9585e0b9b2b0b061fd762a513ecb65
-  DNVideoPlayer: f234a2b05bcfe9c680f77f902681e54fba848fd2
+  DNVideoPlayer: 2f1601a3d045bcb70d830cef21ee89c0041e0118
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
 PODFILE CHECKSUM: 2506a5b1f8de7de05100d77e6c7e7af5d11f3775
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.0.beta.1

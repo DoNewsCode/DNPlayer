@@ -2644,6 +2644,23 @@
 			};
 			name = Release;
 		};
+		408130437E2752A721DDF928C06F9016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EBFF570BFD99447015A58E0D7650D77 /* DNVideoPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DNVideoPlayer";
+				IBSC_MODULE = DNVideoPlayer;
+				INFOPLIST_FILE = "Target Support Files/DNVideoPlayer/ResourceBundle-DNVideoPlayer-DNVideoPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = DNVideoPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		40C40B3F4770E3CF2EC6F46B64361F92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8416019B34D30AFB64929CDAD3EB13B /* Pods-DNVideoPlayer_Example.release.xcconfig */;
@@ -2735,6 +2752,23 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		4F71F47A0FD6E451AF98BF4C70F209D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EBFF570BFD99447015A58E0D7650D77 /* DNVideoPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DNVideoPlayer";
+				IBSC_MODULE = DNVideoPlayer;
+				INFOPLIST_FILE = "Target Support Files/DNVideoPlayer/ResourceBundle-DNVideoPlayer-DNVideoPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = DNVideoPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -2940,22 +2974,6 @@
 			};
 			name = Debug;
 		};
-		8D3DD094B58F897264482CE2D2288AFE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EBFF570BFD99447015A58E0D7650D77 /* DNVideoPlayer.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DNVideoPlayer";
-				INFOPLIST_FILE = "Target Support Files/DNVideoPlayer/ResourceBundle-DNVideoPlayer-DNVideoPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = DNVideoPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		990AB2106502B060ECB3204F82E350E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3506B3E4AE4BE222DC39F4D0BD529BC7 /* Pods-DNVideoPlayer_Example.debug.xcconfig */;
@@ -3141,22 +3159,6 @@
 			};
 			name = Release;
 		};
-		F90DFB3D1A0D86D3F5695CD3AF36B610 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EBFF570BFD99447015A58E0D7650D77 /* DNVideoPlayer.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DNVideoPlayer";
-				INFOPLIST_FILE = "Target Support Files/DNVideoPlayer/ResourceBundle-DNVideoPlayer-DNVideoPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = DNVideoPlayer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		FC81344FD42AA9DA64CA4881A5F06EF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EBFF570BFD99447015A58E0D7650D77 /* DNVideoPlayer.xcconfig */;
@@ -3275,8 +3277,8 @@
 		EF8284AF4125795BD99FEB29710E037B /* Build configuration list for PBXNativeTarget "DNVideoPlayer-DNVideoPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D3DD094B58F897264482CE2D2288AFE /* Debug */,
-				F90DFB3D1A0D86D3F5695CD3AF36B610 /* Release */,
+				408130437E2752A721DDF928C06F9016 /* Debug */,
+				4F71F47A0FD6E451AF98BF4C70F209D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
