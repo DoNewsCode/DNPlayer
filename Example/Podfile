@@ -9,7 +9,7 @@ source 'https://github.com/DoNewsCode/DNSpecs.git'
 target 'DNVideoPlayer_Example' do
 #  inhibit_warnings 忽略警告
     pod 'DNVideoPlayer', :path => '../'
-    pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK', :inhibit_warnings => true
+    pod 'AliyunPlayer_iOS/AliyunVodPlayerSDK','3.4.8' 
     pod 'Masonry', :inhibit_warnings => true
     pod 'DNCommonKit'
 

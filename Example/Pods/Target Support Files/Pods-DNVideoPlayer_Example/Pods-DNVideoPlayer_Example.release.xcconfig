@@ -2,7 +2,7 @@ FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DNCommonK
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DNCommonKit/DNCommonKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DNVideoPlayer/DNVideoPlayer.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" -iframework "${PODS_ROOT}/AliyunPlayer_iOS" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Masonry"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Masonry"
 OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "Accelerate" -framework "AliThirdparty" -framework "AliyunPlayerSDK" -framework "AliyunVodPlayerSDK" -framework "AudioToolbox" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreText" -framework "CoreVideo" -framework "DNCommonKit" -framework "DNVideoPlayer" -framework "Foundation" -framework "ImageIO" -framework "Masonry" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "OpenGLES" -framework "QuartzCore" -framework "SDWebImage" -framework "UIKit" -framework "VideoToolbox" -framework "YYText"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
