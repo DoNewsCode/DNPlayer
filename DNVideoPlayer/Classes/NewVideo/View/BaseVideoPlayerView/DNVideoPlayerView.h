@@ -14,11 +14,12 @@
 #import "DNPlayerControlViewProtocol.h"
 #import "DNPlayerControlViewConfig.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void(^DNVideoPlayerPublicBlock)(id sender);
 
 @class DNVideoPlayerView;
 @protocol DNVideoPlayerViewDelegate <NSObject>
-
 
 /// 播放器滑出ScrollView代理方法
 - (void)dnVodPlayerDisappearScrollViewAction:(DNVideoPlayerView *)playerView;
@@ -26,6 +27,31 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 @end
 
 @interface DNVideoPlayerView : DNVideoBaseView
+
+#pragma - mark 播放状态的一些回调Block共外界使用
+/// 准备播放回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventPrepareDone;
+/// 暂停播放回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventPause;
+/// 播放回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventPlay;
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventStop;
+/// 开始加载回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventBeginLoading;
+/// 结束加载回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventEndLoading;
+/// 结束播放回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventFinish;
+/// 出现第一帧画面回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventFirstFrame;
+/// 改变进度回调
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerEventSeekDone;
+
+/// 进度条
+@property (nonatomic,   copy) DNVideoPlayerPublicBlock PlayerChangeCurrentTimeBlock;
+@property (nonatomic,   copy) void(^PlayerChangeCurrentValueBlock)(CGFloat sender);
+@property (nonatomic,   copy) void(^PlayerChangeLoadingValueBlock)(CGFloat sender) ;
+
 
 /// 旋转管理对象: 指定旋转及管理视图的自动旋转
 @property (nonatomic, strong, null_resettable) id<DNPlayerRotationManagerProtocol> rotationManager;
@@ -73,4 +99,7 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 - (void)stopAndFadeOutCompletion:(void(^)(UIView *view))block;
 /// 销毁播放器
 - (void)releaseVideoPlayerView;
+
+NS_ASSUME_NONNULL_END
+
 @end

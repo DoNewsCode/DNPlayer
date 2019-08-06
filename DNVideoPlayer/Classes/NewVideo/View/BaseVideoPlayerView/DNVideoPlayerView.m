@@ -326,6 +326,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             [[NSRunLoop currentRunLoop] addTimer:self.sliderTimer forMode:NSDefaultRunLoopMode];
             self.player.controlView.showPlayBtn = NO;
             [self.player.controlView stopAtivityView];
+            
+            if (self.PlayerEventPrepareDone) {
+                self.PlayerEventPrepareDone(nil);
+            }
 //            self.playView.hidden = NO;
 //            self.loadIndicatorView.hidden = YES;
         }
@@ -333,13 +337,20 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //暂停事件
         case AliyunVodPlayerEventPause:{
             NSLog(@"**********AliyunVodPlayerEventPause**********");
+            if (self.PlayerEventPause) {
+                self.PlayerEventPause(nil);
+            }
 //            [self.integralTimer setFireDate:[NSDate distantFuture]];
+            
             
         }
             break;
             //播放事件
         case AliyunVodPlayerEventPlay: {
             NSLog(@"**********AliyunVodPlayerEventPlay**********");
+            if (self.PlayerEventPlay) {
+                self.PlayerEventPlay(nil);
+            }
 
 //            [self.integralTimer setFireDate:[NSDate distantPast]];
 //            self.loadIndicatorView.hidden = YES;
@@ -351,6 +362,9 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //播放停止事件
         case AliyunVodPlayerEventStop: {
             NSLog(@"**********AliyunVodPlayerEventStop**********");
+            if (self.PlayerEventStop) {
+                self.PlayerEventStop(nil);
+            }
 //            isStop  = YES;
 //            self.playButton.selected = NO;
             //阻止设备自动锁屏
@@ -365,6 +379,9 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         case AliyunVodPlayerEventBeginLoading: {
             NSLog(@"**********AliyunVodPlayerEventBeginLoading**********");
             [self.player.controlView startActivityView];
+            if (self.PlayerEventBeginLoading) {
+                self.PlayerEventBeginLoading(nil);
+            }
 //            [self bringSubviewToFront:self.loadIndicatorView];
 //            self.loadIndicatorView.hidden  = NO;
 //            self.playView.hidden = YES;
@@ -375,6 +392,9 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         case AliyunVodPlayerEventEndLoading: {
             NSLog(@"**********AliyunVodPlayerEventEndLoading**********");
             [self.player.controlView stopAtivityView];
+            if (self.PlayerEventEndLoading) {
+                self.PlayerEventEndLoading(nil);
+            }
 //            self.loadIndicatorView.hidden  = YES;
 //            [self sendSubviewToBack:self.loadIndicatorView];
 //            self.playView.hidden = NO;
@@ -390,7 +410,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //1.广告播放结束展示广告结束页面
             //2.普通视频播放结束展示重新播放视图
             //3.展示重新播放视图,及自动播放下一个视频
-            self.player.controlView.isShowAdPlayToEndView = YES;
+            if (self.PlayerEventFinish) {
+                self.PlayerEventFinish(nil);
+            }
+//            self.player.controlView.isShowAdPlayToEndView = YES;
 
             UIScrollView *scrollView = _getScrollViewOfPlayModel(self.playModel);
             if (scrollView.dn_enabledAutoplay ) {
@@ -406,50 +429,18 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         case AliyunVodPlayerEventFirstFrame:{
             NSLog(@"**********AliyunVodPlayerEventFirstFrame**********");
             [self.player.controlView stopAtivityView];
-//            self.loadIndicatorView.hidden  = YES;
-//            self.PlaceholderImageView.hidden = YES;
-//            [DNNetworkTool sharedInstance].isStopMonitoring = YES;
-//            [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+            if (self.PlayerEventFirstFrame) {
+                self.PlayerEventFirstFrame(nil);
+            }
             
-//            if(!PointsFunctionHidden){
-//                if (isLogIn) {
-//                    if (!self.isQuanZi) {
-//
-//
-//                        //是否给积分开关
-//                        if (![DNConfigManager sharedInstance].score) {
-//                            return;
-//                        }
-//
-//
-//                        NSTimeInterval TimeValue;
-//
-//                        NSDictionary * Dic =  [DNConfigManager sharedInstance].readtime;
-//
-//                        if ([Dic objectForKey:@"video"]) {
-//
-//                            NSString * string = [Dic objectForKey:@"video"];
-//
-//                            TimeValue = string.intValue;
-//                        }
-//                        else{
-//
-//                            TimeValue = 15.f;
-//
-//                        }
-//
-//
-//                        self.integralTimer = [NSTimer scheduledTimerWithTimeInterval:TimeValue target:self selector:@selector(addIntegral:) userInfo:@"视频计时器" repeats:NO];
-//                        [[NSRunLoop currentRunLoop] addTimer:self.integralTimer forMode:NSDefaultRunLoopMode];
-//                    }
-//
-//                }
-//            }
         }
             //快退快进完成事件
         case AliyunVodPlayerEventSeekDone:{
             self.mProgressCanUpdate = YES;
             NSLog(@"**********AliyunVodPlayerEventSeekDone**********");
+            if (self.PlayerEventSeekDone) {
+                self.PlayerEventSeekDone(nil);
+            }
         }
         default:
             break;
@@ -508,20 +499,34 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 #pragma mark - 进度条
 - (void)sliderTimerRun:(NSTimer *)sender
 {
-
     if (self.player && self.mProgressCanUpdate) {
 
-        self.player.controlView.currentTime = [DNVideoPlayerTools timeFormate:self.player.currentTime];
+        NSString *currentTime = [DNVideoPlayerTools timeFormate:self.player.currentTime];
+        self.player.controlView.currentTime = currentTime;
+        //当前播放的时间
+        if (self.PlayerChangeCurrentTimeBlock) {
+            self.PlayerChangeCurrentTimeBlock(currentTime);
+        }
         
         if(self.player.currentTime > 0 &&
            self.player.totalDuration > 0) {
 
             CGFloat Value = round(self.player.currentTime)/self.player.totalDuration;
             self.player.controlView.proSliderValue = Value;
+            //播放的进度
+            if (self.PlayerChangeCurrentValueBlock) {
+                self.PlayerChangeCurrentValueBlock(Value);
+            }
+            
+            
         }
         CGFloat cacheValue = round(self.player.loadedTime)/self.player.totalDuration;
         if (cacheValue>0) {
             self.player.controlView.loadingValue = cacheValue;
+            //缓存的进度
+            if (self.PlayerChangeLoadingValueBlock) {
+                self.PlayerChangeLoadingValueBlock(cacheValue);
+            }
         }
     }
 }
