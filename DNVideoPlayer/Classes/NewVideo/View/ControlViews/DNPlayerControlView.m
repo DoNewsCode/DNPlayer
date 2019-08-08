@@ -29,8 +29,12 @@
 @property (nonatomic, strong) UIButton *lockBtn;
 /** 快进快退label */
 @property (nonatomic, strong) UILabel *horizontalLabel;
+/// 是否显示系统的缓冲转圈视图
+@property (nonatomic, assign) BOOL isShowSystemActivityLoadingView;
 /** 系统菊花 */
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
+/// 自定义加载视图
+@property (nonatomic, strong) UIImageView *customLoadingView;
 /** 返回按钮*/
 @property (nonatomic, strong) UIButton *backBtn;
 /** 重播按钮 */
@@ -207,19 +211,27 @@
         make.top.leading.trailing.bottom.equalTo(self);
     }];
 
-    
 
 }
+
 
 #pragma mark - Public Method
 - (void)startActivityView
 {
-    [self.activity startAnimating];
+    if (self.isShowSystemActivityLoadingView) {
+        [self.activity startAnimating];
+    }else{
+        self.customLoadingView.hidden = NO;
+    }
 }
 
 - (void)stopAtivityView
 {
-    [self.activity stopAnimating];
+    if (self.isShowSystemActivityLoadingView) {
+        [self.activity stopAnimating];
+    }else{
+        self.customLoadingView.hidden = YES;
+    }
 }
 
 
@@ -328,9 +340,42 @@
             break;
     }
     self.backBtn.hidden = !_controlViewConfig.isShowBackBtn;
-
+    self.isShowSystemActivityLoadingView = controlViewConfig.isShowSystemActivityLoadingView;
+    if (!self.isShowSystemActivityLoadingView) {
+        self.activity.hidden = YES;
+        self.customLoadingView = controlViewConfig.customLoadingView;
+    }else{
+        self.activity.hidden = NO;
+    }
 }
 
+
+- (void)setCustomLoadingView:(UIImageView *)customLoadingView
+{
+    if (![_customLoadingView isEqual:customLoadingView]) {
+        _customLoadingView = customLoadingView;
+        _customLoadingView.tag = 20190808;
+        //添加动画
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        animation.fromValue = [NSNumber numberWithFloat:0.f];
+        animation.toValue = [NSNumber numberWithFloat: M_PI *2];
+        animation.duration  = 1;
+        animation.autoreverses = NO;
+        animation.fillMode =kCAFillModeForwards;
+        animation.repeatCount = CGFLOAT_MAX;
+        [_customLoadingView.layer addAnimation:animation forKey:nil];
+        
+        if ([self viewWithTag:20190808]) {
+            [[self viewWithTag:20190808] removeFromSuperview];
+        }
+        [self insertSubview:self.customLoadingView aboveSubview:self.activity];
+        @weakify(self)
+        [_customLoadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self)
+            make.center.equalTo(self);
+        }];
+    }
+}
 
 
 - (void)setTotalTime:(NSString *)totalTime

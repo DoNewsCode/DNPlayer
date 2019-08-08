@@ -95,20 +95,25 @@
 {
     // 创建播放器
     _videoPlayer = [DNVideoPlayerView dnVideoPlayerViewWithDelegate:self];
-    // 播放器控制层配置 
+     ///添加播放器容器视图
+    [_videoPlayer dn_addToSuperContainerView:cell.videoPlaceHolderView];
+    // 播放器控制层配置
     _videoPlayer.controlViewConfig = self.playerControlViewConfig;
+    
+   
+//    [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
+//    _videoPlayer.containerView.ct_top = 0;
+//    _videoPlayer.containerView.ct_left= 0;
+//    _videoPlayer.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
 
-    ///添加播放器容器视图
-    [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
-    _videoPlayer.containerView.ct_top = 0;
-    _videoPlayer.containerView.ct_left= 0;
-    _videoPlayer.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
 
-    _videoPlayer.isAnimateShowContainerView = YES;
+    
+//    _videoPlayer.isAnimateShowContainerView = YES;
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
-    playModel.videourl = [NSString stringWithFormat:@"https://niuerdata.g.com.cn/data/shareimg_oss/big_media_article_video/YLZX-MP-2/bd6b5602c872793998941755b3c7e8cb.mp4"];
+    playModel.videourl = @"http://lvyun.renren.com/record/live/201907281857442624105/hls/201907281857442624105-933216426_2624105.m3u8?expire=1565201168&nonce=9688942221565157968088&public=0&signature=zvpvSYX%2BZ9kVH4%2BFRu02WvM6A0s%3D&accesskey=KfMCucTdWaBMmOlxyVP0";
+    //[NSString stringWithFormat:@"https://ks3-cn-beijing.ksyun.com/renren-sv/1052969"];
 //    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
 //https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4
     [_videoPlayer playVideoWithPlayModel:playModel completeBlock:completeBlock];
@@ -341,8 +346,15 @@
 - (DNPlayerControlViewConfig *)playerControlViewConfig
 {
     if (!_playerControlViewConfig) {
-        _playerControlViewConfig = [DNPlayerControlViewConfig new];
+        _playerControlViewConfig = [[DNPlayerControlViewConfig alloc]init];
         _playerControlViewConfig.isShowBackBtn = NO;
+        _playerControlViewConfig.isAnimateShowContainerView = YES;
+        _playerControlViewConfig.isShowBottomProgressView = NO;
+        _playerControlViewConfig.isShowSystemActivityLoadingView = NO;
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"short_video_loading_icon"]];
+        imageView.frame = CGRectMake(0, 0, 50, 50);
+        _playerControlViewConfig.customLoadingView = imageView;
+        
     }
     return _playerControlViewConfig;
 }

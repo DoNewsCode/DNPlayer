@@ -74,6 +74,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 @property (nonatomic, strong) NSTimer *sliderTimer;
 
 @property (nonatomic, strong) DNPlayModel *playModel;
+/// 是否动画显示播放器(初始化播放器后 1.添加容器视图到主视图上.2.设置容器视图frame)
+@property (nonatomic, assign) BOOL isAnimateShowContainerView;
+/// 是否显示播放器底部进度视图
+@property (nonatomic, assign) BOOL isShowBottomProgressView;
 
 
 @property (nonatomic, strong, nullable) DNPlayModelPropertiesObserver *playModelObserver;
@@ -108,7 +112,6 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 {
     // 添加检测app进入后台的观察者
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
-
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 
     //监听系统音量
@@ -120,6 +123,18 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     DNVideoPlayerView *playerView = [[DNVideoPlayerView alloc]init];
     playerView.videoPlayerDelegate = delegate;
     return playerView;
+}
+
+- (void)dn_addToSuperContainerView:(UIView *)containerView
+{
+    ///添加播放器容器视图
+    if (containerView != nil) {
+        [containerView addSubview:self.containerView];
+        self.containerView.frame = containerView.bounds;
+    }
+//    self.containerView.ct_top = 0;
+//    self.containerView.ct_left= 0;
+//    self.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
 }
 
 - (instancetype)init
@@ -143,6 +158,26 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 {
     _controlViewConfig = controlViewConfig;
     self.player.controlViewConfig = _controlViewConfig;
+    self.isAnimateShowContainerView = _controlViewConfig.isAnimateShowContainerView;
+    self.isShowBottomProgressView = _controlViewConfig.isShowBottomProgressView;
+//    self.isShowSystemActivityLoadingView = _controlViewConfig.isShowSystemActivityLoadingView;
+}
+
+//- (void)setIsShowSystemActivityLoadingView:(BOOL)isShowSystemActivityLoadingView
+//{
+//    _isShowSystemActivityLoadingView = isShowSystemActivityLoadingView;
+//    if (!_isShowSystemActivityLoadingView) {
+//        //设置自定义加载视图
+//        self.player.controlView.isShowSystemActivityLoadingView
+//    }
+//
+//}
+
+- (void)setIsShowBottomProgressView:(BOOL)isShowBottomProgressView
+{
+    _isShowBottomProgressView = isShowBottomProgressView;
+    self.player.controlView.bottomProgress.hidden = !_isShowBottomProgressView;
+    self.player.controlView.bottomloadingProgress.hidden = !_isShowBottomProgressView;
 }
 
 /// 是否动画显示播放器

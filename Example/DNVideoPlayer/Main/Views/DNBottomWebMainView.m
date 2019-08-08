@@ -113,11 +113,11 @@
         make.height.equalTo(self.videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     }];
 
-    self.videoPlayer.isAnimateShowContainerView = YES;
+//    self.videoPlayer.isAnimateShowContainerView = YES;
 
 
     DNPlayModel *playModel = [[DNPlayModel alloc]init];
-    playModel.videourl = [NSString stringWithFormat:@"http:\/\/tb-video.bdstatic.com\/videocp\/12045395_f9f87b84aaf4ff1fee62742f2d39687f.mp4"];
+    playModel.videourl = [NSString stringWithFormat:@"https://ks3-cn-beijing.ksyun.com/renren-sv/1052969"];
 
     [self.videoPlayer playVideoWithPlayModel:playModel completeBlock:nil];
 

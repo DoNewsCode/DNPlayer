@@ -115,7 +115,7 @@
     //        make.height.equalTo(self->_videoPlayer.containerView.mas_width).multipliedBy(9 / 16.0f);
     //    }];
 
-    _videoPlayer.isAnimateShowContainerView = YES;
+//    _videoPlayer.isAnimateShowContainerView = YES;
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
