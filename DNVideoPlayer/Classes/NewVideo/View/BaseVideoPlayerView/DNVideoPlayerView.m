@@ -325,6 +325,11 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     }
 }
 
+/// 设置静音(YES静音 NO不静音)
+- (void)setPlayerMuteMode:(BOOL)isMute
+{
+    self.player.isMuteMode = isMute;
+}
 
 - (void)playerPlay
 {

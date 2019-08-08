@@ -38,7 +38,6 @@
 
 /// 总时间
 @property (nonatomic, copy) NSString *totalTime;
-
 /// 当前时间
 @property (nonatomic, copy) NSString *currentTime;
 /// 滑动进度条value改变

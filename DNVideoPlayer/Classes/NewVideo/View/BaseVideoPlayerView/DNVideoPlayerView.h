@@ -88,7 +88,8 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 /// 播放视频 (playModel--视频播放模型)
 - (void)playVideoWithPlayModel:(DNPlayModel *)playModel completeBlock:(PlayerPublicBlock)completeBlock;
 
-
+/// 设置静音(YES静音 NO不静音)
+- (void)setPlayerMuteMode:(BOOL)isMute;
 /// 重置/清空播放器
 - (void)restPlayer;
 /// 播放器播放

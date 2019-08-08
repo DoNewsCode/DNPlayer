@@ -250,6 +250,8 @@
 
 - (void)showControlView
 {
+    if (!_controlViewConfig.isShowControlView) {return;}
+    
     self.topImageView.alpha = 1;
     self.bottomImageView.alpha = 1;
     self.lockBtn.alpha = 1;
@@ -339,7 +341,9 @@
         default:
             break;
     }
-    self.backBtn.hidden = !_controlViewConfig.isShowBackBtn;
+    //返回按钮设置
+    self.backBtn.hidden = !controlViewConfig.isShowBackBtn;
+    //loading加载视图
     self.isShowSystemActivityLoadingView = controlViewConfig.isShowSystemActivityLoadingView;
     if (!self.isShowSystemActivityLoadingView) {
         self.activity.hidden = YES;
@@ -347,9 +351,31 @@
     }else{
         self.activity.hidden = NO;
     }
+    //底部进度条相关设置
+    if (controlViewConfig.bottomProgressTintColor != nil) {
+        self.bottomProgress.progressTintColor = controlViewConfig.bottomProgressTintColor;
+    }
+    
+    if (controlViewConfig.bottomLoadingTintColor != nil) {
+        self.bottomloadingProgress.progressTintColor = controlViewConfig.bottomLoadingTintColor;
+    }
+    
+    if (controlViewConfig.bottomProgressView_H != 0) {
+        [self.bottomloadingProgress mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self);
+            make.bottom.equalTo(self);
+            make.height.mas_equalTo(controlViewConfig.bottomProgressView_H);
+        }];
+
+        [self.bottomProgress mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self);
+            make.bottom.equalTo(self);
+            make.height.mas_equalTo(controlViewConfig.bottomProgressView_H);
+        }];
+    }
 }
 
-
+/// 自定义加载视图
 - (void)setCustomLoadingView:(UIImageView *)customLoadingView
 {
     if (![_customLoadingView isEqual:customLoadingView]) {
