@@ -96,8 +96,10 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 - (void)playerPlay;
 /// 播放器暂停
 - (void)playerPause;
+/// 播放器重新播放
+- (void)playerReplay;
 /// 停止并移除视图
-- (void)stopAndFadeOutCompletion:(void(^)(UIView *view))block;
+- (void)stopAndFadeOutAnimated:(BOOL)isAnimate Completion:(void(^)(void))block;
 /// 销毁播放器
 - (void)releaseVideoPlayerView;
 

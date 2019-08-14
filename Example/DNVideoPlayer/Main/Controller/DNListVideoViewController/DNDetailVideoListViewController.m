@@ -76,7 +76,9 @@
         if ( self->_videoPlayer &&
             !self->_videoPlayer.isFullScreen ) {
             // 有播放器或者小窗播放 -- 播放新的视频(先让旧的播放器淡出,然后在播放)
-            [self->_videoPlayer stopAndFadeOutCompletion:^(UIView *view) {
+            [self->_videoPlayer stopAndFadeOutAnimated:YES Completion:^{
+                
+
                 //让旧的播放器淡出
                 @strongify(self)
                 [self playNewVideoWithCell:cell indexPath:indexPath completeBlock:completeBlock];
@@ -146,7 +148,7 @@
 
 - (void)dnVodPlayerDisappearScrollViewAction:(DNVideoPlayerView *)playerView
 {
-    [self.videoPlayer stopAndFadeOutCompletion:nil];
+    [self.videoPlayer stopAndFadeOutAnimated:NO Completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(DNVideoListTableViewItemCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

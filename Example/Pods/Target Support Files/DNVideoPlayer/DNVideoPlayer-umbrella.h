@@ -23,7 +23,6 @@
 #import "DNPlayerTypeDef.h"
 #import "DNVideoPlayerTools.h"
 #import "UIImage+PlaceImageAdd.h"
-#import "UIView+DNVideoPlayerAdd.h"
 #import "DNPlayer.h"
 #import "DNVideoPlayerView+MediaStateAction.h"
 #import "DNVideoPlayerView+PlayControl.h"

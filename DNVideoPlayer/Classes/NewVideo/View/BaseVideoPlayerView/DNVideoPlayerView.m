@@ -204,15 +204,28 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     return _rotationManager;
 }
 
-- (void)stopAndFadeOutCompletion:(void(^)(UIView *view))block
+- (void)stopAndFadeOutAnimated:(BOOL)isAnimate Completion:(void(^)(void))block
 {
-    [self.containerView dn_fadeOutAndCompletion:^(UIView *view) {
-        [view removeFromSuperview];
+    if (isAnimate) {
+        _containerView.alpha = 1;
+        @weakify(self)
+        [UIView animateWithDuration:0.25 animations:^{
+            @strongify(self)
+            self->_containerView.alpha = 0.001;
+        } completion:^(BOOL finished) {
+            [self->_containerView removeFromSuperview];
+            [self restPlayer];
+            if (block) block();
+        }];
+
+    }else{
+        [_containerView removeFromSuperview];
         [self restPlayer];
         if (block) {
-            block(nil);
+            block();
         }
-    }];
+    }
+    
 }
 
 - (void)_configRotationManager:(id<DNPlayerRotationManagerProtocol>)rotationManager {
@@ -341,6 +354,12 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 {
     self.player.controlView.showPlayBtn = YES;
     [self.player pause];
+}
+
+/// 播放器重新播放
+- (void)playerReplay
+{
+    [self.player replay];
 }
 
 - (void)setFullScreen:(BOOL)fullScreen
@@ -585,7 +604,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 {
     if (!_containerView) {
         _containerView = [[UIView alloc]init];
-        _containerView.backgroundColor = [UIColor blackColor];
+        _containerView.backgroundColor = [UIColor clearColor];
         _containerView.autoresizingMask = _containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     return _containerView;

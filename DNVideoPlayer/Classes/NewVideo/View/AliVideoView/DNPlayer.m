@@ -52,7 +52,7 @@
 
 - (void)playVideoWithPlayModel:(DNPlayModel *)playModel playerDelegate:(id)delegate completeBlock:(PlayerPublicBlock)completeBlock
 {
-    if (self.aliPlayer.isPlaying) {
+    if (self.aliPlayer) {
         [self.aliPlayer reset];
     }
     
