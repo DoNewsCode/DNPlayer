@@ -221,7 +221,7 @@
     if (self.isShowSystemActivityLoadingView) {
         [self.activity startAnimating];
     }else{
-        self.customLoadingView.hidden = NO;
+        [self startCustomLoadingAnimation];
     }
 }
 
@@ -230,7 +230,7 @@
     if (self.isShowSystemActivityLoadingView) {
         [self.activity stopAnimating];
     }else{
-        self.customLoadingView.hidden = YES;
+        [self stopCustomLoadingAnimation];
     }
 }
 
@@ -380,27 +380,33 @@
 {
     if (![_customLoadingView isEqual:customLoadingView]) {
         _customLoadingView = customLoadingView;
-        _customLoadingView.tag = 20190808;
-        //添加动画
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        animation.fromValue = [NSNumber numberWithFloat:0.f];
-        animation.toValue = [NSNumber numberWithFloat: M_PI *2];
-        animation.duration  = 1;
-        animation.autoreverses = NO;
-        animation.fillMode =kCAFillModeForwards;
-        animation.repeatCount = CGFLOAT_MAX;
-        [_customLoadingView.layer addAnimation:animation forKey:nil];
-        
-        if ([self viewWithTag:20190808]) {
-            [[self viewWithTag:20190808] removeFromSuperview];
-        }
-        [self insertSubview:self.customLoadingView aboveSubview:self.activity];
+        [self insertSubview:_customLoadingView aboveSubview:self.activity];
         @weakify(self)
         [_customLoadingView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self)
             make.center.equalTo(self);
         }];
     }
+}
+
+- (void)startCustomLoadingAnimation
+{
+    self.customLoadingView.hidden = NO;
+    //添加动画
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:0.f];
+    animation.toValue = [NSNumber numberWithFloat: M_PI *2];
+    animation.duration  = 1;
+    animation.cumulative = YES;
+    animation.fillMode =kCAFillModeForwards;
+    animation.repeatCount = ULLONG_MAX;
+    [self.customLoadingView.layer addAnimation:animation forKey:@"rotationAnimation"];
+}
+
+- (void)stopCustomLoadingAnimation
+{
+    [self.customLoadingView.layer removeAllAnimations];
+    self.customLoadingView.hidden = YES;
 }
 
 
