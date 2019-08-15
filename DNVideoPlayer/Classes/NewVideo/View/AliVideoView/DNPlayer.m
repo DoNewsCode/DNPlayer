@@ -88,6 +88,12 @@
     }
 }
 
+- (void)setDisplayMode:(AliyunVodPlayerDisplayMode)displayMode
+{
+    _displayMode = displayMode;
+    [self.aliPlayer setDisplayMode:_displayMode];
+}
+
 - (void)setControlViewConfig:(DNPlayerControlViewConfig *)controlViewConfig
 {
     _controlViewConfig = controlViewConfig;

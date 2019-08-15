@@ -61,6 +61,11 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 @property (nonatomic, strong) UIView *containerView;
 /// 播放器控制视图类型(可以设置直播或点播类型)
 @property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
+/// 单独设置底部进度条是否显示
+@property (nonatomic, assign) BOOL isShowBottomProgressView;
+/// 单独设置缓冲视图
+@property (nonatomic, strong) UIImageView *customLoadingView;
+
 /// 视频进度条的单击手势
 @property (nonatomic, strong) UITapGestureRecognizer *progressTap;
 /// 是否为全屏播放
@@ -87,6 +92,14 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 
 /// 播放视频 (playModel--视频播放模型)
 - (void)playVideoWithPlayModel:(DNPlayModel *)playModel completeBlock:(PlayerPublicBlock)completeBlock;
+
+/**
+ * 功能：获取/设置显示模式
+ * 显示模式有：
+ * AliyunVodPlayerDisplayModeFit,            // 保持原始比例
+ * AliyunVodPlayerDisplayModeFitWithCropping // 全屏占满屏幕
+ */
+- (void)setPlayerDisplayMode:(AliyunVodPlayerDisplayMode)displayMode;
 
 /// 设置静音(YES静音 NO不静音)
 - (void)setPlayerMuteMode:(BOOL)isMute;

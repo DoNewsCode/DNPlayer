@@ -76,8 +76,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 @property (nonatomic, strong) DNPlayModel *playModel;
 /// 是否动画显示播放器(初始化播放器后 1.添加容器视图到主视图上.2.设置容器视图frame)
 @property (nonatomic, assign) BOOL isAnimateShowContainerView;
-/// 是否显示播放器底部进度视图
-@property (nonatomic, assign) BOOL isShowBottomProgressView;
+
 
 
 @property (nonatomic, strong, nullable) DNPlayModelPropertiesObserver *playModelObserver;
@@ -163,15 +162,14 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 //    self.isShowSystemActivityLoadingView = _controlViewConfig.isShowSystemActivityLoadingView;
 }
 
-//- (void)setIsShowSystemActivityLoadingView:(BOOL)isShowSystemActivityLoadingView
-//{
-//    _isShowSystemActivityLoadingView = isShowSystemActivityLoadingView;
-//    if (!_isShowSystemActivityLoadingView) {
-//        //设置自定义加载视图
-//        self.player.controlView.isShowSystemActivityLoadingView
-//    }
-//
-//}
+- (void)setCustomLoadingView:(UIImageView *)customLoadingView
+{
+    _customLoadingView = customLoadingView;
+    if (_customLoadingView != nil) {
+        self.player.controlView.isShowSystemActivityLoadingView = NO;
+        self.player.controlView.customLoadingView = _customLoadingView;
+    }
+}
 
 - (void)setIsShowBottomProgressView:(BOOL)isShowBottomProgressView
 {
@@ -308,6 +306,11 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     self.playModelObserver = [[DNPlayModelPropertiesObserver alloc]initWithPlayModel:playModel];
     self.playModelObserver.delegate = (id)self;
     self.controlLayerDelegate = (id)self;
+}
+
+- (void)setPlayerDisplayMode:(AliyunVodPlayerDisplayMode)displayMode
+{
+    self.player.displayMode = displayMode;
 }
 
 #pragma mark - 通知事件

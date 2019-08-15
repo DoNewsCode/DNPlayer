@@ -14,7 +14,7 @@
 
 @interface DNDetailVideoListViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) DNPlayerControlViewConfig *playerControlViewConfig;
-@property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
+
 /// 记录动画前的frame
 @property (nonatomic, assign) CGRect markTempCellFrame;
 /// 记录当前播放的 Cell indexPath
@@ -114,8 +114,8 @@
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
-//    playModel.videourl = @"http://lvyun.renren.com/record/live/201907281857442624105/hls/201907281857442624105-933216426_2624105.m3u8?expire=1565201168&nonce=9688942221565157968088&public=0&signature=zvpvSYX%2BZ9kVH4%2BFRu02WvM6A0s%3D&accesskey=KfMCucTdWaBMmOlxyVP0";
-    playModel.videourl = [NSString stringWithFormat:@"https://ks3-cn-beijing.ksyun.com/renren-sv/1052969"];
+    playModel.videourl = @"http://lvyun.renren.com/record/live/201907281857442624105/hls/201907281857442624105-933216426_2624105.m3u8?expire=1565201168&nonce=9688942221565157968088&public=0&signature=zvpvSYX%2BZ9kVH4%2BFRu02WvM6A0s%3D&accesskey=KfMCucTdWaBMmOlxyVP0";
+//    playModel.videourl = [NSString stringWithFormat:@"https://ks3-cn-beijing.ksyun.com/renren-sv/1052969"];
 //    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
 //https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4
     [_videoPlayer playVideoWithPlayModel:playModel completeBlock:completeBlock];
@@ -128,19 +128,18 @@
     if (!_playerControlViewConfig) {
         _playerControlViewConfig = [[DNPlayerControlViewConfig alloc]init];
         
-        _playerControlViewConfig.isShowControlView = NO;
+        _playerControlViewConfig.isShowControlView = YES;
         _playerControlViewConfig.isShowBackBtn = NO;
-        _playerControlViewConfig.isAnimateShowContainerView = YES;
+        _playerControlViewConfig.isAnimateShowContainerView = NO;
         //        _playerControlViewConfig.isShowBottomProgressView = YES;
         _playerControlViewConfig.bottomProgressView_H = 2;
         _playerControlViewConfig.bottomLoadingTintColor = [UIColor purpleColor];
         _playerControlViewConfig.bottomProgressTintColor = [UIColor blueColor];
+        _playerControlViewConfig.isShowSystemActivityLoadingView = YES;
         
-        _playerControlViewConfig.isShowSystemActivityLoadingView = NO;
-        
-        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"short_video_loading_icon"]];
-        imageView.frame = CGRectMake(0, 0, 50, 50);
-        _playerControlViewConfig.customLoadingView = imageView;
+//        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"short_video_loading_icon"]];
+//        imageView.frame = CGRectMake(0, 0, 50, 50);
+//        _playerControlViewConfig.customLoadingView = imageView;
         
     }
     return _playerControlViewConfig;

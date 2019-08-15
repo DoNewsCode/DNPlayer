@@ -29,12 +29,8 @@
 @property (nonatomic, strong) UIButton *lockBtn;
 /** 快进快退label */
 @property (nonatomic, strong) UILabel *horizontalLabel;
-/// 是否显示系统的缓冲转圈视图
-@property (nonatomic, assign) BOOL isShowSystemActivityLoadingView;
 /** 系统菊花 */
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
-/// 自定义加载视图
-@property (nonatomic, strong) UIImageView *customLoadingView;
 /** 返回按钮*/
 @property (nonatomic, strong) UIButton *backBtn;
 /** 重播按钮 */
@@ -375,17 +371,33 @@
     }
 }
 
+
+- (void)setIsShowSystemActivityLoadingView:(BOOL)isShowSystemActivityLoadingView
+{
+    _isShowSystemActivityLoadingView = isShowSystemActivityLoadingView;
+    if (!_isShowSystemActivityLoadingView) {
+        
+        self.activity.hidden = YES;
+        self.customLoadingView = self.customLoadingView;
+        
+    }else{
+        self.activity.hidden = NO;
+    }
+}
+
 /// 自定义加载视图
 - (void)setCustomLoadingView:(UIImageView *)customLoadingView
 {
     if (![_customLoadingView isEqual:customLoadingView]) {
         _customLoadingView = customLoadingView;
+        _customLoadingView.hidden = YES;
         [self insertSubview:_customLoadingView aboveSubview:self.activity];
         @weakify(self)
         [_customLoadingView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self)
             make.center.equalTo(self);
         }];
+        
     }
 }
 

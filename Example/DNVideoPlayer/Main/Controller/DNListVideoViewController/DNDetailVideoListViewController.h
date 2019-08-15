@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <DNVideoListItemFrameModel *> *videoFrameModels;
 @property (nonatomic, strong) UITableView *videoListTableView;
 /// 记录当前播放的 Cell indexPath
+@property (nonatomic, strong) DNVideoPlayerView *videoPlayer;
 @property (nonatomic, readonly, strong) NSIndexPath *markTempIndexPath;
 /// 设置播放模式
 - (void)configPlayMode;

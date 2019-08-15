@@ -35,6 +35,10 @@
 /// 是否展示播放结束视图(广告播放结束视图)
 @property (nonatomic, assign) BOOL isShowAdPlayToEndView;
 
+/// 是否显示系统的缓冲转圈视图(设置为NO是必须设置customLoadingView才会展示)
+@property (nonatomic, assign) BOOL isShowSystemActivityLoadingView;
+/// 自定义加载视图
+@property (nonatomic, strong) UIImageView *customLoadingView;
 
 /// 总时间
 @property (nonatomic, copy) NSString *totalTime;

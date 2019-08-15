@@ -28,6 +28,12 @@
  */
 @property (nonatomic, assign) BOOL isMuteMode;
 /**
+ * 功能：获取/设置显示模式
+ * 显示模式有：    AliyunVodPlayerDisplayModeFit,            // 保持原始比例
+                AliyunVodPlayerDisplayModeFitWithCropping // 全屏占满屏幕
+ */
+@property (nonatomic, assign) AliyunVodPlayerDisplayMode displayMode;
+/**
  * 功能：设置网络超时时间，单位毫秒
  * 备注：当播放网络流时，设置网络超时时间，默认15000毫秒
  */

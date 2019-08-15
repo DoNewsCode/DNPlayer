@@ -118,7 +118,15 @@
              animatingSourceView:(nonnull UIView *)sourceView;
 {
     //记录上层控制器
-    self.sourceTransitionVc = (DNDetailVideoListViewController *)animator.sourceTransition;
+    DNDetailVideoListViewController *listVc = (DNDetailVideoListViewController *)animator.sourceTransition;
+    
+    listVc.videoPlayer.isShowBottomProgressView = NO;
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"short_video_loading_icon"]];
+    imageView.frame = CGRectMake(0, 0, 50, 50);
+    listVc.videoPlayer.customLoadingView = imageView;
+    
+    self.sourceTransitionVc = listVc;
     self.sourceView = sourceView;
     [self.headerCell.videoPlaceHolderView addSubview:self.sourceView];
     self.sourceView.ct_top = 0;
