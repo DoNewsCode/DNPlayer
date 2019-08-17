@@ -170,6 +170,12 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     }
 }
 
+- (void)setIsShowRemaindTimeView:(BOOL)isShowRemaindTimeView
+{
+    _isShowRemaindTimeView = isShowRemaindTimeView;
+    self.player.controlView.isShowRemaindTimeView = _isShowRemaindTimeView;
+}
+
 - (void)setIsShowBottomProgressView:(BOOL)isShowBottomProgressView
 {
     _isShowBottomProgressView = isShowBottomProgressView;
@@ -564,6 +570,12 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 
         NSString *currentTime = [DNVideoPlayerTools timeFormate:self.player.currentTime];
         self.player.controlView.currentTime = currentTime;
+        
+        if (self.isShowRemaindTimeView) {
+            NSString *remaindTime = [DNVideoPlayerTools timeFormate:(self.player.totalDuration - self.player.currentTime)];
+            self.player.controlView.remaindTimeStr = remaindTime;
+        }
+        
         //当前播放的时间
         if (self.PlayerChangeCurrentTimeBlock) {
             self.PlayerChangeCurrentTimeBlock(currentTime);

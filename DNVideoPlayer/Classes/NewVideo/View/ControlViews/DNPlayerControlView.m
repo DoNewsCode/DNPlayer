@@ -9,7 +9,7 @@
 #import "DNPlayerControlView.h"
 /// 播放结束视图
 #import "DNAdPlayToEndView.h"
-
+#import "UIView+CTLayout.h"
 
 
 
@@ -44,6 +44,16 @@
 
 /// 播放结束垫底图
 @property (nonatomic, strong) DNAdPlayToEndView *adEndView;
+
+/**
+ 时间显示底色
+ */
+@property (nonatomic, strong) UIImageView *totleTimeImageView;
+/**
+ 显示时间label
+ */
+@property (nonatomic, strong) UILabel *remaindTimeLabel;
+
 
 @end
 
@@ -80,6 +90,9 @@
         [self addSubview:self.bottomloadingProgress];
         [self addSubview:self.bottomProgress];
 
+        //倒计时label
+        [self addSubview:self.totleTimeImageView];
+        
         //添加播放结束垫底图
         [self addSubview:self.adEndView];
 
@@ -269,11 +282,12 @@
     self.bottomloadingProgress.alpha = 1;
 }
 
-//- (void)setIsShowBackBtn:(BOOL)isShowBackBtn
-//{
-//    _isShowBackBtn = isShowBackBtn;
-//    self.backBtn.hidden = !_isShowBackBtn;
-//}
+- (void)setIsShowRemaindTimeView:(BOOL)isShowRemaindTimeView
+{
+    _isShowRemaindTimeView = isShowRemaindTimeView;
+    self.totleTimeImageView.hidden = !_isShowRemaindTimeView;
+    self.remaindTimeLabel.hidden = !_isShowRemaindTimeView;
+}
 
 - (void)setIsShowAdPlayToEndView:(BOOL)isShowAdPlayToEndView
 {
@@ -432,6 +446,18 @@
 {
     _currentTime = currentTime;
     self.currentTimeLabel.text = _currentTime;
+}
+
+- (void)setRemaindTimeStr:(NSString *)remaindTimeStr
+{
+    _remaindTimeStr = remaindTimeStr;
+    self.remaindTimeLabel.text = _remaindTimeStr;
+    [self.remaindTimeLabel sizeToFit];
+    self.remaindTimeLabel.ct_height = 25.0f;
+    self.totleTimeImageView.ct_width = self.remaindTimeLabel.ct_width + 14;
+    self.remaindTimeLabel.ct_left = 7;
+    self.totleTimeImageView.ct_left = SCREEN_WIDTH-12-self.totleTimeImageView.ct_width;
+    self.totleTimeImageView.ct_top = self.ct_height-12-self.totleTimeImageView.ct_height;
 }
 
 - (void)setSlidChangeValue:(CGFloat)slidChangeValue
@@ -701,5 +727,31 @@
     return _adEndView;
 }
 
+
+- (UIImageView *)totleTimeImageView {
+    
+    if (!_totleTimeImageView) {
+        _totleTimeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 25)];
+        _totleTimeImageView.backgroundColor = [UIColor clearColor];
+        _totleTimeImageView.image = [UIImage imageWithImageName:@"main_newsFeed_photoIcon" inBundle:self.resourceBundle];
+        [_totleTimeImageView addSubview:self.remaindTimeLabel];
+    }
+    
+    return _totleTimeImageView;
+}
+
+- (UILabel *)remaindTimeLabel
+{
+    if (!_remaindTimeLabel) {
+        _remaindTimeLabel = [[UILabel alloc] init];
+        _remaindTimeLabel.frame = CGRectMake(0, 0, 0, 0);
+        _remaindTimeLabel.text = @"";
+        _remaindTimeLabel.textAlignment = NSTextAlignmentCenter;
+        _remaindTimeLabel.textColor = [UIColor whiteColor];
+        _remaindTimeLabel.font = [UIFont systemFontOfSize:16.0f];
+        _remaindTimeLabel.backgroundColor = [UIColor clearColor];
+    }
+    return _remaindTimeLabel;
+}
 
 @end

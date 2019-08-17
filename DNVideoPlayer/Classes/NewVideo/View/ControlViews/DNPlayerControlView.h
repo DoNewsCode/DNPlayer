@@ -40,10 +40,15 @@
 /// 自定义加载视图
 @property (nonatomic, strong) UIImageView *customLoadingView;
 
+/// 是否展示剩余时间视图
+@property (nonatomic, assign) BOOL isShowRemaindTimeView;
+
 /// 总时间
 @property (nonatomic, copy) NSString *totalTime;
 /// 当前时间
 @property (nonatomic, copy) NSString *currentTime;
+/// 剩余时间
+@property (nonatomic, copy) NSString *remaindTimeStr;
 /// 滑动进度条value改变
 @property (nonatomic, assign) CGFloat slidChangeValue;
 

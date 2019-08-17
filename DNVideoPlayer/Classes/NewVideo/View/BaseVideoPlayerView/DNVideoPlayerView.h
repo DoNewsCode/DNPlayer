@@ -65,6 +65,8 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 @property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
 /// 单独设置底部进度条是否显示
 @property (nonatomic, assign) BOOL isShowBottomProgressView;
+/// 是否展示剩余时间视图
+@property (nonatomic, assign) BOOL isShowRemaindTimeView;
 /// 单独设置缓冲视图
 @property (nonatomic, strong) UIImageView *customLoadingView;
 

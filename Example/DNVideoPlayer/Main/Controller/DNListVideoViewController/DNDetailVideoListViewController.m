@@ -102,7 +102,7 @@
     // 播放器控制层配置
     _videoPlayer.controlViewConfig = self.playerControlViewConfig;
     
-   
+    _videoPlayer.isShowRemaindTimeView = NO;
 //    [cell.videoPlaceHolderView addSubview:_videoPlayer.containerView];
 //    _videoPlayer.containerView.ct_top = 0;
 //    _videoPlayer.containerView.ct_left= 0;

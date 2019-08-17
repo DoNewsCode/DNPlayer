@@ -9,6 +9,8 @@
 #ifndef DNPlayerTypeDef_h
 #define DNPlayerTypeDef_h
 
+
+
 typedef void(^PlayerPublicBlock)(id sender);
 
 // 适配 iOS 11 重写 adjustsScrollViewInsets
