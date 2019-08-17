@@ -59,6 +59,8 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 @property (nonatomic, strong) DNPlayer *player;
 /// 容器视图
 @property (nonatomic, strong) UIView *containerView;
+/// 是否动画显示播放器(初始化播放器后 1.添加容器视图到主视图上.2.设置容器视图frame)
+@property (nonatomic, assign) BOOL isAnimateShowContainerView;
 /// 播放器控制视图类型(可以设置直播或点播类型)
 @property (nonatomic, strong) DNPlayerControlViewConfig *controlViewConfig;
 /// 单独设置底部进度条是否显示

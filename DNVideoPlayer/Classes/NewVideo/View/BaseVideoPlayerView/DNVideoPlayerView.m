@@ -74,8 +74,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 @property (nonatomic, strong) NSTimer *sliderTimer;
 
 @property (nonatomic, strong) DNPlayModel *playModel;
-/// 是否动画显示播放器(初始化播放器后 1.添加容器视图到主视图上.2.设置容器视图frame)
-@property (nonatomic, assign) BOOL isAnimateShowContainerView;
+
 
 
 
@@ -130,10 +129,10 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     if (containerView != nil) {
         [containerView addSubview:self.containerView];
         self.containerView.frame = containerView.bounds;
+        if (self.player.superview == nil) {
+            [self creatSubViews];
+        }
     }
-//    self.containerView.ct_top = 0;
-//    self.containerView.ct_left= 0;
-//    self.containerView.ct_size = CGSizeMake(ScreenWidth, ScreenWidth *9 /16);
 }
 
 - (instancetype)init
