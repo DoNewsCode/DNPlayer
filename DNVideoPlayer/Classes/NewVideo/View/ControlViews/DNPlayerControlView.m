@@ -219,7 +219,14 @@
     [self.adEndView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.leading.trailing.bottom.equalTo(self);
     }];
-
+    
+    [self.remaindTimeLabel sizeToFit];
+    self.remaindTimeLabel.ct_height = 25.0f;
+    [self.totleTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(self.remaindTimeLabel.ct_width + 14);
+        make.right.mas_equalTo(12);
+        make.bottom.mas_equalTo(self.totleTimeImageView.ct_height+12);
+    }];
 
 }
 
@@ -253,6 +260,7 @@
     self.bottomloadingProgress.progress = 0;
     self.currentTimeLabel.text = @"00:00";
     self.totalTimeLabel.text = @"00:00";
+    self.remaindTimeLabel.text = @"00:00";
     self.adEndView.hidden = YES;
     self.backgroundColor = [UIColor clearColor];
 }

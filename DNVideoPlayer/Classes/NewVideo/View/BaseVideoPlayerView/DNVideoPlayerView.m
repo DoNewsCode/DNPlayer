@@ -387,10 +387,14 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             NSLog(@"**********AliyunVodPlayerEventPrepareDone**********");
             //TODO: 设置时间, 界面设置, 缓冲视图控制
             NSInteger playTime = self.player.totalDuration;
-            self.player.controlView.totalTime = [NSString stringWithFormat:@"%@",[DNVideoPlayerTools timeFormate:playTime]];
+            NSString *totalTimeStr = [NSString stringWithFormat:@"%@",[DNVideoPlayerTools timeFormate:playTime]];
+            
+            self.player.controlView.totalTime = totalTimeStr;
+            self.player.controlView.remaindTimeStr = totalTimeStr;
+            
 //
             self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sliderTimerRun:) userInfo:nil repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:self.sliderTimer forMode:NSDefaultRunLoopMode];
+            [[NSRunLoop mainRunLoop] addTimer:self.sliderTimer forMode:NSRunLoopCommonModes];
             self.player.controlView.showPlayBtn = NO;
             [self.player.controlView stopAtivityView];
             
