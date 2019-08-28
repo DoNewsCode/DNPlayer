@@ -261,6 +261,7 @@
     self.currentTimeLabel.text = @"00:00";
     self.totalTimeLabel.text = @"00:00";
     self.remaindTimeLabel.text = @"00:00";
+    self.remaindTimeLabel.hidden = YES;
     self.adEndView.hidden = YES;
     self.backgroundColor = [UIColor clearColor];
 }
