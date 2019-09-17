@@ -21,10 +21,10 @@
 + (instancetype)sharedDNPlayer
 {
     static DNPlayer *playerView = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
         playerView = [[DNPlayer alloc] init];
-    });
+//    });
     return playerView;
 }
 

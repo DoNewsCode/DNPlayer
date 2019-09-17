@@ -60,7 +60,7 @@
 @property (nonatomic, readonly,assign)NSTimeInterval loadedTime;
 
 /**
- *  单例
+ *  2019.9.17修改为非单利创建
  *  @return player
  */
 + (instancetype)sharedDNPlayer;

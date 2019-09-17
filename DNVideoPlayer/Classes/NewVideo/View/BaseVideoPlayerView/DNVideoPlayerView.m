@@ -102,6 +102,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 - (void)restPlayer
 {
     [self.player reset];
+    self.player = nil;
     self.playModelObserver = nil;
     self.controlLayerDelegate = nil;
 }
