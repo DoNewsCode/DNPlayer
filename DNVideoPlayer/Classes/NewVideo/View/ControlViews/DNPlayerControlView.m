@@ -465,7 +465,9 @@
     self.remaindTimeLabel.ct_height = 25.0f;
     self.totleTimeImageView.ct_width = self.remaindTimeLabel.ct_width + 14;
     self.remaindTimeLabel.ct_left = 7;
-    self.totleTimeImageView.ct_left = SCREEN_WIDTH-12-self.totleTimeImageView.ct_width;
+    
+    
+    self.totleTimeImageView.ct_left = self.ct_width - 12 - self.totleTimeImageView.ct_width;
     self.totleTimeImageView.ct_top = self.ct_height-12-self.totleTimeImageView.ct_height;
 }
 
