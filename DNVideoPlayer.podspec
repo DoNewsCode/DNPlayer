@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DNVideoPlayer'
-  s.version          = '0.2.9'
+  s.version          = '0.2.91'
   s.summary          = 'A short description of DNVideoPlayer.'
 
 # This description is used to generate tags and improve search results.
