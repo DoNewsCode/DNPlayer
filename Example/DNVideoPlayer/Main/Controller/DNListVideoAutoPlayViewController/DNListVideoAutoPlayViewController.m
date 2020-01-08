@@ -119,7 +119,7 @@
 
     DNPlayModel *playModel = [DNPlayModel UITableViewCellPlayModelWithPlayerSuperviewTag:cell.videoPlaceHolderView.tag atIndexPath:indexPath tableView:self.videoListTableView];
 
-    playModel.videourl = [NSString stringWithFormat:@"https://niuerdata.g.com.cn/data/shareimg_oss/big_media_article_video/YLZX-MP-2/bd6b5602c872793998941755b3c7e8cb.mp4"];
+    playModel.videourl = [NSString stringWithFormat:@"https://ks3-cn-beijing.ksyun.com/renren-sv/1077340"];
     //    [NSString stringWithFormat:@"https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4"];
     //https://donewsdataoss.g.com.cn/data/video/2017/1221/A2niwf4GDP-1545373763374.mp4
     [_videoPlayer playVideoWithPlayModel:playModel completeBlock:completeBlock];

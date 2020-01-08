@@ -195,11 +195,11 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     //选中则静音
-    if (btn.selected) {
-        btn.selected = NO;
+    if (!btn.isSelected) {
+        
         self.mpVolumVC.volume = 0.3;
     }else{
-        btn.selected = YES;
+        
         self.mpVolumVC.volume = 0;
 
     }
@@ -234,6 +234,8 @@
     self.player.controlView.currentTime = [DNVideoPlayerTools timeFormate:(self.player.totalDuration * slider.value)];
     //滑动时--进度值同步改变
     self.player.controlView.slidChangeValue = slider.value;
+    
+    
 }
 
 //播放进度
@@ -260,13 +262,18 @@
 - (void)playerSeekToTimeWithValue:(CGFloat)value
 {
     //AliyunVodPlayerEventFirstFrame在此状态之后调用
-    if (self.player.playerState == AliyunVodPlayerStateLoading ||
-        self.player.playerState == AliyunVodPlayerStatePause ||
-        self.player.playerState == AliyunVodPlayerStatePlay)
+    if (self.player.playerState == AVPStatusStarted ||
+        self.player.playerState == AVPStatusPaused)
     {
         self.mProgressCanUpdate = NO;
         NSLog(@"快进的时间s-------%f",(self.player.totalDuration * value));
         [self.player seekToTime:(self.player.totalDuration * value)];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //在播放器回调的方法里，防止sdk异常不进行seekdone的回调，在3秒后增加处理，防止ui一直异常
+            self.mProgressCanUpdate = YES;
+        });
+        
     }
 }
 

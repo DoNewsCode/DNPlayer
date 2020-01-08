@@ -32,12 +32,8 @@
  * 显示模式有：    AliyunVodPlayerDisplayModeFit,            // 保持原始比例
                 AliyunVodPlayerDisplayModeFitWithCropping // 全屏占满屏幕
  */
-@property (nonatomic, assign) AliyunVodPlayerDisplayMode displayMode;
-/**
- * 功能：设置网络超时时间，单位毫秒
- * 备注：当播放网络流时，设置网络超时时间，默认15000毫秒
- */
-@property(nonatomic, assign) int timeout;
+@property (nonatomic, assign) AVPScalingMode displayMode;
+
 /*
  功能：视频总长度，单位为秒
  备注：在prepareWithVid之后才能够获取时长。
@@ -58,6 +54,11 @@
  备注：在开始播放之后才能够获取此位置。
  */
 @property (nonatomic, readonly,assign)NSTimeInterval loadedTime;
+
+/**
+ 播放器状态
+ */
+@property (nonatomic, assign) AVPStatus playerState;
 
 /**
  *  2019.9.17修改为非单利创建
@@ -109,10 +110,6 @@
  备注：在播放器状态AliyunVodPlayerEventFirstFrame之后才能调用此函数。
  */
 - (void)seekToTime:(NSTimeInterval)time;
-
-/// 播放器状态
-- (AliyunVodPlayerState)playerState;
-
 
 - (void)fullScreenMode;
 - (void)smallScreenMode;

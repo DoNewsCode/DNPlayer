@@ -531,7 +531,7 @@
 				ORGANIZATIONNAME = "563620078@qq.com";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = E37X5N99NM;
+						DevelopmentTeam = 6T473Z9MGU;
 						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
@@ -637,6 +637,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DNVideoPlayer_Example/Pods-DNVideoPlayer_Example-frameworks.sh",
+				"${PODS_ROOT}/AliPlayerSDK_iOS/AliyunPlayer.framework",
+				"${PODS_ROOT}/AliPlayerSDK_iOS/alivcffmpeg.framework",
+				"${PODS_ROOT}/AliPlayerSDK_iOS/AlivcConan.framework",
+				"${PODS_ROOT}/AliPlayerSDK_iOS/AliyunMediaDownloader.framework",
+				"${PODS_ROOT}/AliPlayerSDK_iOS/artpSource.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunVodPlayerSDK.framework",
@@ -648,6 +653,11 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/alivcffmpeg.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlivcConan.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunMediaDownloader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/artpSource.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliThirdparty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunVodPlayerSDK.framework",
@@ -869,9 +879,10 @@
 			baseConfigurationReference = 0AF62392627385DEF0D95E7D /* Pods-DNVideoPlayer_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E37X5N99NM;
+				DEVELOPMENT_TEAM = 6T473Z9MGU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNVideoPlayer/DNVideoPlayer-Prefix.pch";
 				INFOPLIST_FILE = "DNVideoPlayer/DNVideoPlayer-Info.plist";
@@ -919,9 +930,10 @@
 			baseConfigurationReference = 0F55F2F7F6F18D2EEA4C732C /* Pods-DNVideoPlayer_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E37X5N99NM;
+				DEVELOPMENT_TEAM = 6T473Z9MGU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNVideoPlayer/DNVideoPlayer-Prefix.pch";
 				INFOPLIST_FILE = "DNVideoPlayer/DNVideoPlayer-Info.plist";

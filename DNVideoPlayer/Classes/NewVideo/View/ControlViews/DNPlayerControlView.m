@@ -314,9 +314,16 @@
 
 - (void)volumBtnClick:(UIButton *)btn
 {
-    if (self.volumeOnOrOffClickBlock) {
-        self.volumeOnOrOffClickBlock(btn);
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        btn.selected = !btn.isSelected;
+        
+        if (self.volumeOnOrOffClickBlock) {
+            self.volumeOnOrOffClickBlock(btn);
+        }
+        
+    });
+    
 }
 
 - (void)fullScreenBtnClick:(UIButton *)btn
@@ -570,16 +577,20 @@
 - (UIButton *)volumBtn
 {
     if (!_volumBtn) {
+//        _volumBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _volumBtn.selected = NO;
         _volumBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _volumBtn.selected = NO;
-        _volumBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_volumBtn setImage:[UIImage imageWithImageName:@"player_volumeOn_icon" inBundle:self.resourceBundle] forState:UIControlStateNormal];
-//        [_volumBtn setImage:[UIImage ca_imageName:@"player_volumeOn_icon" inBundle:DNPlaceholderResource] forState:UIControlStateNormal];
-        [_volumBtn setImage:[UIImage imageWithImageName:@"player_volumeOff_icon" inBundle:self.resourceBundle] forState:UIControlStateSelected];
-//        [_volumBtn setImage:[UIImage ca_imageName:@"player_volumeOff_icon" inBundle:DNPlaceholderResource] forState:UIControlStateSelected];
+        
+        UIImage *nomalImage = [UIImage imageWithImageName:@"player_volumeOn_icon" inBundle:self.resourceBundle];
+        
+        [_volumBtn setImage:nomalImage forState:UIControlStateNormal];
+
+        UIImage *selectImage = [UIImage imageWithImageName:@"player_volumeOff_icon" inBundle:self.resourceBundle];
+        
+        [_volumBtn setImage:selectImage forState:UIControlStateSelected];
+
         [_volumBtn addTarget:self action:@selector(volumBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [_volumBtn setImage:[UIImage imageNamed:ZFPlayerSrcName(@"kr-video-player-play")] forState:UIControlStateNormal];
-//        [_volumBtn setImage:[UIImage imageNamed:ZFPlayerSrcName(@"kr-video-player-pause")] forState:UIControlStateSelected];
+
     }
     return _volumBtn;
 }

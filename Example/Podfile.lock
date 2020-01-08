@@ -1,4 +1,7 @@
 PODS:
+  - AliPlayerSDK_iOS (4.7.3):
+    - AliPlayerSDK_iOS/AliPlayerSDK (= 4.7.3)
+  - AliPlayerSDK_iOS/AliPlayerSDK (4.7.3)
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.8)
   - AliyunPlayer_iOS/AliyunVodPlayerSDK (3.4.8):
     - AliyunPlayer_iOS/AliyunPlayerSDK
@@ -17,8 +20,8 @@ PODS:
   - DNCommonKit/DNLayout (9.9.1)
   - DNCommonKit/DNTools (9.9.1):
     - YYText
-  - DNVideoPlayer (0.1.9):
-    - AliyunPlayer_iOS/AliyunVodPlayerSDK (= 3.4.8)
+  - DNVideoPlayer (0.2.91):
+    - AliPlayerSDK_iOS (= 4.7.3)
     - DNCommonKit
     - Masonry
   - Masonry (1.1.0)
@@ -35,6 +38,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AliPlayerSDK_iOS
     - AliyunPlayer_iOS
     - Masonry
     - SDWebImage
@@ -47,13 +51,14 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  AliPlayerSDK_iOS: 9a87f05bee6c9786a4cc7c09da596d33c173e195
   AliyunPlayer_iOS: de42fbf5848352ce0697ffd22fc8e3236f955093
   DNCommonKit: 2d6a33ccee9585e0b9b2b0b061fd762a513ecb65
-  DNVideoPlayer: 72336f793721f07a04cb3268f0a9b9af7e468117
+  DNVideoPlayer: 1e30a7e5566fc53a17b1713b1fce381a49e72f10
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
 PODFILE CHECKSUM: 6258f4857807780b2845ab6fdbe318b8ff015ecf
 
-COCOAPODS: 1.8.0.beta.1
+COCOAPODS: 1.8.3

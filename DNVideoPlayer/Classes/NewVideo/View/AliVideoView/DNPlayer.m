@@ -10,8 +10,13 @@
 
 @interface DNPlayer () 
 /// 阿里云播放器
-@property (nonatomic, strong) AliyunVodPlayer *aliPlayer;
+@property (nonatomic, strong) AliPlayer *aliPlayer;
 @property (nonatomic, readwrite, strong) DNPlayerControlView *controlView;
+
+/**
+ 播放器view
+ */
+@property (nonatomic, strong) UIView *playerView;
 
 @end
 
@@ -33,20 +38,22 @@
     self = [super init];
     if (self) {
         //初始化
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor blackColor];
         [self addSubview:self.controlView];
+        
+        [AliPlayer setEnableLog:NO];
     }
     return self;
 }
 
 - (void)fullScreenMode
 {
-    self.aliPlayer.displayMode = AliyunVodPlayerDisplayModeFit;
+    self.aliPlayer.scalingMode = AVP_SCALINGMODE_SCALEASPECTFIT;
 }
 
 - (void)smallScreenMode
 {
-    self.aliPlayer.displayMode = AliyunVodPlayerDisplayModeFitWithCropping;
+    self.aliPlayer.scalingMode = AVP_SCALINGMODE_SCALEASPECTFILL;
 }
 
 
@@ -57,41 +64,56 @@
     }
     
     if (!self.aliPlayer) {
-        self.aliPlayer = [[AliyunVodPlayer alloc] init];
-//        self.aliPlayer.printLog = YES;
+        self.aliPlayer = [[AliPlayer alloc] init];
+
+        self.aliPlayer.rate = 1;
     }
     self.aliPlayer.delegate = delegate;
     //设置填充模式
-    [self.aliPlayer setDisplayMode:AliyunVodPlayerDisplayModeFitWithCropping];
+    [self.aliPlayer setScalingMode:AVP_SCALINGMODE_SCALEASPECTFIT];
     //设置自动播放
     [self.aliPlayer setAutoPlay:YES];
 
-    [self addSubview:self.aliPlayer.playerView];
+    //设置frame
+    self.playerView.frame = self.bounds;
+    self.aliPlayer.playerView = self.playerView;
+    self.controlView.frame = self.bounds;
+    
+    [self addSubview:self.playerView];
     [self bringSubviewToFront:self.controlView];
 
     [self setUpControlView];
-
-    //设置frame
-    self.aliPlayer.playerView.frame = self.bounds;
-    self.controlView.frame = self.bounds;
     
     if (playModel.videourl != nil &&
         ![playModel.videourl isEqualToString:@""]) {
         //播放
-        [self.aliPlayer prepareWithURL:[NSURL URLWithString:playModel.videourl]];
-        //检查网络
-        //[self netWorking];
+        [self.aliPlayer setUrlSource:[[[AVPUrlSource alloc] init] urlWithString:playModel.videourl]];
+        
     }
-    //    [self tapPlayerViewGestureAction];
+    AVPConfig *config = [self.aliPlayer getConfig];
+    if (playModel.videourl.length > 4 && [[playModel.videourl substringToIndex:4] isEqualToString:@"artp"]) {
+        config.maxDelayTime = 100;
+    }else {
+        config.maxDelayTime = 5000;
+    }
+    
+    config.enableSEI = YES;
+    
+    [self.aliPlayer setConfig:config];
+    
+    [self.aliPlayer prepare];
+    
+    [self.aliPlayer start];
+    
     if (completeBlock) {
         completeBlock(nil);
     }
 }
 
-- (void)setDisplayMode:(AliyunVodPlayerDisplayMode)displayMode
+- (void)setDisplayMode:(AVPScalingMode)displayMode
 {
     _displayMode = displayMode;
-    [self.aliPlayer setDisplayMode:_displayMode];
+    [self.aliPlayer setScalingMode:_displayMode];
 }
 
 - (void)setControlViewConfig:(DNPlayerControlViewConfig *)controlViewConfig
@@ -116,12 +138,6 @@
     self.controlView.frame = self.bounds;
 }
 
-
-- (AliyunVodPlayerState)playerState
-{
-    return self.aliPlayer.playerState;
-}
-
 /*
  功能：开始播放视频
  备注：在prepareWithVid之后可以调用start进行播放。
@@ -137,7 +153,7 @@
  */
 - (void)resume
 {
-    [self.aliPlayer resume];
+    [self.aliPlayer start];
 }
 
 /*
@@ -170,7 +186,7 @@
  */
 - (void)replay
 {
-    [self.aliPlayer replay];
+//    [self.aliPlayer reset];
 }
 
 /*
@@ -178,7 +194,7 @@
  */
 - (void)releasePlayer
 {
-    [self.aliPlayer releasePlayer];
+    [self.aliPlayer destroy];
 }
 
 /*
@@ -187,7 +203,7 @@
  */
 - (void)seekToTime:(NSTimeInterval)time
 {
-    [self.aliPlayer seekToTime:time];
+    [self.aliPlayer seekToTime:time seekMode:AVP_SEEKMODE_ACCURATE];
 }
 
 /**
@@ -196,26 +212,9 @@
 - (void)setIsMuteMode:(BOOL)isMuteMode
 {
     _isMuteMode = isMuteMode;
-    self.aliPlayer.muteMode = _isMuteMode;
+    self.aliPlayer.muted = _isMuteMode;
 }
 
-/**
- * 功能：播放器初始化后，获取播放器是否播放。
- */
-- (BOOL)isPlaying
-{
-    return self.aliPlayer.isPlaying;
-}
-
-/**
- * 功能：设置网络超时时间，单位毫秒
- * 备注：当播放网络流时，设置网络超时时间，默认15000毫秒
- */
-- (void)setTimeout:(int)timeout
-{
-    _timeout = timeout;
-    self.aliPlayer.timeout = _timeout;
-}
 
 /*
  功能：视频总长度，单位为秒
@@ -223,7 +222,7 @@
  */
 - (NSTimeInterval)totalDuration
 {
-    return self.aliPlayer.duration;
+    return self.aliPlayer.duration/1000;
 }
 
 /*
@@ -232,7 +231,7 @@
  */
 - (NSTimeInterval)currentTime
 {
-    return self.aliPlayer.currentTime;
+    return self.aliPlayer.currentPosition/1000;
 }
 
 /*
@@ -241,7 +240,7 @@
  */
 - (NSTimeInterval)loadedTime
 {
-    return self.aliPlayer.loadedTime;
+    return self.aliPlayer.bufferedPosition/1000;
 }
 
 
@@ -254,7 +253,14 @@
     return _controlView;
 }
 
-
+- (UIView *)playerView {
+    
+    if (!_playerView) {
+        _playerView = [[UIView alloc] initWithFrame:self.bounds];
+    }
+    
+    return _playerView;
+}
 
 
 @end

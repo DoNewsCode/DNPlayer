@@ -63,7 +63,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 
 
 
-@interface DNVideoPlayerView ()<AliyunVodPlayerDelegate,DNPlayerRotationManagerDelegate>
+@interface DNVideoPlayerView ()<AVPDelegate,DNPlayerRotationManagerDelegate>
 {
     DNPlayerRotationManager *_rotationManager;
 }
@@ -314,7 +314,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     self.controlLayerDelegate = (id)self;
 }
 
-- (void)setPlayerDisplayMode:(AliyunVodPlayerDisplayMode)displayMode
+- (void)setPlayerDisplayMode:(AVPScalingMode)displayMode
 {
     self.player.displayMode = displayMode;
 }
@@ -332,16 +332,16 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 
 -(void)applicationEnterBackground
 {
-    if (self.player.playerState == AliyunVodPlayerStatePlay ||
-        self.player.playerState == AliyunVodPlayerStateIdle) {
+    if (self.player.playerState == AVPStatusStarted ||
+        self.player.playerState == AVPStatusIdle) {
         [self playerPause];
     }
 }
 
 -(void)applicationBecomeActive
 {
-    if (self.player.playerState == AliyunVodPlayerStatePause ||
-        self.player.playerState == AliyunVodPlayerStateIdle) {
+    if (self.player.playerState == AVPStatusPaused ||
+        self.player.playerState == AVPStatusIdle) {
         self.isBackgroundToActive = YES;
         [self playerPlay];
     }
@@ -379,35 +379,118 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     [[UIWindow currentViewController] setNeedsStatusBarAppearanceUpdate];
 }
 
-
-- (void)vodPlayer:(AliyunVodPlayer *)vodPlayer onEventCallback:(AliyunVodPlayerEvent)event
-{
-    switch (event) {
-            //准备播放
-        case AliyunVodPlayerEventPrepareDone:{
-            NSLog(@"**********AliyunVodPlayerEventPrepareDone**********");
-            //TODO: 设置时间, 界面设置, 缓冲视图控制
+- (void)onPlayerEvent:(AliPlayer *)player eventType:(AVPEventType)eventType {
+    
+    /**@brief 准备完成事件*/
+    /****@brief Preparation completion event*/
+    //AVPEventPrepareDone,
+    /**@brief 自动启播事件*/
+    /****@brief Autoplay start event*/
+    //AVPEventAutoPlayStart,
+    /**@brief 首帧显示时间*/
+    /****@brief First frame display event*/
+    //AVPEventFirstRenderedStart,
+    /**@brief 播放完成事件*/
+    /****@brief Playback completion event*/
+    //AVPEventCompletion,
+    /**@brief 缓冲开始事件*/
+    /****@brief Buffer start event*/
+    //AVPEventLoadingStart,
+    /**@brief 缓冲完成事件*/
+    /****@brief Buffer completion event*/
+   // AVPEventLoadingEnd,
+    /**@brief 跳转完成事件*/
+    /****@brief Seeking completion event*/
+   // AVPEventSeekEnd,
+    /**@brief 循环播放开始事件*/
+    /****@brief Loop playback start event*/
+   // AVPEventLoopingStart,
+    
+    switch (eventType) {
+        case AVPEventPrepareDone:{
+            
+            self.mProgressCanUpdate = YES;
+            
             NSInteger playTime = self.player.totalDuration;
             NSString *totalTimeStr = [NSString stringWithFormat:@"%@",[DNVideoPlayerTools timeFormate:playTime]];
             
             self.player.controlView.totalTime = totalTimeStr;
             self.player.controlView.remaindTimeStr = totalTimeStr;
             
-//
-            self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sliderTimerRun:) userInfo:nil repeats:YES];
-            [[NSRunLoop mainRunLoop] addTimer:self.sliderTimer forMode:NSRunLoopCommonModes];
             self.player.controlView.showPlayBtn = NO;
             [self.player.controlView stopAtivityView];
             
             if (self.PlayerEventPrepareDone) {
                 self.PlayerEventPrepareDone(nil);
             }
-//            self.playView.hidden = NO;
-//            self.loadIndicatorView.hidden = YES;
+            
+        }
+            
+        break;
+         
+        case AVPEventLoadingStart:{
+            
+            [self.player.controlView startActivityView];
+            if (self.PlayerEventBeginLoading) {
+                self.PlayerEventBeginLoading(nil);
+            }
+            
+        }
+            
+            break;
+        case AVPEventLoadingEnd:{
+            
+            [self.player.controlView stopAtivityView];
+            if (self.PlayerEventEndLoading) {
+                self.PlayerEventEndLoading(nil);
+            }
+            
+        }
+            
+            break;
+        case AVPEventFirstRenderedStart:{
+            
+            [self.player.controlView stopAtivityView];
+            if (self.PlayerEventFirstFrame) {
+                self.PlayerEventFirstFrame(nil);
+            }
+            
         }
             break;
+           
+        case AVPEventSeekEnd:{
+            
+            self.mProgressCanUpdate = YES;
+            NSLog(@"**********AliyunVodPlayerEventSeekDone**********");
+            if (self.PlayerEventSeekDone) {
+                self.PlayerEventSeekDone(nil);
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+
+- (void)onPlayerStatusChanged:(AliPlayer *)player oldStatus:(AVPStatus)oldStatus newStatus:(AVPStatus)newStatus
+{
+    
+    self.player.playerState = newStatus;
+    
+    switch (newStatus) {
+            
+        case AVPStatusIdle:{
+            [self.player.controlView startActivityView];
+        }
+            break;
+            
             //暂停事件
-        case AliyunVodPlayerEventPause:{
+        case AVPStatusPaused:{
             NSLog(@"**********AliyunVodPlayerEventPause**********");
             if (self.PlayerEventPause) {
                 self.PlayerEventPause(nil);
@@ -418,64 +501,29 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
         }
             break;
             //播放事件
-        case AliyunVodPlayerEventPlay: {
+        case AVPStatusStarted: {
             NSLog(@"**********AliyunVodPlayerEventPlay**********");
             if (self.PlayerEventPlay) {
                 self.PlayerEventPlay(nil);
             }
 
-//            [self.integralTimer setFireDate:[NSDate distantPast]];
-//            self.loadIndicatorView.hidden = YES;
-//            self.PlaceholderImageView.hidden = YES;
-//            [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
         }
             break;
 
             //播放停止事件
-        case AliyunVodPlayerEventStop: {
+        case AVPStatusStopped: {
             NSLog(@"**********AliyunVodPlayerEventStop**********");
             if (self.PlayerEventStop) {
                 self.PlayerEventStop(nil);
             }
-//            isStop  = YES;
-//            self.playButton.selected = NO;
-            //阻止设备自动锁屏
-//            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
-//
-//
+
         }
 
             break;
             
-            //开始加载事件
-        case AliyunVodPlayerEventBeginLoading: {
-            NSLog(@"**********AliyunVodPlayerEventBeginLoading**********");
-            [self.player.controlView startActivityView];
-            if (self.PlayerEventBeginLoading) {
-                self.PlayerEventBeginLoading(nil);
-            }
-//            [self bringSubviewToFront:self.loadIndicatorView];
-//            self.loadIndicatorView.hidden  = NO;
-//            self.playView.hidden = YES;
-        }
-            
-            break;
-            //加载结束事件
-        case AliyunVodPlayerEventEndLoading: {
-            NSLog(@"**********AliyunVodPlayerEventEndLoading**********");
-            [self.player.controlView stopAtivityView];
-            if (self.PlayerEventEndLoading) {
-                self.PlayerEventEndLoading(nil);
-            }
-//            self.loadIndicatorView.hidden  = YES;
-//            [self sendSubviewToBack:self.loadIndicatorView];
-//            self.playView.hidden = NO;
-            
-        }
-            break;
-            
             //播放结束事件
-        case AliyunVodPlayerEventFinish:{
+        case AVPStatusCompletion:{
             NSLog(@"**********AliyunVodPlayerEventFinish**********");
             //强制播放器竖屏展示(横屏点击详情页的情况)
             [self.rotationManager rotate:DNOrientation_Portrait animated:YES];
@@ -497,29 +545,14 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             }
             //广告 -- 展示播放结束广告页面
         }
-            //获取到第一帧事件
-        case AliyunVodPlayerEventFirstFrame:{
-            NSLog(@"**********AliyunVodPlayerEventFirstFrame**********");
-            [self.player.controlView stopAtivityView];
-            if (self.PlayerEventFirstFrame) {
-                self.PlayerEventFirstFrame(nil);
-            }
-            
-        }
-            //快退快进完成事件
-        case AliyunVodPlayerEventSeekDone:{
-            self.mProgressCanUpdate = YES;
-            NSLog(@"**********AliyunVodPlayerEventSeekDone**********");
-            if (self.PlayerEventSeekDone) {
-                self.PlayerEventSeekDone(nil);
-            }
-        }
+            break;
+        
         default:
             break;
     }
 }
 
-- (void)vodPlayer:(AliyunVodPlayer *)vodPlayer playBackErrorModel:(AliyunPlayerVideoErrorModel *)errorModel
+- (void)onError:(AliPlayer *)player errorModel:(AVPErrorModel *)errorModel
 {
     NSLog(@"===playBackErrorModel===%@",errorModel);
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -529,61 +562,32 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     });
 }
 
-
-- (void)vodPlayer:(AliyunVodPlayer*)vodPlayer willSwitchToQuality:(AliyunVodPlayerVideoQuality)quality videoDefinition:(NSString*)videoDefinition
-{
-    NSLog(@"===willSwitchToQuality===");
-}
-
-- (void)vodPlayer:(AliyunVodPlayer *)vodPlayer didSwitchToQuality:(AliyunVodPlayerVideoQuality)quality videoDefinition:(NSString*)videoDefinition
-{
-    NSLog(@"===didSwitchToQuality===");
-}
-
-- (void)vodPlayer:(AliyunVodPlayer*)vodPlayer failSwitchToQuality:(AliyunVodPlayerVideoQuality)quality videoDefinition:(NSString*)videoDefinition
-{
-    
-}
-
-- (void)onCircleStartWithVodPlayer:(AliyunVodPlayer*)vodPlayer
-{
-    
-}
-/*
- *功能：播放器鉴权数据过期。
+/**
+ @brief 视频当前播放位置回调
+ @param player 播放器player指针
+ @param position 视频当前播放位置
  */
-- (void)onTimeExpiredErrorWithVodPlayer:(AliyunVodPlayer *)vodPlayer
-{
-    
-}
-
-/*
- *功能：播放地址存在过期时间，此时播放地址过期时提供的回调消息
- *参数：videoid：过期时播放的videoId
- *参数：quality：过期时播放的清晰度，playauth播放方式和STS播放方式有效。
- *参数：videoDefinition：过期时播放的清晰度，MTS播放方式时有效。
+/****
+ @brief Current playback position callback.
+ @param player Player pointer.
+ @param position Current playback position.
  */
-- (void)vodPlayerPlaybackAddressExpiredWithVideoId:(NSString *)videoId quality:(AliyunVodPlayerVideoQuality)quality videoDefinition:(NSString*)videoDefinition
-{
+- (void)onCurrentPositionUpdate:(AliPlayer*)player position:(int64_t)position{
     
-}
-
-#pragma mark - 进度条
-- (void)sliderTimerRun:(NSTimer *)sender
-{
     if (self.player && self.mProgressCanUpdate) {
-
-        NSString *currentTime = [DNVideoPlayerTools timeFormate:self.player.currentTime];
-        self.player.controlView.currentTime = currentTime;
         
-        if (self.isShowRemaindTimeView) {
-            NSString *remaindTime = [DNVideoPlayerTools timeFormate:(self.player.totalDuration - self.player.currentTime)];
-            self.player.controlView.remaindTimeStr = remaindTime;
-        }
+        NSString *currentTime = [DNVideoPlayerTools timeFormate:position/1000];
+        
+        self.player.controlView.currentTime = currentTime;
         
         //当前播放的时间
         if (self.PlayerChangeCurrentTimeBlock) {
             self.PlayerChangeCurrentTimeBlock(currentTime);
+        }
+        
+        if (self.isShowRemaindTimeView) {
+            NSString *remaindTime = [DNVideoPlayerTools timeFormate:(self.player.totalDuration - self.player.currentTime)];
+            self.player.controlView.remaindTimeStr = remaindTime;
         }
         
         if(self.player.currentTime > 0 &&
@@ -598,15 +602,36 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             
             
         }
-        CGFloat cacheValue = round(self.player.loadedTime)/self.player.totalDuration;
-        if (cacheValue>0) {
-            self.player.controlView.loadingValue = cacheValue;
-            //缓存的进度
-            if (self.PlayerChangeLoadingValueBlock) {
-                self.PlayerChangeLoadingValueBlock(cacheValue);
-            }
-        }
+        
+        
     }
+    
+}
+
+/**
+ @brief 视频缓存位置回调
+ @param player 播放器player指针
+ @param position 视频当前缓存位置
+ */
+/****
+ @brief Current cache position callback.
+ @param player Player pointer.
+ @param position Current cache position.
+ */
+- (void)onBufferedPositionUpdate:(AliPlayer*)player position:(int64_t)position {
+    
+    
+    
+}
+
+- (void)onLoadingProgress:(AliPlayer *)player progress:(float)progress {
+    
+    self.player.controlView.loadingValue = progress;
+    //缓存的进度
+    if (self.PlayerChangeLoadingValueBlock) {
+        self.PlayerChangeLoadingValueBlock(progress);
+    }
+    
 }
 
 #pragma mark - 懒加载

@@ -9,6 +9,7 @@
 #import "DNVideoBaseView.h"
 #import "DNPlayerTypeDef.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 #import "DNPlayer.h"
 #import "DNPlayerRotationManager.h"
 #import "DNPlayerControlViewProtocol.h"
@@ -103,7 +104,7 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
  * AliyunVodPlayerDisplayModeFit,            // 保持原始比例
  * AliyunVodPlayerDisplayModeFitWithCropping // 全屏占满屏幕
  */
-- (void)setPlayerDisplayMode:(AliyunVodPlayerDisplayMode)displayMode;
+- (void)setPlayerDisplayMode:(AVPScalingMode)displayMode;
 
 /// 设置静音(YES静音 NO不静音)
 - (void)setPlayerMuteMode:(BOOL)isMute;

@@ -39,7 +39,7 @@ TODO: Add long description of the pod here.
   #s.public_header_files = 'Pod/Classes/**/**/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'Masonry'
-  s.dependency 'AliyunPlayer_iOS/AliyunVodPlayerSDK', '3.4.8'
+  s.dependency 'AliPlayerSDK_iOS', '4.7.3'
   s.dependency 'DNCommonKit'
   
 end
