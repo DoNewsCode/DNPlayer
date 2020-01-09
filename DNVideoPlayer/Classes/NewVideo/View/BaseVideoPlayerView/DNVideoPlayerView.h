@@ -121,6 +121,10 @@ typedef void(^DNVideoPlayerPublicBlock)(id sender);
 /// 销毁播放器
 - (void)releaseVideoPlayerView;
 
+/// 是否循环播放
+/// @param loop yes 是 NO 不是 默认不开启
+- (void)setLoopPlay:(BOOL)loop;
+
 NS_ASSUME_NONNULL_END
 
 @end

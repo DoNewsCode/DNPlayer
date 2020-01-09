@@ -229,6 +229,11 @@
     self.aliPlayer.muted = _isMuteMode;
 }
 
+- (void)setLoopPlay:(BOOL)loop {
+    
+    self.aliPlayer.loop = loop;
+    
+}
 
 /*
  功能：视频总长度，单位为秒

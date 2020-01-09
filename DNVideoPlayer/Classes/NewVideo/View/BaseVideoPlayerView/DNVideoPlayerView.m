@@ -371,6 +371,12 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
     [self.player replay];
 }
 
+- (void)setLoopPlay:(BOOL)loop {
+    
+    [self.player setLoopPlay:loop];
+    
+}
+
 - (void)setFullScreen:(BOOL)fullScreen
 {
     _fullScreen = fullScreen;
@@ -634,6 +640,12 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 }
 // 缓存进度
 - (void)onLoadingProgress:(AliPlayer *)player progress:(float)progress {
+    
+    
+    
+}
+// 实现,否则崩溃
+- (void)onSEIData:(AliPlayer *)player type:(int)type data:(NSData *)data {
     
     
     

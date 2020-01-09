@@ -118,4 +118,8 @@
 
 - (void)fullScreenMode;
 - (void)smallScreenMode;
+
+/// 是否循环播放
+- (void)setLoopPlay:(BOOL)loop;
+
 @end
