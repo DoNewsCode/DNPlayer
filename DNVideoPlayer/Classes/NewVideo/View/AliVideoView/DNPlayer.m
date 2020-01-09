@@ -67,6 +67,9 @@
         self.aliPlayer = [[AliPlayer alloc] init];
 
         self.aliPlayer.rate = 1;
+        
+        [self.aliPlayer setCacheConfig:self.cachConfig];
+        
     }
     self.aliPlayer.delegate = delegate;
     //设置填充模式
@@ -86,8 +89,19 @@
     
     if (playModel.videourl != nil &&
         ![playModel.videourl isEqualToString:@""]) {
+        
+        NSString *videoUrl = playModel.videourl;
+        
+        AVPUrlSource *source = [[[AVPUrlSource alloc] init] urlWithString:playModel.videourl];
+        
+        NSString *filePath = [self.aliPlayer getCacheFilePath:playModel.videourl];
+         
+        if (filePath.length > 0) {
+            source = [[[AVPUrlSource alloc] init] fileURLWithPath:filePath];
+        }
+        
         //播放
-        [self.aliPlayer setUrlSource:[[[AVPUrlSource alloc] init] urlWithString:playModel.videourl]];
+        [self.aliPlayer setUrlSource:source];
         
     }
     AVPConfig *config = [self.aliPlayer getConfig];
@@ -245,6 +259,20 @@
 
 
 #pragma mark - 懒加载 lazyLoad
+
+- (AVPCacheConfig *)cachConfig {
+    
+    if (!_cachConfig) {
+        _cachConfig = [[AVPCacheConfig alloc] init];
+        _cachConfig.path = [self videoCachPath];
+        _cachConfig.maxDuration = 120*60;
+        _cachConfig.maxSizeMB = 1024*2;
+        _cachConfig.enable = YES;
+    }
+    
+    return _cachConfig;
+}
+
 - (DNPlayerControlView *)controlView
 {
     if (!_controlView) {
@@ -260,6 +288,14 @@
     }
     
     return _playerView;
+}
+
+- (NSString *)videoCachPath {
+    
+    NSString *docPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    
+    return [docPath stringByAppendingString:@"/renren/videoListPath"];
+    
 }
 
 

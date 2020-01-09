@@ -481,7 +481,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
 {
     
     self.player.playerState = newStatus;
-    
+    self.player.isPlaying = YES;
     switch (newStatus) {
             
         case AVPStatusIdle:{
@@ -503,6 +503,9 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //播放事件
         case AVPStatusStarted: {
             NSLog(@"**********AliyunVodPlayerEventPlay**********");
+            
+            self.player.isPlaying = YES;
+            
             if (self.PlayerEventPlay) {
                 self.PlayerEventPlay(nil);
             }
@@ -620,17 +623,19 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
  */
 - (void)onBufferedPositionUpdate:(AliPlayer*)player position:(int64_t)position {
     
+    CGFloat progress = (CGFloat)position/(CGFloat)(self.player.totalDuration*1000);
     
-    
-}
-
-- (void)onLoadingProgress:(AliPlayer *)player progress:(float)progress {
-    
-    self.player.controlView.loadingValue = progress;
+    self.player.controlView.loadingValue = (CGFloat)position/(CGFloat)(self.player.totalDuration*1000);
     //缓存的进度
     if (self.PlayerChangeLoadingValueBlock) {
         self.PlayerChangeLoadingValueBlock(progress);
     }
+    
+}
+// 缓存进度
+- (void)onLoadingProgress:(AliPlayer *)player progress:(float)progress {
+    
+    
     
 }
 

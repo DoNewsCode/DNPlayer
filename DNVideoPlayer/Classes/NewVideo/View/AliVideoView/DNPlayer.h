@@ -48,7 +48,7 @@
 /**
  * 功能：是否播放
  */
-@property (nonatomic, readonly,assign) BOOL isPlaying;
+@property (nonatomic,assign) BOOL isPlaying;
 /*
  功能：获取已经加载的视频长度，或者说对于网络视频来说已经下载的视频时长
  备注：在开始播放之后才能够获取此位置。
@@ -59,6 +59,11 @@
  播放器状态
  */
 @property (nonatomic, assign) AVPStatus playerState;
+
+/**
+ 设置缓存地址
+ */
+@property (nonatomic, strong) AVPCacheConfig *cachConfig;
 
 /**
  *  2019.9.17修改为非单利创建
