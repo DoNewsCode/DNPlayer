@@ -498,6 +498,9 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //暂停事件
         case AVPStatusPaused:{
             NSLog(@"**********AliyunVodPlayerEventPause**********");
+            
+            self.player.isPlaying = NO;
+            
             if (self.PlayerEventPause) {
                 self.PlayerEventPause(nil);
             }
@@ -523,6 +526,7 @@ static UIScrollView *_Nullable _getScrollViewOfPlayModel(DNPlayModel *playModel)
             //播放停止事件
         case AVPStatusStopped: {
             NSLog(@"**********AliyunVodPlayerEventStop**********");
+            self.player.isPlaying = NO;
             if (self.PlayerEventStop) {
                 self.PlayerEventStop(nil);
             }
