@@ -222,11 +222,11 @@
     
     [self.remaindTimeLabel sizeToFit];
     self.remaindTimeLabel.ct_height = 25.0f;
-    [self.totleTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self.remaindTimeLabel.ct_width + 14);
-        make.right.mas_equalTo(12);
-        make.bottom.mas_equalTo(self.totleTimeImageView.ct_height+12);
-    }];
+//    [self.totleTimeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(self.remaindTimeLabel.ct_width + 14);
+//        make.right.mas_equalTo(12);
+//        make.bottom.mas_equalTo(self.totleTimeImageView.ct_height+12);
+//    }];
 
 }
 
